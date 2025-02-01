@@ -354,6 +354,11 @@ def copyEvoMasterAgent():
          + EVOMASTER_VERSION + ".jar",
          os.path.join(DIST, "evomaster-agent.jar"))
 
+######################################################################################
+### Copy JaCoCo Jar files ###
+def copyJaCoCo():
+    copy("jacoco/jacocoagent.jar", DIST)
+    copy("jacoco/jacococli.jar", DIST)
 
 ######################################################################################
 ### Create Zip file with all the SUTs and Drivers ###
@@ -390,6 +395,8 @@ build_jdk_17_gradle()
 
 
 copyEvoMasterAgent()
+copyJaCoCo()
+
 
 if MAKE_ZIP:
     makeZip()
