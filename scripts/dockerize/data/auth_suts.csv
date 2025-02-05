@@ -1,0 +1,8 @@
+sut_name,auth_name,auth_type,username,password,auth_prefix,login_url,header_name,token
+proxyprint,admin,basic,master,1234,Basic,,Authorization,
+proxyprint,consumer,basic,joao,1234,Basic,,Authorization,
+proxyprint,manager,basic,joaquim,1234,Basic,,Authorization,
+proxyprint,employee,basic,mafalda,1234,Basic,,Authorization,
+scout-api,user,token,,,ApiKey,,Authorization,user
+scout-api,moderator,token,,,ApiKey,,Authorization,moderator
+scout-api,administrator,token,,,ApiKey,,Authorization,administrator
