@@ -151,7 +151,7 @@ class DockerGenerator:
     def run_docker(self):
         # just for testing to see if the docker-compose file is working
         docker_file = f"./dockerfiles/{self.sut_name}.yml"
-        subprocess.run(["docker-compose", "-f", docker_file, "up", "--build", "--abort-on-container-exit"])
+        subprocess.run(["docker-compose", "-f", docker_file, "up", "--build", "--abort-on-container-exit", "--remove-orphans"])
 
     def get_auth_dict(self):
         auth_suts = self.auth_info.loc[self.auth_info['sut_name'] == self.sut_name]

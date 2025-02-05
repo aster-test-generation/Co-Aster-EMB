@@ -6,3 +6,6 @@ proxyprint,employee,basic,mafalda,1234,Basic,,Authorization,
 scout-api,user,token,,,ApiKey,,Authorization,user
 scout-api,moderator,token,,,ApiKey,,Authorization,moderator
 scout-api,administrator,token,,,ApiKey,,Authorization,administrator
+market,admin,basic,admin,password,Basic,,Authorization,
+market,user,basic,ivan.petrov@yandex.ru,petrov,Basic,,Authorization,
+market,user2,basic,user2@yandex.ru,yuridolgoruki,Basic,,Authorization,
