@@ -139,6 +139,9 @@ def build_jdk_8_maven():
     copy(folder + "/cs/rest/artificial/ncs/target/rest-ncs-sut.jar", DIST)
     copy(folder + "/em/external/rest/ncs/target/rest-ncs-evomaster-runner.jar", DIST)
 
+    copy(folder + "/cs/rest/artificial/youtube-mock/target/youtube-mock-sut.jar", DIST)
+    copy(folder + "/em/external/rest/youtube-mock/target/youtube-mock-evomaster-runner.jar", DIST)
+
     copy(folder + "/cs/rest/artificial/scs/target/rest-scs-sut.jar", DIST)
     copy(folder + "/em/external/rest/scs/target/rest-scs-evomaster-runner.jar", DIST)
 

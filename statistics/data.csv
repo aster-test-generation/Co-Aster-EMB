@@ -1,4 +1,5 @@
 EMB,NAME,TYPE,LANGUAGE,RUNTIME,BUILD,FILES,LOCS,DATABASE,LICENSE,ENDPOINTS,AUTHENTICATION,URL
+TRUE,youtube-mock,REST,Java,JDK 8,Maven,29,3229,,UNDEFINED,1,FALSE,https://github.com/opensourcingapis/YouTubeMock
 TRUE,familie-ba-sak,REST,Kotlin,JDK 17,Maven,1089,143556,PostgreSQL,MIT,183,TRUE,https://github.com/navikt/familie-ba-sak
 TRUE,pay-publicapi,REST,Java,JDK 11,Maven,377,34576,Redis,MIT,10,TRUE,https://github.com/alphagov/pay-publicapi
 TRUE,session-service,REST,Java,JDK 8,Maven,15,1471,MongoDB,UNDEFINED,8,FALSE,https://github.com/cBioPortal/session-service

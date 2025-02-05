@@ -71,6 +71,8 @@ More details (e.g., #LOCs and used databases) on these APIs can be found [in thi
 
 ### REST: Java/Kotlin
 
+* YouTubeMock (not-known license), [jdk_8_maven/cs/rest/original/youtube-mock](jdk_8_maven/cs/rest/original/youtube-mock), from [https://github.com/opensourcingapis/YouTubeMock](https://github.com/opensourcingapis/YouTubeMock)
+
 * Familie Ba Sak (MIT), [jdk_17_maven/cs/rest/familie-ba-sak](jdk_17_maven/cs/rest/familie-ba-sak), from [https://github.com/navikt/familie-ba-sak](https://github.com/navikt/familie-ba-sak)
 
 * Payments Public API (MIT), [jdk_11_maven/cs/rest/pay-publicapi](jdk_11_maven/cs/rest/pay-publicapi), from [https://github.com/alphagov/pay-publicapi](https://github.com/alphagov/pay-publicapi)
