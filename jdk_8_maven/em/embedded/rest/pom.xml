@@ -26,6 +26,7 @@
         <module>gestaohospital</module>
         <module>genome-nexus</module>
         <module>session-service</module>
+        <module>youtube-mock</module>
     </modules>
 
 </project>

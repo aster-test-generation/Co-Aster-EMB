@@ -167,7 +167,7 @@
 							<goal>repackage</goal>
 						</goals>
 						<configuration>
-							<finalName>youtubemock</finalName>
+							<finalName>youtube-mock</finalName>
 							<classifier>sut</classifier>
 						</configuration>
 					</execution>
