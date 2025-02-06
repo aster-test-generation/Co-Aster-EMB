@@ -19,6 +19,8 @@ class DockerGenerator:
         self.suts = pd.read_csv('./data/sut.csv')
         self.sut_info = pd.read_csv('../../statistics/data.csv')
 
+        if not os.path.exists(self.DOCKER_FILE_FOLDER):
+            os.makedirs(self.DOCKER_FILE_FOLDER)
 
         self.BASE_IMAGES = [
             {
@@ -52,9 +54,7 @@ class DockerGenerator:
 
     def prepare_run_docker(self):
         # prepare the required files
-        if not os.path.exists(self.DOCKER_FILE_FOLDER):
-            os.makedirs(self.DOCKER_FILE_FOLDER)
-            shutil.copy(self.jacoco_env_file_path, self.DOCKER_FILE_FOLDER)
+        shutil.copy(self.jacoco_env_file_path, self.DOCKER_FILE_FOLDER)
 
         if not os.path.exists("dist"):
             os.makedirs("dist")
