@@ -1,4 +1,3 @@
-import base64
 import os
 import shutil
 import subprocess
@@ -7,9 +6,6 @@ import sys
 from jinja2 import Environment, FileSystemLoader
 import pandas as pd
 
-##Global variables
-DOCKER_FILE_FOLDER = 'dockerfiles'
-env, suts, sut_auths = None, None, None
 
 class DockerGenerator:
     def __init__(self, sut_name, expose_port):
@@ -21,7 +17,7 @@ class DockerGenerator:
         self.jacoco_env_file_path = './data/.env'
         self.template_env = Environment(loader=FileSystemLoader("./templates"))
         self.suts = pd.read_csv('./data/sut.csv')
-        self.auth_info = pd.read_csv('./data/auth_suts.csv')
+        self.sut_info = pd.read_csv('../../statistics/data.csv')
 
 
         self.BASE_IMAGES = [
@@ -39,27 +35,26 @@ class DockerGenerator:
             }
         ]
 
-        if self.sut_name not in self.suts['NAME'].values:
+        if self.sut_name not in self.sut_info['NAME'].values or self.sut_name not in self.suts['NAME'].values:
             print(f"SUT {sut_name} not found in the SUT list")
             sys.exit(1)
 
         sut = self.suts.loc[self.suts['NAME'] == self.sut_name].iterrows().__next__()
-        self.jdk_version = str(sut[1]['RUNTIME']) if str(sut[1]['RUNTIME']) != 'nan' else ''
+        sut_info = self.sut_info.loc[self.sut_info['NAME'] == self.sut_name].iterrows().__next__()
+
+        self.jdk_version = str(sut_info[1]['RUNTIME']) if str(sut_info[1]['RUNTIME']) != 'nan' else ''
         self.jvm_parameters = str(sut[1]['JVM_PARAMETERS']) if str(sut[1]['JVM_PARAMETERS']) != 'nan' else ''
         self.input_parameters = str(sut[1]['INPUT_PARAMETERS']) if str(sut[1]['INPUT_PARAMETERS']) != 'nan' else ''
         self.swagger_url = str(sut[1]['SWAGGER_URL']) if str(sut[1]['SWAGGER_URL']) != 'nan' else ''
         self.target_url = str(sut[1]['TARGET_URL']) if str(sut[1]['TARGET_URL']) != 'nan' else ''
         self.copy_additional_files = bool(sut[1]['COPY_ADDITIONAL_FILES'])
 
-        auth_dict = self.get_auth_dict()
 
-        self.prepare_generation()
-
-    def prepare_generation(self):
+    def prepare_run_docker(self):
         # prepare the required files
-        if not os.path.exists(DOCKER_FILE_FOLDER):
-            os.makedirs(DOCKER_FILE_FOLDER)
-            shutil.copy(self.jacoco_env_file_path, DOCKER_FILE_FOLDER)
+        if not os.path.exists(self.DOCKER_FILE_FOLDER):
+            os.makedirs(self.DOCKER_FILE_FOLDER)
+            shutil.copy(self.jacoco_env_file_path, self.DOCKER_FILE_FOLDER)
 
         if not os.path.exists("dist"):
             os.makedirs("dist")
@@ -136,7 +131,6 @@ class DockerGenerator:
         params = {
             'bbSwaggerUrl': self.swagger_url,
             'bbTargetUrl': self.target_url,
-            'auths': self.get_auth_dict()
         }
 
         template = self.template_env.get_template("template.em.yaml")
@@ -150,39 +144,10 @@ class DockerGenerator:
 
     def run_docker(self):
         # just for testing to see if the docker-compose file is working
+        self.prepare_run_docker()
         docker_file = f"./dockerfiles/{self.sut_name}.yml"
         subprocess.run(["docker-compose", "-f", docker_file, "up", "--build", "--abort-on-container-exit", "--remove-orphans"])
 
-    def get_auth_dict(self):
-        auth_suts = self.auth_info.loc[self.auth_info['sut_name'] == self.sut_name]
-        auth_dicts = []
-        for auth in auth_suts.iterrows():
-            auth_name = auth[1].iloc[1]
-            auth_type = auth[1].iloc[2]
-            username = auth[1].iloc[3]
-            password = auth[1].iloc[4]
-            auth_prefix = auth[1].iloc[5]
-            login_url = auth[1].iloc[6]
-            header_name = auth[1].iloc[7]
-            token = auth[1].iloc[8]
-            auth_dict = {
-                'auth_name': auth_name,
-                'auth_type': auth_type,
-                'username': username,
-                'password': password,
-                'auth_prefix': auth_prefix,
-                'login_url': login_url,
-                'header_name': header_name
-            }
-            if auth_type == 'basic':
-                encoded_value = base64.b64encode(f"{username}:{password}".encode()).decode()
-                header_value = f"{auth_prefix} {encoded_value}"
-                auth_dict['header_value'] = header_value
-            if auth_type == 'token':
-                header_value = f"{auth_prefix} {token}"
-                auth_dict['header_value'] = header_value
-            auth_dicts.append(auth_dict)
-        return auth_dicts
 
 if __name__ == '__main__':
     # input parameters
@@ -196,11 +161,11 @@ if __name__ == '__main__':
         EXPOSE_PORT = int(sys.argv[2])
     except IndexError:
         # default port
-        EXPOSE_PORT = 9090
+        EXPOSE_PORT = 8080
 
     generator = DockerGenerator(SUT_NAME, EXPOSE_PORT)
     generator.generate_dockerfiles()
     generator.generate_docker_compose()
-    # generator.generate_em_yaml() for authentication. No need to generate this file for now
-    generator.run_docker()
 
+    # It is only for testing
+    # generator.run_docker()
