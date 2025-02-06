@@ -21,6 +21,7 @@
         <module>restcountries</module>
         <module>session-service</module>
         <module>youtube-mock</module>
+        <module>user-management</module>
     </modules>
 
 
