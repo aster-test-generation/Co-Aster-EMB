@@ -16,6 +16,7 @@
 |__scout-api__|REST|9736|93|49|Java|JDK 8|Maven|H2|&check;|
 |__catwatch__|REST|9636|106|14|Java|JDK 8|Maven|H2||
 |__proxyprint__|REST|8338|73|74|Java|JDK 8|Maven|H2|&check;|
+|__user-management__|REST|4274|69|21|Java|JDK 8|Maven|MySQL||
 |__cwa-verification__|REST|3955|47|5|Java|JDK 11|Maven|H2||
 |__gestaohospital__|REST|3506|33|20|Java|JDK 8|Maven|MongoDB||
 |__youtube-mock__|REST|3229|29|1|Java|JDK 8|Maven|||
