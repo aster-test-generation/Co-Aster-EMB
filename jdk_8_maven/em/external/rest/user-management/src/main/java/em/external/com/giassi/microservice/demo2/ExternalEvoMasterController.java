@@ -136,7 +136,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     @Override
     public String getLogMessageOfInitializedServer() {
-        return "Started application in ";
+        return "Started Microservice2Application in";
     }
 
     @Override
