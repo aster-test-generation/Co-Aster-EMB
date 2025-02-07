@@ -124,6 +124,12 @@ def build_jdk_8_maven():
     callMaven(folder, JAVA_HOME_8)
 
     # Copy JAR files
+    copy(folder + "/cs/rest/original/blogapi/target/blogapi-sut.jar", DIST)
+    copy(folder + "/em/external/rest/blogapi/target/blogapi-evomaster-runner.jar", DIST)
+
+    copy(folder + "/cs/rest/original/user-management/target/user-management-sut.jar", DIST)
+    copy(folder + "/em/external/rest/user-management/target/user-management-evomaster-runner.jar", DIST)
+
     copy(folder + "/cs/rest/original/features-service/target/features-service-sut.jar", DIST)
     copy(folder + "/em/external/rest/features-service/target/features-service-evomaster-runner.jar", DIST)
 
@@ -138,6 +144,9 @@ def build_jdk_8_maven():
 
     copy(folder + "/cs/rest/artificial/ncs/target/rest-ncs-sut.jar", DIST)
     copy(folder + "/em/external/rest/ncs/target/rest-ncs-evomaster-runner.jar", DIST)
+
+    copy(folder + "/cs/rest/original/youtube-mock/target/youtube-mock-sut.jar", DIST)
+    copy(folder + "/em/external/rest/youtube-mock/target/youtube-mock-evomaster-runner.jar", DIST)
 
     copy(folder + "/cs/rest/artificial/scs/target/rest-scs-sut.jar", DIST)
     copy(folder + "/em/external/rest/scs/target/rest-scs-evomaster-runner.jar", DIST)
