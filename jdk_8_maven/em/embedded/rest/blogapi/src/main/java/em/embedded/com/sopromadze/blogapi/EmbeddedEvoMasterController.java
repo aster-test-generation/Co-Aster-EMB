@@ -13,6 +13,7 @@ import org.evomaster.client.java.sql.DbSpecification;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
 
 import java.sql.Connection;
@@ -44,6 +45,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
             }})
             .withExposedPorts(3306)
             .withTmpFs(Collections.singletonMap("/var/lib/mysql", "rw"))
+            .withClasspathResourceMapping("blogapi.sql", "/docker-entrypoint-initdb.d/blogapi.sql", BindMode.READ_ONLY)
             ;
 
     private ConfigurableApplicationContext ctx;
