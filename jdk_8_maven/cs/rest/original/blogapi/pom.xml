@@ -157,7 +157,7 @@
 							<goal>repackage</goal>
 						</goals>
 						<configuration>
-							<finalName>blog</finalName>
+							<finalName>blogapi</finalName>
 							<classifier>sut</classifier>
 						</configuration>
 					</execution>

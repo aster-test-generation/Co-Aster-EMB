@@ -29,6 +29,7 @@
         <module>session-service</module>
         <module>youtube-mock</module>
         <module>user-management</module>
+        <module>blogapi</module>
     </modules>
 
 </project>
