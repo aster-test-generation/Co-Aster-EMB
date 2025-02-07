@@ -1,7 +1,5 @@
   db:
     image: {{DATABASE_IMAGE_NAME}}
-    ports:
-      - '{{DATABASE_PORT}}:{{DATABASE_PORT}}'
     {% if TMP_FS -%}
     tmpfs:
       - '{{TMP_FS}}'
