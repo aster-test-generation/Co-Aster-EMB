@@ -15,6 +15,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.wait.strategy.Wait;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -41,11 +42,12 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     private static final GenericContainer mysql = new GenericContainer("mysql:8.0" )
             .withEnv(new HashMap<String, String>(){{
                 put("MYSQL_ROOT_PASSWORD", "root");
-                put("MYSQL_DATABASE", "users");
+                put("MYSQL_DATABASE", "blogapi");
             }})
             .withExposedPorts(3306)
             .withTmpFs(Collections.singletonMap("/var/lib/mysql", "rw"))
             .withClasspathResourceMapping("blogapi.sql", "/docker-entrypoint-initdb.d/blogapi.sql", BindMode.READ_ONLY)
+            .waitingFor(Wait.forLogMessage(".*MySQL init process done. Ready for start up.*", 1))
             ;
 
     private ConfigurableApplicationContext ctx;
@@ -69,12 +71,10 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         int port = mysql.getMappedPort(3306);
         String url = "jdbc:mysql://"+host+":"+port+"/blogapi?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
 
-
-            ctx = SpringApplication.run(BlogApiApplication.class, new String[]{
-                    "--server.port=0",
+        ctx = SpringApplication.run(BlogApiApplication.class, new String[]{
+                "--server.port=0",
                 "--spring.datasource.url="+url
-            });
-
+        });
 
         if (sqlConnection != null) {
             try {
