@@ -145,8 +145,8 @@ def build_jdk_8_maven():
     copy(folder + "/cs/rest/artificial/news/target/rest-news-sut.jar", DIST)
     copy(folder + "/em/external/rest/news/target/rest-news-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/rest-gui/ocvn/web/target/ocvn-rest-sut.jar", DIST)
-    copy(folder + "/em/external/rest/ocvn/target/ocvn-rest-evomaster-runner.jar", DIST)
+    copy(folder + "/cs/rest-gui/ocvn/web/target/ocvn-sut.jar", DIST)
+    copy(folder + "/em/external/rest/ocvn/target/ocvn-evomaster-runner.jar", DIST)
 
     copy(folder + "/cs/rest/original/languagetool/languagetool-server/target/languagetool-sut.jar", DIST)
     copy(folder + "/em/external/rest/languagetool/target/languagetool-evomaster-runner.jar", DIST)
@@ -157,8 +157,8 @@ def build_jdk_8_maven():
     copy(folder + "/cs/rest/original/session-service/target/session-service-sut.jar", DIST)
     copy(folder + "/em/external/rest/session-service/target/session-service-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/rest-gui/gestaohospital/target/gestaohospital-rest-sut.jar", DIST)
-    copy(folder + "/em/external/rest/gestaohospital/target/gestaohospital-rest-evomaster-runner.jar", DIST)
+    copy(folder + "/cs/rest-gui/gestaohospital/target/gestaohospital-sut.jar", DIST)
+    copy(folder + "/em/external/rest/gestaohospital/target/gestaohospital-evomaster-runner.jar", DIST)
 
     copy(folder + "/cs/rest-gui/genome-nexus/web/target/genome-nexus-sut.jar", DIST)
     copy(folder + "/em/external/rest/genome-nexus/target/genome-nexus-evomaster-runner.jar", DIST)
