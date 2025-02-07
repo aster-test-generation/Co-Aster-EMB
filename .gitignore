@@ -300,3 +300,8 @@ jdk_17_maven/em/embedded/rest/familie-ba-sak/target/
 /jdk_8_maven/cs/rest/original/blogapi/target/
 /jdk_8_maven/em/embedded/rest/blogapi/target/
 /jdk_8_maven/em/external/rest/blogapi/target/
+/jdk_8_maven/cs/rest/original/user-management/target/
+/jdk_8_maven/em/embedded/rest/user-management/target/
+/jdk_11_maven/em/external/rest/pay-publicapi/target/
+/jdk_17_maven/em/external/rest/familie-ba-sak/target/
+/statistics/.Rhistory
