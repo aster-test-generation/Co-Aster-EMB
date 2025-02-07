@@ -55,7 +55,7 @@
             <artifactId>evomaster-benchmark-em-external-rest-gestaohospital</artifactId>
             <version>${evomaster-version}</version>
             <scope>system</scope>
-            <systemPath>${lib-folder}/gestaohospital-rest-evomaster-runner.jar</systemPath>
+            <systemPath>${lib-folder}/gestaohospital-evomaster-runner.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.evomaster</groupId>
@@ -69,7 +69,7 @@
             <artifactId>evomaster-benchmark-em-external-rest-ocvn</artifactId>
             <version>${evomaster-version}</version>
             <scope>system</scope>
-            <systemPath>${lib-folder}/ocvn-rest-evomaster-runner.jar</systemPath>
+            <systemPath>${lib-folder}/ocvn-evomaster-runner.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.evomaster</groupId>
@@ -99,10 +99,10 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <compileSourceRoots>
                         <compileSourceRoot>${project.basedir}/tests/genome-nexus</compileSourceRoot>
-                        <compileSourceRoot>${project.basedir}/tests/gestaohospital-rest</compileSourceRoot>
+                        <compileSourceRoot>${project.basedir}/tests/gestaohospital</compileSourceRoot>
                         <compileSourceRoot>${project.basedir}/tests/session-service</compileSourceRoot>
                         <compileSourceRoot>${project.basedir}/tests/bibliothek</compileSourceRoot>
-                        <compileSourceRoot>${project.basedir}/tests/ocvn-rest</compileSourceRoot>
+                        <compileSourceRoot>${project.basedir}/tests/ocvn</compileSourceRoot>
                         <compileSourceRoot>${project.basedir}/tests/reservations-api</compileSourceRoot>
                     </compileSourceRoots>
                 </configuration>
