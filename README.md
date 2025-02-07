@@ -71,7 +71,9 @@ More details (e.g., #LOCs and used databases) on these APIs can be found [in thi
 
 ### REST: Java/Kotlin
 
-* User Management (MIT), [jdk_8_maven/cs/rest/original/user-management](), from [https://github.com/andreagiassi/microservice-rbac-user-management](https://github.com/andreagiassi/microservice-rbac-user-management)
+* Blog (AGPL), [jdk_8_maven/cs/rest/original/blogapi](jdk_8_maven/cs/rest/original/blogapi), from [https://github.com/osopromadze/Spring-Boot-Blog-REST-API](https://github.com/osopromadze/Spring-Boot-Blog-REST-API)
+
+* User Management (MIT), [jdk_8_maven/cs/rest/original/user-management](jdk_8_maven/cs/rest/original/user-management), from [https://github.com/andreagiassi/microservice-rbac-user-management](https://github.com/andreagiassi/microservice-rbac-user-management)
 
 * YouTubeMock (not-known license), [jdk_8_maven/cs/rest/original/youtube-mock](jdk_8_maven/cs/rest/original/youtube-mock), from [https://github.com/opensourcingapis/YouTubeMock](https://github.com/opensourcingapis/YouTubeMock)
 

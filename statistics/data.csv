@@ -1,4 +1,5 @@
 EMB,NAME,TYPE,LANGUAGE,RUNTIME,BUILD,FILES,LOCS,DATABASE,LICENSE,ENDPOINTS,AUTHENTICATION,URL
+TRUE,blogapi,REST,Java,JDK 8,Maven,89,4787,MySQL,AGPL,52,TRUE,https://github.com/osopromadze/Spring-Boot-Blog-REST-API
 TRUE,user-management,REST,Java,JDK 8,Maven,69,4274,MySQL,MIT,21,FALSE,https://github.com/andreagiassi/microservice-rbac-user-management
 TRUE,youtube-mock,REST,Java,JDK 8,Maven,29,3229,,UNDEFINED,1,FALSE,https://github.com/opensourcingapis/YouTubeMock
 TRUE,familie-ba-sak,REST,Kotlin,JDK 17,Maven,1089,143556,PostgreSQL,MIT,183,TRUE,https://github.com/navikt/familie-ba-sak

@@ -124,6 +124,9 @@ def build_jdk_8_maven():
     callMaven(folder, JAVA_HOME_8)
 
     # Copy JAR files
+    copy(folder + "/cs/rest/original/blogapi/target/blogapi-sut.jar", DIST)
+    copy(folder + "/em/external/rest/blogapi/target/blogapi-evomaster-runner.jar", DIST)
+
     copy(folder + "/cs/rest/original/user-management/target/user-management-sut.jar", DIST)
     copy(folder + "/em/external/rest/user-management/target/user-management-evomaster-runner.jar", DIST)
 
