@@ -16,7 +16,8 @@
                         "aud": "some-audience",
 						"tid": "azuread",
 						"azp": "Z0042"
-                    }
+                    },
+					"typeHeader": "JWT"
                 },
 				{
                     "requestParam": "name",
@@ -29,7 +30,8 @@
                         "aud": "some-audience",
 						"tid": "azuread",
 						"azp": "Z0000"
-                    }
+                    },
+					"typeHeader": "JWT"
                 },
 				{
                     "requestParam": "name",
@@ -42,7 +44,8 @@
                         "aud": "some-audience",
 						"tid": "azuread",
 						"azp": "Z0001"
-                    }
+                    },
+					"typeHeader": "JWT"
                 },
 				{
                     "requestParam": "name",
@@ -55,7 +58,8 @@
                         "aud": "some-audience",
 						"tid": "azuread",
 						"azp": "Z0002"
-                    }
+                    },
+					"typeHeader": "JWT"
                 },
 				{
                     "requestParam": "name",
@@ -68,7 +72,8 @@
                         "aud": "some-audience",
 						"tid": "azuread",
 						"azp": "Z0003"
-                    }
+                    },
+					"typeHeader": "JWT"
                 },
 				{
                     "requestParam": "name",
@@ -81,7 +86,8 @@
                         "aud": "some-audience",
 						"tid": "azuread",
 						"azp": "Z0004"
-                    }
+                    },
+					"typeHeader": "JWT"
                 },
 				{
                     "requestParam": "name",
@@ -94,20 +100,22 @@
                         "aud": "some-audience",
 						"tid": "azuread",
 						"azp": "Z0005"
-                    }
+                    },
+					"typeHeader": "JWT"
                 },
 				{
                     "requestParam": "name",
                     "match": "System",
                     "claims": {
-						"groups": [""],
+						"groups": [],
 						"name": "The System",
 						"NAVident": "VL",
                         "sub": "subject",
                         "aud": "some-audience",
 						"tid": "azuread",
 						"azp": "VL"
-                    }
+                    },
+					"typeHeader": "JWT"
                 }
             ]
         }
