@@ -132,7 +132,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     @Override
     public ProblemInfo getProblemInfo() {
         return new RestProblem(
-                "http://localhost:" + getSutPort() + "/v2/api-docs",
+                "http://localhost:" + getSutPort() + "/blogapi.json",
                 null
         );
     }
