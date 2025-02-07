@@ -188,4 +188,4 @@ if __name__ == '__main__':
     generator.generate_docker_compose()
 
     # It is only for testing
-    generator.run_docker()
+    # generator.run_docker()
