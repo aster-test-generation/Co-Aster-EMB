@@ -273,7 +273,7 @@
                             <goal>repackage</goal>
                         </goals>
                         <configuration>
-                            <finalName>ocvn-rest</finalName>
+                            <finalName>ocvn</finalName>
                             <classifier>sut</classifier>
                         </configuration>
                     </execution>

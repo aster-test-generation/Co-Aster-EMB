@@ -1,0 +1,20 @@
+NAME,Dockerized,JVM_PARAMETERS,INPUT_PARAMETERS,SWAGGER_URL,TARGET_URL,COPY_ADDITIONAL_FILES
+familie-ba-sak,FALSE,"","",,,FALSE
+pay-publicapi,FALSE,"","",,,FALSE
+session-service,FALSE,"","",,,FALSE
+bibliothek,FALSE,"","",,,FALSE
+reservations-api,FALSE,"","",,,FALSE
+catwatch,TRUE,-Dserver.port=8080 -Dspring.datasource.url=jdbc:h2:mem:testdb -Dspring.jpa.database-platform=org.hibernate.dialect.H2Dialect -Dspring.datasource.username=sa -Dspring.datasource.password,"",http://localhost:9090/v2/api-docs,http://localhost:9090,FALSE
+cwa-verification,TRUE,-Dspring.datasource.url=jdbc:h2:mem:testdb -Dspring.datasource.driver-class-name=org.h2.Driver -Dspring.datasource.username=sa -Dspring.datasource.password,"--server.port=8080 --spring.profiles.active=local,external,internal --management.server.port=-1 --server.ssl.enabled=false --cwa-testresult-server.url=http://cwa-testresult-server:8088",http://localhost:9090/api-docs.json,http://localhost:9090,FALSE
+features-service,TRUE,-Dspring.datasource.url=jdbc:h2:mem:testdb -Dspring.jpa.database-platform=org.hibernate.dialect.H2Dialect -Dspring.datasource.username=sa -Dspring.datasource.password,--server.port=8080,http://localhost:9090/swagger.json,http://localhost:9090,FALSE
+gestaohospital,FALSE,"","",,,FALSE
+languagetool,TRUE,"",--port 8080 --public,http://localhost:9090/v2/swagger,http://localhost:9090,FALSE
+ocvn,FALSE,"","",,,FALSE
+proxyprint,TRUE,-Dspring.datasource.url=jdbc:h2:mem:testdb -Dspring.jpa.database-platform=org.hibernate.dialect.H2Dialect -Dspring.datasource.username=sa -Dspring.datasource.password -Dspring.jpa.show-sql=false -Dspring.jpa.hibernate.ddl-auto=create-drop -Xmx4G,--server.port=8080,http://localhost:9090/v2/api-docs,http://localhost:9090,FALSE
+rest-ncs,TRUE,"",--server.port=8080,http://localhost:9090/v2/api-docs,http://localhost:9090,FALSE
+rest-news,TRUE,"",--server.port=8080,http://localhost:9090/v2/api-docs,http://localhost:9090,FALSE
+rest-scs,TRUE,"",--server.port=8080,http://localhost:9090/v2/api-docs,http://localhost:9090,FALSE
+restcountries,TRUE,"",--server.port=8080,http://localhost:9090/openapi.yaml,http://localhost:9090,FALSE
+scout-api,TRUE,"",server scout_api_evomaster.yml,http://localhost:9090/api/swagger.json,http://localhost:9090,TRUE
+genome-nexus,FALSE,"","",,,FALSE
+market,TRUE,"-Dspring.datasource.url=""jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"" -Dspring.datasource.username=sa -Dspring.datasource.password",--server.port=8080,http://localhost:9090/v2/api-docs,http://localhost:9090,FALSE

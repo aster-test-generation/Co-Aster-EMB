@@ -72,7 +72,7 @@
                     </execution>
                 </executions>
 				<configuration>
-					<finalName>gestaohospital-rest</finalName>
+					<finalName>gestaohospital</finalName>
 					<classifier>sut</classifier>
 				</configuration>
 			</plugin>

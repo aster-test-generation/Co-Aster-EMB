@@ -1,0 +1,13 @@
+services:
+  sut-{{SUT_NAME}}:
+    build:
+      dockerfile: ./dockerfiles/{{SUT_NAME}}.dockerfile
+      context: ..
+    environment:
+      TOOL: ${TOOL:-undefined}
+      RUN: ${RUN:-0}
+    ports:
+      - "${HOST_PORT:-{{EXPOSE_PORT}}}:8080"
+    volumes:
+      # default env does not work on volumes
+      - ${JACOCODIR}:/jacoco

@@ -41,7 +41,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
             jarLocation = args[2];
         }
         if(! jarLocation.endsWith(".jar")) {
-            jarLocation += "/ocvn-rest-sut.jar";
+            jarLocation += "/ocvn-sut.jar";
         }
 
         int timeoutSeconds = 120;

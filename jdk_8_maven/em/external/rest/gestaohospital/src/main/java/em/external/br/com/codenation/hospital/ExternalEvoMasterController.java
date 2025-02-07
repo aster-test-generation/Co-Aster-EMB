@@ -44,7 +44,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
             jarLocation = args[2];
         }
         if (!jarLocation.endsWith(".jar")) {
-            jarLocation += "/gestaohospital-rest-sut.jar";
+            jarLocation += "/gestaohospital-sut.jar";
         }
 
         int timeoutSeconds = 120;
