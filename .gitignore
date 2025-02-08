@@ -310,3 +310,8 @@ jdk_17_maven/em/embedded/rest/familie-ba-sak/target/
 scripts/dockerize/dist
 scripts/dockerize/dockerfiles
 
+/jdk_11_maven/cs/rest-gui/market/logs/
+/jdk_11_maven/logs/
+/jdk_11_maven/openapi/
+/jdk_11_maven/cs/rest-gui/market/market-web/logs/
+/jdk_8_maven/em/external/rest/catwatch/temp/
