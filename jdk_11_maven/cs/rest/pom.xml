@@ -15,6 +15,7 @@
     <modules>
         <module>cwa-verification-server</module>
         <module>pay-publicapi</module>
+        <module>tracking-system</module>
     </modules>
 
 
