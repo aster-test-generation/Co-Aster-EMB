@@ -1,0 +1,18 @@
+  db:
+    image: {{DATABASE_IMAGE_NAME}}
+    {% if TMP_FS -%}
+    tmpfs:
+      - '{{TMP_FS}}'
+    {% endif %}
+{% if DATABASE_ENVIRONMENT %}
+    environment:
+      {% for env in DATABASE_ENVIRONMENT -%}
+      {{env}}
+      {% endfor %}
+{% endif %}
+{% if DATABASE_VOLUME %}
+    volumes:
+      {% for volume in DATABASE_VOLUME -%}
+      - {{volume}}
+      {% endfor %}
+{% endif %}
