@@ -57,6 +57,8 @@ class DockerGenerator:
         self.database_environments = str(sut[1]['DATABASE_ENVIRONMENT']).split(';') if str(sut[1]['DATABASE_ENVIRONMENT']) != 'nan' else None
         self.database_volumes = str(sut[1]['DATABASE_VOLUME']).split(';') if str(sut[1]['DATABASE_VOLUME']) != 'nan' else None
         self.is_mock_oauth = bool(sut[1]['MOCK_OAUTH'])
+        self.health_check = bool(sut[1]['HEALTH_CHECK'])
+        self.health_check_commands = str(sut[1]['HEALTH_CHECK_COMMAND']).split(';') if str(sut[1]['HEALTH_CHECK_COMMAND']) != 'nan' else ''
 
     def prepare_run_docker(self):
         # prepare the required files
@@ -122,17 +124,24 @@ class DockerGenerator:
         params = {
             'SUT_NAME': self.sut_name,
             'EXPOSE_PORT': self.expose_port,
-            'MOCK_OAUTH': self.is_mock_oauth
+            'MOCK_OAUTH': self.is_mock_oauth,
+            'HEALTH_CHECK': self.health_check,
         }
 
-        if any(db in ['PostgreSQL', 'Redis', 'MongoDB'] for db in self.database_types):
+        if self.database_types and any(db in ['PostgreSQL', 'MySQL', 'Redis', 'MongoDB'] for db in self.database_types):
             database_template = self.template_env.get_template("db.template")
+            if self.health_check:
+                health_chec_command = ",".join(self.health_check_commands)
+            else:
+                health_chec_command = ""
             database_params = {
                 'DATABASE_IMAGE_NAME': self.database_image,
                 'DATABASE_PORT': self.database_port,
                 'TMP_FS': self.tmp_fs,
                 'DATABASE_ENVIRONMENT': self.database_environments,
-                'DATABASE_VOLUME': self.database_volumes
+                'DATABASE_VOLUME': self.database_volumes,
+                'HEALTH_CHECK': self.health_check,
+                'HEALTH_CHECK_COMMAND': health_chec_command
             }
             database_image = database_template.render(database_params)
             params['MONGODB_DATABASE'] = database_image
@@ -183,9 +192,14 @@ if __name__ == '__main__':
         # default port
         EXPOSE_PORT = 8080
 
+    try:
+        RUN_ON_DOCKER = bool(sys.argv[3])
+    except IndexError:
+        RUN_ON_DOCKER = False
+
     generator = DockerGenerator(SUT_NAME, EXPOSE_PORT)
     generator.generate_dockerfiles()
     generator.generate_docker_compose()
 
-    # It is only for testing
-    # generator.run_docker()
+    if RUN_ON_DOCKER:
+        generator.run_docker()
