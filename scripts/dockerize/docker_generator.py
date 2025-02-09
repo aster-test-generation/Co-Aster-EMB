@@ -179,7 +179,10 @@ class DockerGenerator:
 
 
 if __name__ == '__main__':
-    # input parameters
+    if len(sys.argv) < 3:
+        print("Usage:\ndocker_generator.py <sut_name> <expose_port> <run_on_docker>?")
+        sys.exit(1)
+
     try:
         SUT_NAME = sys.argv[1]
     except IndexError:
