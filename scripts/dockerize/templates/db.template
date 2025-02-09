@@ -16,3 +16,11 @@
       - {{volume}}
       {% endfor %}
 {% endif %}
+{% if HEALTH_CHECK %}
+    healthcheck:
+      test: [{{HEALTH_CHECK_COMMAND}}]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+{% endif %}
+

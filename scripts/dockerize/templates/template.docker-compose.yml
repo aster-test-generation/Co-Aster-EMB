@@ -11,6 +11,11 @@ services:
     volumes:
       # default env does not work on volumes
       - ${JACOCODIR}:/jacoco
+    {%- if HEALTH_CHECK %}
+    depends_on:
+      db:
+        condition: service_healthy
+    {% endif %}
 {{ MONGODB_DATABASE if MONGODB_DATABASE }}
 {%- if MOCK_OAUTH %}
   mock-oauth2-server:
