@@ -23,5 +23,4 @@
       timeout: 30s
       retries: 3
 {% endif %}
-    ports:
-        - '{{DATABASE_PORT}}:{{DATABASE_PORT}}'
+
