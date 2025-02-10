@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>person-controller</module>
     </modules>
 
 </project>
