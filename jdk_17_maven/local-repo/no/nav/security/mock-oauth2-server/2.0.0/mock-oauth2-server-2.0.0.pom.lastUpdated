@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Oct 06 15:11:43 CEST 2023
+https\://repo.maven.apache.org/maven2/.lastUpdated=1696597903081
+3af1ee66515fa2dbb2e8100e0ed1108c7a1ae06e@default-github-https\://maven.pkg.github.com/navikt/familie-felles/.lastUpdated=1696597903058
+https\://maven.pkg.github.com/navikt/familie-felles/.error=Could not transfer artifact no.nav.security\:mock-oauth2-server\:pom\:2.0.0 from/to github (https\://maven.pkg.github.com/navikt/familie-felles)\: authentication failed for https\://maven.pkg.github.com/navikt/familie-felles/no/nav/security/mock-oauth2-server/2.0.0/mock-oauth2-server-2.0.0.pom, status\: 401 Unauthorized

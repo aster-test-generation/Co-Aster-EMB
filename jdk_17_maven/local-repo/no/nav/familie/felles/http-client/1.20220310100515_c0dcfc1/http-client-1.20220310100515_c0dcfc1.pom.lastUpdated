@@ -1,0 +1,8 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Sep 14 14:26:26 CEST 2022
+b0eeacba63b3a1290e225e89cfc35c6d45416657@default-github-https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/.lastUpdated=1663158338718
+https\://repo.maven.apache.org/maven2/.lastUpdated=1663157386442
+27fc93403d944ef80159c27789e40d4e30876b48@default-github-https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/.lastUpdated=1663158386753
+https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/.error=Could not transfer artifact no.nav.familie.felles\:http-client\:pom\:1.20220310100515_c0dcfc1 from/to github (https\://maven.pkg.github.com/navikt/familie-ks-kontrakt)\: Authentication failed for https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/no/nav/familie/felles/http-client/1.20220310100515_c0dcfc1/http-client-1.20220310100515_c0dcfc1.pom 401 Unauthorized
+https\://repo.maven.apache.org/maven2/.error=
+@default-github-https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/.lastUpdated=1663157386270

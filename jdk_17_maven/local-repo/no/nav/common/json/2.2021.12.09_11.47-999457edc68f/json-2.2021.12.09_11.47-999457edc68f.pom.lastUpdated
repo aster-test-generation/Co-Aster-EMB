@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Sep 14 14:09:31 CEST 2022
+https\://repo.maven.apache.org/maven2/.lastUpdated=1663157371570
+https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/.error=Could not transfer artifact no.nav.common\:json\:pom\:2.2021.12.09_11.47-999457edc68f from/to github (https\://maven.pkg.github.com/navikt/familie-ks-kontrakt)\: Authentication failed for https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/no/nav/common/json/2.2021.12.09_11.47-999457edc68f/json-2.2021.12.09_11.47-999457edc68f.pom 401 Unauthorized
+@default-github-https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/.lastUpdated=1663157371234

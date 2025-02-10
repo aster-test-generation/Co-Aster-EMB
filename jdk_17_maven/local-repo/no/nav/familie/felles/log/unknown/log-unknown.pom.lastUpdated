@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Oct 09 20:00:56 CEST 2023
+https\://repo.maven.apache.org/maven2/.lastUpdated=1696874456238
+3af1ee66515fa2dbb2e8100e0ed1108c7a1ae06e@default-github-https\://maven.pkg.github.com/navikt/familie-felles/.lastUpdated=1696597917091
+https\://maven.pkg.github.com/navikt/familie-felles/.error=Could not transfer artifact no.nav.familie.felles\:log\:pom\:unknown from/to github (https\://maven.pkg.github.com/navikt/familie-felles)\: authentication failed for https\://maven.pkg.github.com/navikt/familie-felles/no/nav/familie/felles/log/unknown/log-unknown.pom, status\: 401 Unauthorized
+https\://repo.maven.apache.org/maven2/.error=
+dcd93648cdbf1ed62abfb8cd89a8a2b3cd18b765@default-github-https\://maven.pkg.github.com/navikt/familie-felles/.lastUpdated=1696874455952

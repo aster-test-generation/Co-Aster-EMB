@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>no.nav.familie.kontrakter</groupId>
+  <artifactId>barnetrygd</artifactId>
+  <version>3.0_20230921075936_3adfc44</version>
+  <name>Kontrakter - barnetrygd</name>
+  <description>Kontrakter for familieytelsene</description>
+  <url>https://github.com/navikt/familie-kontrakter/barnetrygd</url>
+  <organization>
+    <name>no.nav</name>
+    <url>https://github.com/navikt</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <organization>NAV (Arbeids- og velferdsdirektoratet) - The Norwegian Labour and Welfare Administration</organization>
+      <organizationUrl>https://www.nav.no</organizationUrl>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:https://github.com/navikt/familie-kontrakter.git/barnetrygd</connection>
+    <developerConnection>scm:git:https://github.com/navikt/familie-kontrakter.git/barnetrygd</developerConnection>
+    <url>https://github.com/navikt/familie-kontrakter/barnetrygd</url>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub navikt Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/navikt/familie-kontrakter</url>
+    </repository>
+  </distributionManagement>
+  <properties>
+    <sha1></sha1>
+    <maven-enforcer.version>3.4.1</maven-enforcer.version>
+    <kotlin.version>1.9.10</kotlin.version>
+    <changelist>-SNAPSHOT</changelist>
+    <kotest.version>5.7.2</kotest.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jackson.version>2.15.2</jackson.version>
+    <revision>3.0</revision>
+  </properties>
+</project>

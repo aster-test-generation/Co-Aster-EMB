@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Oct 18 14:07:24 CEST 2023
+https\://repo.maven.apache.org/maven2/.lastUpdated=1697630843102
+https\://repo.spring.io/milestone/.error=
+https\://repo.spring.io/milestone/.lastUpdated=1697630820290
+https\://github-package-registry-mirror.gc.nav.no/cached/maven-release/.lastUpdated=1697630844130
+https\://repo.spring.io/snapshot/.error=
+https\://packages.confluent.io/maven/.lastUpdated=1697630835451
+https\://repo.maven.apache.org/maven2/.error=
+https\://packages.confluent.io/maven/.error=
+https\://repo.spring.io/snapshot/.lastUpdated=1697630816693
