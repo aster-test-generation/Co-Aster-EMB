@@ -69,7 +69,7 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 
 More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
 
-### REST: Java/Kotlin
+### REST: Java/Kotlin (24)
 
 * Person Controller (Apache), [jdk_21_maven/cs/rest/person-controller](jdk_21_maven/cs/rest/person-controller), from [https://github.com/mongodb-developer/java-spring-boot-mongodb-starter](https://github.com/mongodb-developer/java-spring-boot-mongodb-starter)
 
@@ -121,7 +121,7 @@ More details (e.g., #LOCs and used databases) on these APIs can be found [in thi
 
 
 
-### GraphQL: Java/Kotlin
+### GraphQL: Java/Kotlin (5)
 
 * Spring-Pet-Clinic (Apache), [jdk_8_maven/cs/graphql/petclinic-graphql](jdk_8_maven/cs/graphql/petclinic-graphql), from [https://github.com/spring-petclinic/spring-petclinic-graphql]()
 
@@ -147,43 +147,55 @@ More details (e.g., #LOCs and used databases) on these APIs can be found [in thi
   gRPC: [jdk_8_maven/cs/rpc/grpc/artificial/grpc-scs](jdk_8_maven/cs/rpc/grpc/artificial/grpc-scs).
 
 
-### WEB: backend in Java/Kotlin
+### WEB: backend in Java/Kotlin (1)
 
 * Spring-PetClinic (Apache), [jdk_17_maven/cs/web/spring-petclinic](jdk_17_maven/cs/web/spring-petclinic), from [https://github.com/spring-projects/spring-petclinic]()
 
 
-### REST: JavaScript/TypeScript
+[//]: # (### REST: JavaScript/TypeScript)
 
-* Disease-sh-API (GPL), [js_npm/rest/disease-sh-api](js_npm/rest/disease-sh-api), from [https://github.com/disease-sh/API](https://github.com/disease-sh/API)
+[//]: # ()
+[//]: # (* Disease-sh-API &#40;GPL&#41;, [js_npm/rest/disease-sh-api]&#40;js_npm/rest/disease-sh-api&#41;, from [https://github.com/disease-sh/API]&#40;https://github.com/disease-sh/API&#41;)
 
-* Cyclotron (MIT), [js_npm/rest/cyclotron](js_npm/rest/cyclotron), from [https://github.com/ExpediaInceCommercePlatform/cyclotron](https://github.com/ExpediaInceCommercePlatform/cyclotron)
+[//]: # ()
+[//]: # (* Cyclotron &#40;MIT&#41;, [js_npm/rest/cyclotron]&#40;js_npm/rest/cyclotron&#41;, from [https://github.com/ExpediaInceCommercePlatform/cyclotron]&#40;https://github.com/ExpediaInceCommercePlatform/cyclotron&#41;)
 
-* SpaceX-API (Apache-2.0 License), [js_npm/rest/spacex-api](js_npm/rest/spacex-api), from [https://github.com/r-spacex/SpaceX-API](https://github.com/r-spacex/SpaceX-API)
+[//]: # ()
+[//]: # (* SpaceX-API &#40;Apache-2.0 License&#41;, [js_npm/rest/spacex-api]&#40;js_npm/rest/spacex-api&#41;, from [https://github.com/r-spacex/SpaceX-API]&#40;https://github.com/r-spacex/SpaceX-API&#41;)
 
-* Realworld-App (ISC), [js_npm/rest/realworld-app](js_npm/rest/realworld-app), from [https://github.com/lujakob/nestjs-realworld-example-app](https://github.com/lujakob/nestjs-realworld-example-app)
+[//]: # ()
+[//]: # (* Realworld-App &#40;ISC&#41;, [js_npm/rest/realworld-app]&#40;js_npm/rest/realworld-app&#41;, from [https://github.com/lujakob/nestjs-realworld-example-app]&#40;https://github.com/lujakob/nestjs-realworld-example-app&#41;)
 
-* NCS, [js_npm/rest/ncs](js_npm/rest/ncs), (not-known license, artificial numerical examples coming from different sources)
+[//]: # ()
+[//]: # (* NCS, [js_npm/rest/ncs]&#40;js_npm/rest/ncs&#41;, &#40;not-known license, artificial numerical examples coming from different sources&#41;)
 
-* SCS, [js_npm/rest/scs](js_npm/rest/scs), (not-known license, artificial string examples coming from different sources)
-
-
-### REST: .NET/C#
-
-* Menu.API (not-known license), from [https://github.com/chayxana/Restaurant-App](https://github.com/chayxana/Restaurant-App)
-
-* SampleProject (MIT), from [https://github.com/kgrzybek/sample-dotnet-core-cqrs-api](https://github.com/kgrzybek/sample-dotnet-core-cqrs-api)
-
-* NCS (not-known license, artificial numerical examples coming from different sources)
-
-* SCS (not-known license, artificial string examples coming from different sources)
+[//]: # ()
+[//]: # (* SCS, [js_npm/rest/scs]&#40;js_npm/rest/scs&#41;, &#40;not-known license, artificial string examples coming from different sources&#41;)
 
 
+[//]: # (### REST: .NET/C#)
 
-### GraphQL: JavaScript/TypeScript
+[//]: # ()
+[//]: # (* Menu.API &#40;not-known license&#41;, from [https://github.com/chayxana/Restaurant-App]&#40;https://github.com/chayxana/Restaurant-App&#41;)
 
-* React-Finland (not-known license), [js_npm/graphql/react-finland](js_npm/graphql/react-finland), from [https://github.com/ReactFinland/graphql-api](https://github.com/ReactFinland/graphql-api)
+[//]: # ()
+[//]: # (* SampleProject &#40;MIT&#41;, from [https://github.com/kgrzybek/sample-dotnet-core-cqrs-api]&#40;https://github.com/kgrzybek/sample-dotnet-core-cqrs-api&#41;)
 
-* E-Commerce Server (MIT), [js_npm/graphql/ecommerce-server](js_npm/graphql/ecommerce-server), from [https://github.com/react-shop/react-ecommerce](https://github.com/react-shop/react-ecommerce)
+[//]: # ()
+[//]: # (* NCS &#40;not-known license, artificial numerical examples coming from different sources&#41;)
+
+[//]: # ()
+[//]: # (* SCS &#40;not-known license, artificial string examples coming from different sources&#41;)
+
+
+
+[//]: # (### GraphQL: JavaScript/TypeScript)
+
+[//]: # ()
+[//]: # (* React-Finland &#40;not-known license&#41;, [js_npm/graphql/react-finland]&#40;js_npm/graphql/react-finland&#41;, from [https://github.com/ReactFinland/graphql-api]&#40;https://github.com/ReactFinland/graphql-api&#41;)
+
+[//]: # ()
+[//]: # (* E-Commerce Server &#40;MIT&#41;, [js_npm/graphql/ecommerce-server]&#40;js_npm/graphql/ecommerce-server&#41;, from [https://github.com/react-shop/react-ecommerce]&#40;https://github.com/react-shop/react-ecommerce&#41;)
 
 
 ## Using This Repository
@@ -203,7 +215,7 @@ There are 2 main use cases for EMB:
 
 Everything can be setup by running the script `scripts/dist.py`.
 Note that you will need installed at least Maven, Gradle, JDK 8, JDK 11, JDK 17, NPM, as well as Docker.
-Also, you will need to setup environment variables like `JAVA_HOME_8`, `JAVA_HOME_11` and `JAVA_HOME_17`.
+Also, you will need to setup environment variables like `JAVA_HOME_8`, `JAVA_HOME_11`,  `JAVA_HOME_17` and `JAVA_HOME_21`.
 The script will issue error messages if any prerequisite is missing.
 Once the script is completed, all the SUTs will be available under the `dist` folder, and a `dist.zip` will be created as well (if `scripts/dist.py` is run with `True` as input).
 
