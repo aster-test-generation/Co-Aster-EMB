@@ -70,9 +70,6 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         ctx = SpringApplication.run(ApplicationStarter.class,
                 new String[]{"--server.port=0",
                         "--spring.data.mongodb.uri=mongodb://" + mongodbContainer.getContainerIpAddress() + ":" + mongodbContainer.getMappedPort(MONGODB_PORT) + "/" + MONGODB_DATABASE_NAME,
-                        "--spring.datasource.username=sa",
-                        "--spring.datasource.password",
-                        "--dg-toolkit.derby.port=0",
                         "--spring.cache.type=NONE"
                 });
 
