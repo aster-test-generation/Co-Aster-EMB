@@ -26,6 +26,14 @@
         <version>1.3.0-SNAPSHOT</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>local-repo</id>
+            <url>file://${pom.basedir}/local-repo</url>
+        </repository>
+    </repositories>
+
+
     <dependencies>
 
 <!-- MODIFIED -->

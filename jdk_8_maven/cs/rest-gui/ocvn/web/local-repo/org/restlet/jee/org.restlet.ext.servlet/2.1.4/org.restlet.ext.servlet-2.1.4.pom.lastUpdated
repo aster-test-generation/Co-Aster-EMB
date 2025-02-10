@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat Nov 04 21:13:19 CET 2023
+https\://jcenter.bintray.com/.lastUpdated=1699128799829
+@default-jcenter-http\://jcenter.bintray.com/.lastUpdated=1606835201086
+http\://artifactory.ampdev.net/artifactory/ocvn/.lastUpdated=1606835201367
+http\://jcenter.bintray.com/.error=Could not transfer artifact org.restlet.jee\:org.restlet.ext.servlet\:pom\:2.1.4 from/to jcenter (http\://jcenter.bintray.com/)\: Authorization failed for http\://jcenter.bintray.com/org/restlet/jee/org.restlet.ext.servlet/2.1.4/org.restlet.ext.servlet-2.1.4.pom 403 Forbidden

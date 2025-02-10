@@ -76,14 +76,14 @@
             <id>jcenter</id>
             <url>https://jcenter.bintray.com/</url>
         </repository>
-        <repository>
-            <id>OCVN</id>
-            <name>OCVN</name>
-            <url>http://artifactory.ampdev.net/artifactory/ocvn/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+<!--        <repository>-->
+<!--            <id>OCVN</id>-->
+<!--            <name>OCVN</name>-->
+<!--            <url>http://artifactory.ampdev.net/artifactory/ocvn/</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
     </repositories>
 
     <pluginRepositories>
