@@ -71,6 +71,10 @@ More details (e.g., #LOCs and used databases) on these APIs can be found [in thi
 
 ### REST: Java/Kotlin
 
+* Person Controller (Apache), [jdk_21_maven/cs/rest/person-controller](jdk_21_maven/cs/rest/person-controller), from [https://github.com/mongodb-developer/java-spring-boot-mongodb-starter](https://github.com/mongodb-developer/java-spring-boot-mongodb-starter)
+
+* Project Tracking System (not-known license), [jdk_11_maven/cs/rest/tracking-system](jdk_11_maven/cs/rest/tracking-system), from [https://github.com/SelimHorri/project-tracking-system-backend-app](https://github.com/SelimHorri/project-tracking-system-backend-app)
+
 * Blog (AGPL), [jdk_8_maven/cs/rest/original/blogapi](jdk_8_maven/cs/rest/original/blogapi), from [https://github.com/osopromadze/Spring-Boot-Blog-REST-API](https://github.com/osopromadze/Spring-Boot-Blog-REST-API)
 
 * User Management (MIT), [jdk_8_maven/cs/rest/original/user-management](jdk_8_maven/cs/rest/original/user-management), from [https://github.com/andreagiassi/microservice-rbac-user-management](https://github.com/andreagiassi/microservice-rbac-user-management)

@@ -17,6 +17,7 @@
         <module>market</module>
         <module>ind1</module>
         <module>pay-publicapi</module>
+        <module>tracking-system</module>
     </modules>
 
 </project>

@@ -16,6 +16,7 @@
 |__scout-api__|REST|9736|93|49|Java|JDK 8|Maven|H2|&check;|
 |__catwatch__|REST|9636|106|14|Java|JDK 8|Maven|H2||
 |__proxyprint__|REST|8338|73|74|Java|JDK 8|Maven|H2|&check;|
+|__tracking-system__|REST|5947|87|67|Java|JDK 11|Maven|H2|&check;|
 |__blogapi__|REST|4787|89|52|Java|JDK 8|Maven|MySQL|&check;|
 |__user-management__|REST|4274|69|21|Java|JDK 8|Maven|MySQL||
 |__cwa-verification__|REST|3955|47|5|Java|JDK 11|Maven|H2||
@@ -26,6 +27,7 @@
 |__restcountries__|REST|1977|24|22|Java|JDK 8|Maven|||
 |__reservations-api__|REST|1853|39|7|Java|JDK 11|Gradle|MongoDB|&check;|
 |__session-service__|REST|1471|15|8|Java|JDK 8|Maven|MongoDB||
+|__person-controller__|REST|1112|16|12|Java|JDK 21|Maven|MongoDB||
 |__rest-scs__|REST|862|13|11|Java|JDK 8|Maven|||
 |__rest-ncs__|REST|605|9|6|Java|JDK 8|Maven|||
 |__familie-ba-sak__|REST|143556|1089|183|Kotlin|JDK 17|Maven|PostgreSQL|&check;|
