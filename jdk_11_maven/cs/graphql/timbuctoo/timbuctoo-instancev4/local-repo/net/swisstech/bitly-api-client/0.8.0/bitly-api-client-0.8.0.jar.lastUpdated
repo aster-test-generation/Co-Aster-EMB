@@ -1,0 +1,17 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jan 04 16:33:10 CET 2022
+https\://repository.apache.org/content/repositories/public/.error=
+https\://download.java.net/maven/2/.lastUpdated=1641310385065
+https\://download.oracle.com/maven/.error=
+https\://repo1.maven.org/maven2/.error=
+https\://repository.apache.org/content/repositories/public/.lastUpdated=1641310387246
+https\://jitpack.io/.error=
+https\://jcenter.bintray.com/.lastUpdated=1641310390169
+https\://download.java.net/maven/2/.error=
+https\://repo1.maven.org/maven2/.lastUpdated=1641310381473
+https\://raw.githubusercontent.com/mbknor/mbknor.github.com/master/m2repo/releases/.error=
+https\://maven.huygens.knaw.nl/repository/.error=
+https\://maven.huygens.knaw.nl/repository/.lastUpdated=1641310387576
+https\://download.oracle.com/maven/.lastUpdated=1641310343885
+https\://raw.githubusercontent.com/mbknor/mbknor.github.com/master/m2repo/releases/.lastUpdated=1641310387764
+https\://jitpack.io/.lastUpdated=1641310389458
