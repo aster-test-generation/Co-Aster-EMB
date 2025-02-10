@@ -75,6 +75,7 @@ PROJ_LOCATION = os.path.abspath(os.path.join(SCRIPT_LOCATION, os.pardir))
 JAVA_HOME_8 = os.environ.get('JAVA_HOME_8', '')
 JAVA_HOME_11 = os.environ.get('JAVA_HOME_11', '')
 JAVA_HOME_17 = os.environ.get('JAVA_HOME_17', '')
+JAVA_HOME_21 = os.environ.get('JAVA_HOME_21', '')
 
 SHELL = platform.system() == 'Windows'
 
@@ -93,6 +94,10 @@ def checkJavaVersions():
 
     if JAVA_HOME_17 == '':
         print("\nERROR: JAVA_HOME_17 environment variable is not defined")
+        exit(1)
+
+    if JAVA_HOME_21 == '':
+        print("\nERROR: JAVA_HOME_21 environment variable is not defined")
         exit(1)
 
 
@@ -208,6 +213,9 @@ def build_jdk_11_maven():
     folder = "jdk_11_maven"
     callMaven(folder, JAVA_HOME_11)
 
+    copy(folder + "/cs/rest/tracking-system/target/tracking-system-sut.jar", DIST)
+    copy(folder + "/em/external/rest/tracking-system/target/tracking-system-evomaster-runner.jar", DIST)
+
     copy(folder + "/cs/rest/cwa-verification-server/target/cwa-verification-sut.jar", DIST)
     copy(folder + "/em/external/rest/cwa-verification/target/cwa-verification-evomaster-runner.jar", DIST)
 
@@ -242,6 +250,15 @@ def build_jdk_17_maven():
 
     copy(folder + "/cs/rest/familie-ba-sak/target/familie-ba-sak-sut.jar", DIST)
     copy(folder + "/em/external/rest/familie-ba-sak/target/familie-ba-sak-evomaster-runner.jar", DIST)
+
+
+####################
+def build_jdk_21_maven():
+    folder = "jdk_21_maven"
+    callMaven(folder, JAVA_HOME_21)
+
+    copy(folder + "/cs/rest/person-controller/target/person-controller.jar", DIST)
+    copy(folder + "/em/external/rest/person-controller/target/person-controller-evomaster-runner.jar", DIST)
 
 
 ####################
