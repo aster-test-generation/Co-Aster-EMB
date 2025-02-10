@@ -17,7 +17,7 @@
 
     <modules>
         <module>cs</module>
-<!--        <module>em</module>-->
+        <module>em</module>
     </modules>
 
     <issueManagement>

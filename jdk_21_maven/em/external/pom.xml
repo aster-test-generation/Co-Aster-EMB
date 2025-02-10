@@ -4,17 +4,18 @@
 
     <parent>
         <groupId>org.evomaster</groupId>
-        <artifactId>evomaster-benchmark-jdk21-cs</artifactId>
+        <artifactId>evomaster-benchmark-jdk21-em</artifactId>
         <version>3.4.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>evomaster-benchmark-jdk21-cs-rest</artifactId>
+    <artifactId>evomaster-benchmark-jdk21-em-external</artifactId>
     <packaging>pom</packaging>
 
-
     <modules>
-        <module>person-controller</module>
+        <module>rest</module>
     </modules>
 
 
+    <dependencyManagement>
+    </dependencyManagement>
 </project>
