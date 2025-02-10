@@ -26,7 +26,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     private static final String MONGODB_VERSION = "7.0";
 
-    private static final String MONGODB_DATABASE_NAME = "HospitalDB";
+    //private static final String MONGODB_DATABASE_NAME = "HospitalDB";
 
     public static void main(String[] args) {
 
@@ -174,7 +174,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
 
     public void resetStateOfSUT() {
-        mongoClient.getDatabase(MONGODB_DATABASE_NAME).drop();
+       // mongoClient.getDatabase(MONGODB_DATABASE_NAME).drop();
     }
 
 
