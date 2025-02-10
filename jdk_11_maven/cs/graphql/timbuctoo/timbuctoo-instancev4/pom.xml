@@ -709,6 +709,10 @@
 
   <repositories>
     <repository>
+      <id>local-repo</id>
+      <url>file://${project.basedir}/local-repo</url>
+    </repository>
+    <repository>
       <id>oracleReleases</id>
       <name>Oracle Released Java Packages</name>
       <url>https://download.oracle.com/maven</url>
