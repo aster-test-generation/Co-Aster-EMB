@@ -27,6 +27,7 @@
 |__restcountries__|REST|1977|24|22|Java|JDK 8|Maven|||
 |__reservations-api__|REST|1853|39|7|Java|JDK 11|Gradle|MongoDB|&check;|
 |__session-service__|REST|1471|15|8|Java|JDK 8|Maven|MongoDB||
+|__person-controller__|REST|1112|16|12|Java|JDK 21|Maven|MongoDB||
 |__rest-scs__|REST|862|13|11|Java|JDK 8|Maven|||
 |__rest-ncs__|REST|605|9|6|Java|JDK 8|Maven|||
 |__familie-ba-sak__|REST|143556|1089|183|Kotlin|JDK 17|Maven|PostgreSQL|&check;|

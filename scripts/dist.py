@@ -412,6 +412,7 @@ prepareDistFolder()
 build_jdk_8_maven()
 build_jdk_11_maven()
 build_jdk_17_maven()
+build_jdk_21_maven()
 build_jdk_11_gradle()
 build_jdk_17_gradle()
 
