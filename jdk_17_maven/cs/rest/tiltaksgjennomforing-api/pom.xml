@@ -249,6 +249,10 @@
 
     <repositories>
         <repository>
+            <id>local-repo</id>
+            <url>file://${project.basedir}/../../../local-repo</url>
+        </repository>
+        <repository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
             <url>https://repo.spring.io/snapshot</url>
