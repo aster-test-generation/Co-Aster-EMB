@@ -1,6 +1,10 @@
 package em.embedded.familie.tilbake;
 
 import no.nav.familie.tilbake.Launcher;
+import no.nav.security.mock.oauth2.MockOAuth2Server;
+import no.nav.security.mock.oauth2.OAuth2Config;
+import no.nav.security.mock.oauth2.token.RequestMapping;
+import no.nav.security.mock.oauth2.token.RequestMappingTokenCallback;
 import org.evomaster.client.java.controller.EmbeddedSutController;
 import org.evomaster.client.java.controller.InstrumentedSutStarter;
 import org.evomaster.client.java.controller.api.dto.SutInfoDto;
@@ -18,10 +22,7 @@ import org.testcontainers.containers.GenericContainer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
@@ -42,6 +43,10 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     private Connection sqlConnection;
     private List<DbSpecification> dbSpecification;
+
+    private MockOAuth2Server oAuth2Server;
+    private final String ISSUER_ID = "azuread";
+
 
     public EmbeddedEvoMasterController() {
         this(40100);
@@ -75,6 +80,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
+        //TODO
         return null;
     }
 
@@ -91,13 +97,45 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         return SutInfoDto.OutputFormat.JAVA_JUNIT_5;
     }
 
+    private OAuth2Config getOAuth2Config(){
+
+        List<RequestMapping> mappings = Arrays.asList(
+        );
+
+        RequestMappingTokenCallback callback = new RequestMappingTokenCallback(
+                ISSUER_ID,
+                mappings,
+                360000
+        );
+
+        Set<RequestMappingTokenCallback> callbacks = Set.of(
+                callback
+        );
+
+        OAuth2Config config = new OAuth2Config(
+                true,
+                null,
+                null,
+                false,
+                new no.nav.security.mock.oauth2.token.OAuth2TokenProvider(),
+                callbacks
+        );
+
+        return config;
+    }
+
+
     @Override
     public String startSut() {
         postgresContainer.start();
 
         String postgresURL = "jdbc:postgresql://" + postgresContainer.getHost() + ":" + postgresContainer.getMappedPort(POSTGRES_PORT) + "/familietilbake";
 
-        System.setProperty("AZURE_APP_WELL_KNOWN_URL", "http://azure:8080/");
+        oAuth2Server = new  MockOAuth2Server(getOAuth2Config());
+        oAuth2Server.start(8081); //ephemeral gives issues in generated tests
+        String wellKnownUrl = oAuth2Server.wellKnownUrl(ISSUER_ID).toString();
+
+        System.setProperty("AZURE_APP_WELL_KNOWN_URL", wellKnownUrl);
         System.setProperty("AZURE_OPENID_CONFIG_TOKEN_ENDPOINT", "http://foo:8080/");
         System.setProperty("UNLEASH_SERVER_API_URL", "http://bar:8080/");
         System.setProperty("UNLEASH_SERVER_API_TOKEN", "71c722758740d43341c295ffdc237bd3");
@@ -105,7 +143,18 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         System.setProperty("NAIS_CLUSTER_NAME", "dev-gcp");
         System.setProperty("KAFKA_TRUSTSTORE_PATH", "dev-gcp");
 
+        System.setProperty("AZURE_APP_CLIENT_ID","AZURE_APP_CLIENT_ID");
+        System.setProperty("AZURE_APP_CLIENT_SECRET","AZURE_APP_CLIENT_SECRET");
+        System.setProperty("FAMILIE_INTEGRASJONER_URL","http://FAMILIE_INTEGRASJONER_URL");
+        System.setProperty("FAMILIE_INTEGRASJONER_SCOPE","FAMILIE_INTEGRASJONER_SCOPE");
+        System.setProperty("PDL_URL","http://PDL_URL");
+        System.setProperty("PDL_SCOPE","PDL_SCOPE");
+        System.setProperty("FAMILIE_OPPDRAG_URL","http://FAMILIE_OPPDRAG_URL");
+        System.setProperty("FAMILIE_OPPDRAG_SCOPE","FAMILIE_OPPDRAG_SCOPE");
+
+
         ctx = SpringApplication.run(Launcher.class, new String[]{
+                "--logging.level.org.springframework.boot.context.properties.bind=DEBUG",
                 "--server.port=0",
                 "--spring.profiles.active=dev",
                 "--management.server.port=-1",
