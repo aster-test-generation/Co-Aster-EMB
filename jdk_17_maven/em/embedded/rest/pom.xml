@@ -16,7 +16,7 @@
         <!--        DISABLED FOR NOW-->
 <!--        <module>signal-server</module>-->
 <!--        <module>familie-tilbake</module>-->
-<!--        <module>tiltaksgjennomforing-api</module>-->
+        <module>tiltaksgjennomforing-api</module>
     </modules>
 
 </project>

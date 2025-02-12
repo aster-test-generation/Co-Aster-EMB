@@ -1,5 +1,9 @@
 package em.embedded.rest.tiltaksgjennomforing.api;
 
+import no.nav.security.mock.oauth2.MockOAuth2Server;
+import no.nav.security.mock.oauth2.OAuth2Config;
+import no.nav.security.mock.oauth2.token.RequestMapping;
+import no.nav.security.mock.oauth2.token.RequestMappingTokenCallback;
 import no.nav.tag.tiltaksgjennomforing.TiltaksgjennomforingApplication;
 import org.evomaster.client.java.controller.EmbeddedSutController;
 import org.evomaster.client.java.controller.InstrumentedSutStarter;
@@ -18,10 +22,7 @@ import org.testcontainers.containers.GenericContainer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
@@ -42,6 +43,11 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     private Connection sqlConnection;
     private List<DbSpecification> dbSpecification;
+
+    private MockOAuth2Server oAuth2Server;
+    private final String ISSUER_ID = "azuread";
+    private final String DEFAULT_AUDIENCE = "some-audience";
+
 
     public EmbeddedEvoMasterController() {
         this(40100);
@@ -75,13 +81,14 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
+        //TODO
         return null;
     }
 
     @Override
     public ProblemInfo getProblemInfo() {
         return new RestProblem(
-                "http://localhost:" + getSutPort() + "/v3/api-docs",
+                "http://localhost:" + getSutPort() + "/tiltaksgjennomforing-api/v3/api-docs",
                 null
         );
     }
@@ -91,14 +98,49 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         return SutInfoDto.OutputFormat.JAVA_JUNIT_5;
     }
 
+
+    private OAuth2Config getOAuth2Config(){
+
+        List<RequestMapping> mappings = Arrays.asList(
+        );
+
+        RequestMappingTokenCallback callback = new RequestMappingTokenCallback(
+                ISSUER_ID,
+                mappings,
+                360000
+        );
+
+        Set<RequestMappingTokenCallback> callbacks = Set.of(
+                callback
+        );
+
+        OAuth2Config config = new OAuth2Config(
+                true,
+                null,
+                null,
+                false,
+                new no.nav.security.mock.oauth2.token.OAuth2TokenProvider(),
+                callbacks
+        );
+
+        return config;
+    }
+
     @Override
     public String startSut() {
         postgresContainer.start();
 
         String postgresURL = "jdbc:postgresql://" + postgresContainer.getHost() + ":" + postgresContainer.getMappedPort(POSTGRES_PORT) + "/tiltaksgjennomforing";
 
+        oAuth2Server = new  MockOAuth2Server(getOAuth2Config());
+        oAuth2Server.start(8081); //ephemeral gives issues in generated tests
+        String wellKnownUrl = oAuth2Server.wellKnownUrl(ISSUER_ID).toString();
 
         //TODO should go through all the environment variables in application properties
+        //TODO some of these might not be needed any more after change of profile
+        System.setProperty("AZURE_APP_WELL_KNOWN_URL",wellKnownUrl);
+        System.setProperty("TOKEN_X_WELL_KNOWN_URL",wellKnownUrl);
+        System.setProperty("VAULT_TOKEN","VAULT_TOKEN");
         System.setProperty("KAFKA_BROKERS","KAFKA_BROKERS");
         System.setProperty("KAFKA_TRUSTSTORE_PATH","KAFKA_TRUSTSTORE_PATH");
         System.setProperty("KAFKA_CREDSTORE_PASSWORD","KAFKA_CREDSTORE_PASSWORD");
@@ -107,8 +149,6 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         System.setProperty("KAFKA_SCHEMA_REGISTRY","KAFKA_SCHEMA_REGISTRY");
         System.setProperty("KAFKA_SCHEMA_REGISTRY_USER","KAFKA_SCHEMA_REGISTRY_USER");
         System.setProperty("KAFKA_SCHEMA_REGISTRY_PASSWORD","KAFKA_SCHEMA_REGISTRY_PASSWORD");
-        System.setProperty("AZURE_APP_WELL_KNOWN_URL","http://not-existing-fake-url-FOO.com");
-        System.setProperty("TOKEN_X_WELL_KNOWN_URL","http://not-existing-fake-url-BAR.com");
         System.setProperty("AZURE_APP_TENANT_ID","AZURE_APP_TENANT_ID");
         System.setProperty("AZURE_APP_CLIENT_ID","AZURE_APP_CLIENT_ID");
         System.setProperty("AZURE_APP_CLIENT_SECRET","AZURE_APP_CLIENT_SECRET");
@@ -116,7 +156,12 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
         ctx = SpringApplication.run(TiltaksgjennomforingApplication.class, new String[]{
                 "--server.port=0",
-                "--spring.profiles.active=dev-fss",
+                //"--spring.profiles.active=dev-fss",
+                "--spring.profiles.active=dev-gcp-labs",
+                "--spring.datasource.driverClassName=org.postgresql.Driver",
+                "--spring.sql.init.platform=postgres",
+                "--no.nav.security.jwt.issuer.aad.discoveryurl=" + wellKnownUrl,
+                "--no.nav.security.jwt.issuer.tokenx.discoveryurl=" + wellKnownUrl,
                 "--management.server.port=-1",
                 "--server.ssl.enabled=false",
                 "--spring.datasource.url=" + postgresURL,
