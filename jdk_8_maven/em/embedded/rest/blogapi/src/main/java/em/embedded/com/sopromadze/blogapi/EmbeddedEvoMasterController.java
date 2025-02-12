@@ -54,6 +54,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     private ConfigurableApplicationContext ctx;
     private Connection sqlConnection;
     private List<DbSpecification> dbSpecification;
+    private String INIT_DB_SCRIPT_PATH = "/data.sql";
     private static final String rawPassword = "bar123";
 
     public EmbeddedEvoMasterController() {
@@ -92,8 +93,8 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
             throw new RuntimeException(e);
         }
 
-        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.MYSQL,sqlConnection));
-
+        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.MYSQL,sqlConnection)
+                .withInitSqlOnResourcePath(INIT_DB_SCRIPT_PATH));
         return "http://localhost:" + getSutPort();
     }
 
