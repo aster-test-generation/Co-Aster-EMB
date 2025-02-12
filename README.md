@@ -71,6 +71,8 @@ More details (e.g., #LOCs and used databases) on these APIs can be found [in thi
 
 ### REST: Java/Kotlin (24)
 
+* Tiltaksgjennomføring API (MIT), [jdk_17_maven/cs/rest/tiltaksgjennomforing-api](jdk_17_maven/cs/rest/tiltaksgjennomforing-api), from [https://github.com/navikt/tiltaksgjennomforing-api](https://github.com/navikt/tiltaksgjennomforing-api)
+
 * Person Controller (Apache), [jdk_21_maven/cs/rest/person-controller](jdk_21_maven/cs/rest/person-controller), from [https://github.com/mongodb-developer/java-spring-boot-mongodb-starter](https://github.com/mongodb-developer/java-spring-boot-mongodb-starter)
 
 * Project Tracking System (not-known license), [jdk_11_maven/cs/rest/tracking-system](jdk_11_maven/cs/rest/tracking-system), from [https://github.com/SelimHorri/project-tracking-system-backend-app](https://github.com/SelimHorri/project-tracking-system-backend-app)
