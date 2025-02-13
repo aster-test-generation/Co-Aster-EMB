@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Sep 14 14:09:41 CEST 2022
+https\://repo.maven.apache.org/maven2/.lastUpdated=1663157381757
+https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/.error=Could not transfer artifact no.nav.security\:token-support\:pom\:1.3.9 from/to github (https\://maven.pkg.github.com/navikt/familie-ks-kontrakt)\: Authentication failed for https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/no/nav/security/token-support/1.3.9/token-support-1.3.9.pom 401 Unauthorized
+@default-github-https\://maven.pkg.github.com/navikt/familie-ks-kontrakt/.lastUpdated=1663157381720

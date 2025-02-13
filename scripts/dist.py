@@ -251,6 +251,9 @@ def build_jdk_17_maven():
     copy(folder + "/cs/rest/familie-ba-sak/target/familie-ba-sak-sut.jar", DIST)
     copy(folder + "/em/external/rest/familie-ba-sak/target/familie-ba-sak-evomaster-runner.jar", DIST)
 
+    copy(folder + "/cs/rest/tiltaksgjennomforing-api/target/tiltaksgjennomforing-api-sut.jar", DIST)
+    copy(folder + "/em/external/rest/tiltaksgjennomforing-api/target/tiltaksgjennomforing-api-evomaster-runner.jar", DIST)
+
 
 ####################
 def build_jdk_21_maven():

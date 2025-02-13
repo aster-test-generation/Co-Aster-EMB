@@ -20,15 +20,22 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableCaching
 @OpenAPIDefinition
 public class TiltaksgjennomforingApplication {
+
     public static void main(String[] args) {
-        String clusterName = System.getenv("MILJO");
-        if (clusterName == null) {
-            System.out.println("Kan ikke startes uten miljøvariabel MILJO. Lokalt kan LokalTiltaksgjennomforingApplication kjøres.");
-            System.exit(1);
-        }
-        new SpringApplicationBuilder(TiltaksgjennomforingApplication.class)
-                .profiles(clusterName)
-                .build()
-                .run();
+
+        new SpringApplicationBuilder(TiltaksgjennomforingApplication.class).run(args);
     }
+
+    //Commented it out, as it masks all input configurations and force use environment variable
+    //    public static void main(String[] args) {
+//        String clusterName = System.getenv("MILJO");
+//        if (clusterName == null) {
+//            System.out.println("Kan ikke startes uten miljøvariabel MILJO. Lokalt kan LokalTiltaksgjennomforingApplication kjøres.");
+//            System.exit(1);
+//        }
+//        new SpringApplicationBuilder(TiltaksgjennomforingApplication.class)
+//                .profiles(clusterName)
+//                .build()
+//                .run();
+//    }
 }

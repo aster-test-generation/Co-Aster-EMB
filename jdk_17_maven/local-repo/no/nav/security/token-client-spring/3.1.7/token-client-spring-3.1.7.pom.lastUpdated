@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Oct 06 15:11:22 CEST 2023
+https\://repo.maven.apache.org/maven2/.lastUpdated=1696597882534
+3af1ee66515fa2dbb2e8100e0ed1108c7a1ae06e@default-github-https\://maven.pkg.github.com/navikt/familie-felles/.lastUpdated=1696597882497
+https\://maven.pkg.github.com/navikt/familie-felles/.error=Could not transfer artifact no.nav.security\:token-client-spring\:pom\:3.1.7 from/to github (https\://maven.pkg.github.com/navikt/familie-felles)\: authentication failed for https\://maven.pkg.github.com/navikt/familie-felles/no/nav/security/token-client-spring/3.1.7/token-client-spring-3.1.7.pom, status\: 401 Unauthorized

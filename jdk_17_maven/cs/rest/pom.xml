@@ -14,10 +14,12 @@
 
     <modules>
         <module>familie-ba-sak</module>
-<!--        DISABLED FOR NOW-->
-<!--        <module>familie-tilbake</module>-->
-<!--        <module>tiltaksgjennomforing-api</module>-->
+        <module>tiltaksgjennomforing-api</module>
+        <!--        DISABLED FOR NOW-->
 <!--        <module>signal-server</module>-->
+
+        <!-- GAVE UP: can't get it to start... endless issues, including Kotlin compiler -->
+        <!--        <module>familie-tilbake</module>-->
     </modules>
 
 

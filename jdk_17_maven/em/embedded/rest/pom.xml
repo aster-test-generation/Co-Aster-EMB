@@ -15,8 +15,10 @@
         <module>familie-ba-sak</module>
         <!--        DISABLED FOR NOW-->
 <!--        <module>signal-server</module>-->
-<!--        <module>familie-tilbake</module>-->
-<!--        <module>tiltaksgjennomforing-api</module>-->
+        <module>tiltaksgjennomforing-api</module>
+
+
+        <!--        <module>familie-tilbake</module>-->
     </modules>
 
 </project>
