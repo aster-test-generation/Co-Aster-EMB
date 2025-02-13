@@ -10,8 +10,11 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+### MUST be able to add jar files, as some are local dependencies
+#*.jar
+
+
 # Package Files #
-*.jar
 *.war
 *.ear
 *.zip
