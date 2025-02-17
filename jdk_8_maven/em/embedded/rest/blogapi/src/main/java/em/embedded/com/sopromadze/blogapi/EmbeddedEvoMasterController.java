@@ -2,6 +2,7 @@ package em.embedded.com.sopromadze.blogapi;
 
 
 import com.sopromadze.blogapi.BlogApiApplication;
+import org.evomaster.client.java.controller.AuthUtils;
 import org.evomaster.client.java.controller.EmbeddedSutController;
 import org.evomaster.client.java.controller.InstrumentedSutStarter;
 import org.evomaster.client.java.controller.api.dto.SutInfoDto;
@@ -53,6 +54,8 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     private ConfigurableApplicationContext ctx;
     private Connection sqlConnection;
     private List<DbSpecification> dbSpecification;
+    private String INIT_DB_SCRIPT_PATH = "/data.sql";
+    private static final String rawPassword = "bar123";
 
     public EmbeddedEvoMasterController() {
         this(40100);
@@ -90,8 +93,8 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
             throw new RuntimeException(e);
         }
 
-        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.MYSQL,sqlConnection));
-
+        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.MYSQL,sqlConnection)
+                .withInitSqlOnResourcePath(INIT_DB_SCRIPT_PATH));
         return "http://localhost:" + getSutPort();
     }
 
@@ -124,8 +127,20 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
-        //TODO will need to setup an admin and a user
-        return null;
+        return Arrays.asList(
+                AuthUtils.getForJsonTokenBearer(
+                        "admin",
+                        "/api/auth/signin",
+                        "{\"usernameOrEmail\":\"admin\", \"password\":\""+rawPassword+"\"}",
+                        "/accessToken"
+                ),
+                AuthUtils.getForJsonTokenBearer(
+                        "foo",
+                        "/api/auth/signin",
+                        "{\"usernameOrEmail\":\"user\", \"password\":\""+rawPassword+"\"}",
+                        "/accessToken"
+                )
+        );
     }
 
 

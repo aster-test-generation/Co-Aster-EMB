@@ -1,5 +1,6 @@
 package em.external.com.sopromadze.blogapi;
 
+import org.evomaster.client.java.controller.AuthUtils;
 import org.evomaster.client.java.controller.ExternalSutController;
 import org.evomaster.client.java.controller.InstrumentedSutStarter;
 import org.evomaster.client.java.controller.api.dto.SutInfoDto;
@@ -63,7 +64,8 @@ public class ExternalEvoMasterController extends ExternalSutController {
     private final int sutPort;
     private  String jarLocation;
     private Connection sqlConnection;
-    //private String INIT_DB_SCRIPT_PATH = "/populateDB.sql";
+    private String INIT_DB_SCRIPT_PATH = "/data.sql";
+    private static final String rawPassword = "bar123";
 
     private List<DbSpecification> dbSpecification;
 
@@ -161,7 +163,8 @@ public class ExternalEvoMasterController extends ExternalSutController {
         try {
             sqlConnection = DriverManager.getConnection(dbUrl(), "root", "root");
 
-            dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.MYSQL,sqlConnection));
+            dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.MYSQL,sqlConnection)
+                    .withInitSqlOnResourcePath(INIT_DB_SCRIPT_PATH));
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -215,8 +218,20 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
-        //TODO will need to setup an admin and a user
-        return null;
+        return Arrays.asList(
+                AuthUtils.getForJsonTokenBearer(
+                        "admin",
+                        "/api/auth/signin",
+                        "{\"usernameOrEmail\":\"admin\", \"password\":\""+rawPassword+"\"}",
+                        "/accessToken"
+                ),
+                AuthUtils.getForJsonTokenBearer(
+                        "foo",
+                        "/api/auth/signin",
+                        "{\"usernameOrEmail\":\"user\", \"password\":\""+rawPassword+"\"}",
+                        "/accessToken"
+                )
+        );
     }
 
     @Override
