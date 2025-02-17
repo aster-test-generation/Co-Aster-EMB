@@ -69,7 +69,7 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 
 More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
 
-### REST: Java/Kotlin (24)
+### REST: Java/Kotlin (25)
 
 * Tiltaksgjennomføring API (MIT), [jdk_17_maven/cs/rest/tiltaksgjennomforing-api](jdk_17_maven/cs/rest/tiltaksgjennomforing-api), from [https://github.com/navikt/tiltaksgjennomforing-api](https://github.com/navikt/tiltaksgjennomforing-api)
 
