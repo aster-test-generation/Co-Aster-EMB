@@ -15,7 +15,10 @@
     <modules>
         <module>familie-ba-sak</module>
         <module>tiltaksgjennomforing-api</module>
-        <module>signal-server</module>
+
+
+        <!-- TODO: need to solve issue with Google OAuth2       -->
+<!--        <module>signal-server</module>-->
 
         <!-- GAVE UP: can't get it to start... endless issues, including Kotlin compiler -->
         <!--        <module>familie-tilbake</module>-->
