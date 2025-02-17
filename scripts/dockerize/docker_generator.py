@@ -10,14 +10,14 @@ import pandas as pd
 class DockerGenerator:
     def __init__(self, sut_name, expose_port):
         self.SUT_POSTFIX = "-sut.jar"
-        self.DOCKER_FILE_FOLDER = 'dockerfiles'
+        self.DOCKER_FILE_FOLDER = '../dockerize'
 
         self.sut_name = sut_name
         self.expose_port = expose_port
         self.jacoco_env_file_path = './data/.env'
-        self.template_env = Environment(loader=FileSystemLoader("./templates"))
-        self.suts = pd.read_csv('./data/sut.csv')
-        self.sut_info = pd.read_csv('../../statistics/data.csv')
+        self.template_env = Environment(loader=FileSystemLoader("./dockerize/templates"))
+        self.suts = pd.read_csv('./dockerize/data/sut.csv')
+        self.sut_info = pd.read_csv('../statistics/data.csv')
 
         if not os.path.exists(self.DOCKER_FILE_FOLDER):
             os.makedirs(self.DOCKER_FILE_FOLDER)
@@ -94,13 +94,14 @@ class DockerGenerator:
 
     def generate_dockerfiles(self):
         base_image = self.get_base_image(self.jdk_version)
+        save_folder_path = f"./scripts/dockerize/data/additional_files/{self.sut_name}"
         files = []
-        folder_name = f"./data/additional_files/{self.sut_name}"
+        folder_name = f"./dockerize/data/additional_files/{self.sut_name}"
         if self.copy_additional_files:
             file_list = os.listdir(folder_name)
             for file in file_list:
                 files.append({
-                    'source': f"{folder_name}/{file}",
+                    'source': f"{save_folder_path}/{file}",
                 })
 
         params = {
@@ -159,22 +160,6 @@ class DockerGenerator:
 
         print(f"Created {self.sut_name}.yml")
 
-
-    def generate_em_yaml(self):
-        params = {
-            'bbSwaggerUrl': self.swagger_url,
-            'bbTargetUrl': self.target_url,
-        }
-
-        template = self.template_env.get_template("template.em.yaml")
-
-        result = template.render(params)
-
-        with open(f"dockerfiles/{self.sut_name}.em.yaml", "w") as f:
-            f.write(result)
-
-        print(f"Created {self.sut_name}.em.yaml")
-
     def run_docker(self):
         # just for testing to see if the docker-compose file is working
         self.prepare_run_docker()
@@ -200,7 +185,7 @@ if __name__ == '__main__':
         EXPOSE_PORT = 8080
 
     try:
-        RUN_ON_DOCKER = bool(sys.argv[3])
+        RUN_ON_DOCKER = bool(sys.argv[3] == "True")
     except IndexError:
         RUN_ON_DOCKER = False
 

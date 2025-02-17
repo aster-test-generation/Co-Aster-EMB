@@ -1,7 +1,7 @@
 services:
   sut-{{SUT_NAME}}:
     build:
-      dockerfile: ./dockerfiles/{{SUT_NAME}}.dockerfile
+      dockerfile: ./dockerize/{{SUT_NAME}}.dockerfile
       context: ..
     environment:
       TOOL: ${TOOL:-undefined}
@@ -23,8 +23,8 @@ services:
     environment:
       LOG_LEVEL: VERBOSE
       SERVER_PORT: 8083
-      JSON_CONFIG_PATH: /app/config.json
+      JSON_CONFIG_PATH: /app/mockoauth2.json
     volumes:
-      - ../data/additional_files/{{SUT_NAME}}/mockoauth2.json:/app/mockoauth2.json
+      - ../scripts/dockerize/data/additional_files/{{SUT_NAME}}/mockoauth2.json:/app/mockoauth2.json
   {% endif %}
 
