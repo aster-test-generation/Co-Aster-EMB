@@ -13,8 +13,7 @@
 
     <modules>
         <module>familie-ba-sak</module>
-        <!--        DISABLED FOR NOW-->
-<!--        <module>signal-server</module>-->
+        <module>signal-server</module>
         <module>tiltaksgjennomforing-api</module>
 
 
