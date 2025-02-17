@@ -1,7 +1,7 @@
 services:
   sut:
     build:
-      dockerfile: ./dockerfiles/rest-ncs.dockerfile
+      dockerfile: ./tmp_dockerfiles/rest-ncs.dockerfile
       context: ..
     environment:
       TOOL: ${TOOL:-undefined}
