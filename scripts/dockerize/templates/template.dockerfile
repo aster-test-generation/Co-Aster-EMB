@@ -15,6 +15,6 @@ ENV RUN="0"
 
 ENTRYPOINT \
     java \
-    -javaagent:jacocoagent.jar=destfile=./jacoco/{{SUT_NAME}}__{{TOOL}}__{{RUN}}__jacoco.exec,append=false,dumponexit=true \
+    -javaagent:jacocoagent.jar=destfile=./jacoco/{{SUT_NAME}}__${TOOL}__${RUN}__jacoco.exec,append=false,dumponexit=true \
     {{ JVM_PARAMETERS if JVM_PARAMETERS }} -jar {{SUT_NAME}}-sut.jar \
     {{ INPUT_PARAMETERS if INPUT_PARAMETERS }}
