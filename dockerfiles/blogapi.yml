@@ -1,0 +1,43 @@
+services:
+  sut-blogapi:
+    build:
+      dockerfile: ./dockerfiles/blogapi.dockerfile
+      context: ..
+    environment:
+      TOOL: ${TOOL:-undefined}
+      RUN: ${RUN:-0}
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+    volumes:
+      # default env does not work on volumes
+      - ${JACOCODIR}:/jacoco
+    depends_on:
+      db:
+        condition: service_healthy
+    
+  db:
+    image: mysql:8.0
+    tmpfs:
+      - '/var/lib/mysql'
+    
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: blogapi
+      
+
+
+    volumes:
+      - ../scripts/dockerize/data/additional_files/blogapi/mysql_import.sh:/docker-entrypoint-initdb.d/mysql_import.sh
+      - ../scripts/dockerize/data/additional_files/blogapi/blogapi.sql:/fixtures/blogapi.sql
+      - ../scripts/dockerize/data/additional_files/blogapi/data.sql:/fixtures/data.sql
+      
+
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+

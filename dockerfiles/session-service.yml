@@ -1,0 +1,22 @@
+services:
+  sut-session-service:
+    build:
+      dockerfile: ./dockerfiles/session-service.dockerfile
+      context: ..
+    environment:
+      TOOL: ${TOOL:-undefined}
+      RUN: ${RUN:-0}
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+    volumes:
+      # default env does not work on volumes
+      - ${JACOCODIR}:/jacoco
+  db:
+    image: mongo:6.0
+    tmpfs:
+      - '/data/db'
+    
+
+
+
+

@@ -1,0 +1,32 @@
+services:
+  sut-reservations-api:
+    build:
+      dockerfile: ./dockerfiles/reservations-api.dockerfile
+      context: ..
+    environment:
+      TOOL: ${TOOL:-undefined}
+      RUN: ${RUN:-0}
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+    volumes:
+      # default env does not work on volumes
+      - ${JACOCODIR}:/jacoco
+  db:
+    image: bitnami/mongodb:4.4
+    tmpfs:
+      - '/bitnami/mongodb'
+    
+
+    environment:
+      MONGODB_REPLICA_SET_MODE: primary
+      ALLOW_EMPTY_PASSWORD: yes
+      
+
+
+    volumes:
+      - ../scripts/dockerize/data/additional_files/reservations-api/mongo_import.sh:/docker-entrypoint-initdb.d/mongo_import.sh
+      - ../scripts/dockerize/data/additional_files/reservations-api/init.json:/fixtures/init.json
+      
+
+
+

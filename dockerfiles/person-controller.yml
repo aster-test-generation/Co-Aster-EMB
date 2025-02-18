@@ -1,0 +1,22 @@
+services:
+  sut-person-controller:
+    build:
+      dockerfile: ./dockerfiles/person-controller.dockerfile
+      context: ..
+    environment:
+      TOOL: ${TOOL:-undefined}
+      RUN: ${RUN:-0}
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+    volumes:
+      # default env does not work on volumes
+      - ${JACOCODIR}:/jacoco
+  db:
+    image: mongo:7.0
+    tmpfs:
+      - '/data/db'
+    
+
+
+
+
