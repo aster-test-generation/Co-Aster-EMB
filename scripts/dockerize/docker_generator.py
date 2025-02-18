@@ -1,6 +1,4 @@
 import os
-import shutil
-import subprocess
 import sys
 
 from jinja2 import Environment, FileSystemLoader
@@ -9,15 +7,17 @@ import pandas as pd
 
 class DockerGenerator:
     def __init__(self, sut_name, expose_port):
+        self.SCRIPT_LOCATION = os.path.dirname(os.path.realpath(__file__))
+
         self.SUT_POSTFIX = "-sut.jar"
-        self.DOCKER_FILE_FOLDER = '../dockerfiles'
+        self.DOCKER_FILE_FOLDER = os.path.join(self.SCRIPT_LOCATION, '../../dockerfiles')
 
         self.sut_name = sut_name
         self.expose_port = expose_port
         self.jacoco_env_file_path = './data/.env'
-        self.template_env = Environment(loader=FileSystemLoader("./dockerize/templates"))
-        self.suts = pd.read_csv('./dockerize/data/sut.csv')
-        self.sut_info = pd.read_csv('../statistics/data.csv')
+        self.template_env = Environment(loader=FileSystemLoader(os.path.join(self.SCRIPT_LOCATION, "./templates")))
+        self.suts = pd.read_csv(os.path.join(self.SCRIPT_LOCATION, './data/sut.csv'))
+        self.sut_info = pd.read_csv(os.path.join(self.SCRIPT_LOCATION, '../../statistics/data.csv'))
 
         if not os.path.exists(self.DOCKER_FILE_FOLDER):
             os.makedirs(self.DOCKER_FILE_FOLDER)
@@ -64,24 +64,25 @@ class DockerGenerator:
         self.health_check = bool(sut[1]['HEALTH_CHECK'])
         self.health_check_commands = str(sut[1]['HEALTH_CHECK_COMMAND']).split(';') if str(sut[1]['HEALTH_CHECK_COMMAND']) != 'nan' else ''
 
-    def prepare_run_docker(self):
-        # prepare the required files
-        shutil.copy(self.jacoco_env_file_path, self.DOCKER_FILE_FOLDER)
-
-        if not os.path.exists("dist"):
-            os.makedirs("dist")
-
-        # Copy the required jar files located in EMB/dist folder. First you need to compile the SUTs.
-        # We are copying these files because of dockerfile restrictions. We cannot copy files from parent directory.
-        sut_filename = f"{self.sut_name}{self.SUT_POSTFIX}"
-        if not os.path.exists(f"./dist/{sut_filename}"):
-            copy_file_name = f"../../dist/{sut_filename}"
-            shutil.copy(copy_file_name, "./dist")
-
-        if not os.path.exists(f"./dist/jacocoagent.jar"):
-            shutil.copy(f"../../dist/jacocoagent.jar", "./dist")
-        if not os.path.exists(f"./dist/jacococli.jar"):
-            shutil.copy(f"../../dist/jacococli.jar", "./dist")
+    # def prepare_run_docker(self):
+    #     # prepare the required files
+    #     shutil.copy(self.jacoco_env_file_path, self.DOCKER_FILE_FOLDER)
+    #
+    #     if not os.path.exists(os.path.join(self.SCRIPT_LOCATION, "dist")):
+    #         os.makedirs("dist")
+    #
+    #     # Copy the required jar files located in EMB/dist folder. First you need to compile the SUTs.
+    #     # We are copying these files because of dockerfile restrictions. We cannot copy files from parent directory.
+    #     sut_filename = f"{self.sut_name}{self.SUT_POSTFIX}"
+    #
+    #     if not os.path.exists(f"./dist/{sut_filename}"):
+    #         copy_file_name = f"../../dist/{sut_filename}"
+    #         shutil.copy(copy_file_name, "./dist")
+    #
+    #     if not os.path.exists(f"./dist/jacocoagent.jar"):
+    #         shutil.copy(f"../../dist/jacocoagent.jar", "./dist")
+    #     if not os.path.exists(f"./dist/jacococli.jar"):
+    #         shutil.copy(f"../../dist/jacococli.jar", "./dist")
 
     def get_base_image(self, jdk_version):
         base_image = None
@@ -96,7 +97,7 @@ class DockerGenerator:
         base_image = self.get_base_image(self.jdk_version)
         save_folder_path = f"./scripts/dockerize/data/additional_files/{self.sut_name}"
         files = []
-        folder_name = f"./dockerize/data/additional_files/{self.sut_name}"
+        folder_name = os.path.join(self.SCRIPT_LOCATION, f"./data/additional_files/{self.sut_name}")
         if self.copy_additional_files:
             file_list = os.listdir(folder_name)
             for file in file_list:
@@ -119,7 +120,7 @@ class DockerGenerator:
 
         result = template.render(params)
 
-        with open(f"{self.DOCKER_FILE_FOLDER}/{self.sut_name}.dockerfile", "w") as f:
+        with open(os.path.join(self.SCRIPT_LOCATION, f"{self.DOCKER_FILE_FOLDER}/{self.sut_name}.dockerfile"), "w") as f:
             f.write(result)
 
         print(f"Created {self.sut_name}.dockerfile")
@@ -155,21 +156,21 @@ class DockerGenerator:
         template = self.template_env.get_template("template.docker-compose.yml")
         result = template.render(params)
 
-        with open(f"{self.DOCKER_FILE_FOLDER}/{self.sut_name}.yml", "w") as f:
+        with open(os.path.join(self.SCRIPT_LOCATION, f"{self.DOCKER_FILE_FOLDER}/{self.sut_name}.yml"), "w") as f:
             f.write(result)
 
         print(f"Created {self.sut_name}.yml")
 
-    def run_docker(self):
-        # just for testing to see if the docker-compose file is working
-        self.prepare_run_docker()
-        docker_file = f"./dockerfiles/{self.sut_name}.yml"
-        subprocess.run(["docker-compose", "-f", docker_file, "up", "--build", "--abort-on-container-exit", "--remove-orphans"])
+    # def run_docker(self):
+    #     # just for testing to see if the docker-compose file is working
+    #     self.prepare_run_docker()
+    #     docker_file = f"./dockerfiles/{self.sut_name}.yml"
+    #     subprocess.run(["docker-compose", "-f", docker_file, "up", "--build", "--abort-on-container-exit", "--remove-orphans"])
 
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        print("Usage:\ndocker_generator.py <sut_name> <expose_port> <run_on_docker>?")
+        print("Usage:\ndocker_generator.py <sut_name> <expose_port>")
         sys.exit(1)
 
     try:
@@ -183,15 +184,15 @@ if __name__ == '__main__':
     except IndexError:
         # default port
         EXPOSE_PORT = 8080
-
-    try:
-        RUN_ON_DOCKER = bool(sys.argv[3] == "True")
-    except IndexError:
-        RUN_ON_DOCKER = False
+    #
+    # try:
+    #     RUN_ON_DOCKER = bool(sys.argv[3] == "True")
+    # except IndexError:
+    #     RUN_ON_DOCKER = False
 
     generator = DockerGenerator(SUT_NAME, EXPOSE_PORT)
     generator.generate_dockerfiles()
     generator.generate_docker_compose()
 
-    if RUN_ON_DOCKER:
-        generator.run_docker()
+    # if RUN_ON_DOCKER:
+    #     generator.run_docker()
