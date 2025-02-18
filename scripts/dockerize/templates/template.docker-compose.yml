@@ -1,7 +1,7 @@
 services:
   sut-{{SUT_NAME}}:
     build:
-      dockerfile: ./dockerize/{{SUT_NAME}}.dockerfile
+      dockerfile: ./dockerfiles/{{SUT_NAME}}.dockerfile
       context: ..
     environment:
       TOOL: ${TOOL:-undefined}

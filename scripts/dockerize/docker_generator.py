@@ -10,7 +10,7 @@ import pandas as pd
 class DockerGenerator:
     def __init__(self, sut_name, expose_port):
         self.SUT_POSTFIX = "-sut.jar"
-        self.DOCKER_FILE_FOLDER = '../dockerize'
+        self.DOCKER_FILE_FOLDER = '../dockerfiles'
 
         self.sut_name = sut_name
         self.expose_port = expose_port
