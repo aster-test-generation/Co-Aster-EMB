@@ -67,91 +67,92 @@ We just re-implemented in different languages, and put them behind a web service
 For the RESTful APIs, each API has an endpoint where the OpenAPI/Swagger schemas can be downloaded from.
 For simplicity, all schemas are also available as JSON/YML files under the folder [openapi-swagger](./openapi-swagger).
 
-More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
+> **IMPORTANT**: More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
+
 
 ### REST: Java/Kotlin (25)
 
-* Tiltaksgjennomføring API (MIT), [jdk_17_maven/cs/rest/tiltaksgjennomforing-api](jdk_17_maven/cs/rest/tiltaksgjennomforing-api), from [https://github.com/navikt/tiltaksgjennomforing-api](https://github.com/navikt/tiltaksgjennomforing-api)
+* **Tiltaksgjennomføring API** (MIT), [jdk_17_maven/cs/rest/tiltaksgjennomforing-api](jdk_17_maven/cs/rest/tiltaksgjennomforing-api), from [https://github.com/navikt/tiltaksgjennomforing-api](https://github.com/navikt/tiltaksgjennomforing-api)
 
-* Person Controller (Apache), [jdk_21_maven/cs/rest/person-controller](jdk_21_maven/cs/rest/person-controller), from [https://github.com/mongodb-developer/java-spring-boot-mongodb-starter](https://github.com/mongodb-developer/java-spring-boot-mongodb-starter)
+* **Person Controller** (Apache), [jdk_21_maven/cs/rest/person-controller](jdk_21_maven/cs/rest/person-controller), from [https://github.com/mongodb-developer/java-spring-boot-mongodb-starter](https://github.com/mongodb-developer/java-spring-boot-mongodb-starter)
 
-* Project Tracking System (not-known license), [jdk_11_maven/cs/rest/tracking-system](jdk_11_maven/cs/rest/tracking-system), from [https://github.com/SelimHorri/project-tracking-system-backend-app](https://github.com/SelimHorri/project-tracking-system-backend-app)
+* **Project Tracking System** (not-known license), [jdk_11_maven/cs/rest/tracking-system](jdk_11_maven/cs/rest/tracking-system), from [https://github.com/SelimHorri/project-tracking-system-backend-app](https://github.com/SelimHorri/project-tracking-system-backend-app)
 
-* Blog (AGPL), [jdk_8_maven/cs/rest/original/blogapi](jdk_8_maven/cs/rest/original/blogapi), from [https://github.com/osopromadze/Spring-Boot-Blog-REST-API](https://github.com/osopromadze/Spring-Boot-Blog-REST-API)
+* **Blog** (AGPL), [jdk_8_maven/cs/rest/original/blogapi](jdk_8_maven/cs/rest/original/blogapi), from [https://github.com/osopromadze/Spring-Boot-Blog-REST-API](https://github.com/osopromadze/Spring-Boot-Blog-REST-API)
 
-* User Management (MIT), [jdk_8_maven/cs/rest/original/user-management](jdk_8_maven/cs/rest/original/user-management), from [https://github.com/andreagiassi/microservice-rbac-user-management](https://github.com/andreagiassi/microservice-rbac-user-management)
+* **User Management** (MIT), [jdk_8_maven/cs/rest/original/user-management](jdk_8_maven/cs/rest/original/user-management), from [https://github.com/andreagiassi/microservice-rbac-user-management](https://github.com/andreagiassi/microservice-rbac-user-management)
 
-* YouTubeMock (not-known license), [jdk_8_maven/cs/rest/original/youtube-mock](jdk_8_maven/cs/rest/original/youtube-mock), from [https://github.com/opensourcingapis/YouTubeMock](https://github.com/opensourcingapis/YouTubeMock)
+* **YouTubeMock** (not-known license), [jdk_8_maven/cs/rest/original/youtube-mock](jdk_8_maven/cs/rest/original/youtube-mock), from [https://github.com/opensourcingapis/YouTubeMock](https://github.com/opensourcingapis/YouTubeMock)
 
-* Familie Ba Sak (MIT), [jdk_17_maven/cs/rest/familie-ba-sak](jdk_17_maven/cs/rest/familie-ba-sak), from [https://github.com/navikt/familie-ba-sak](https://github.com/navikt/familie-ba-sak)
+* **Familie Ba Sak** (MIT), [jdk_17_maven/cs/rest/familie-ba-sak](jdk_17_maven/cs/rest/familie-ba-sak), from [https://github.com/navikt/familie-ba-sak](https://github.com/navikt/familie-ba-sak)
 
-* Payments Public API (MIT), [jdk_11_maven/cs/rest/pay-publicapi](jdk_11_maven/cs/rest/pay-publicapi), from [https://github.com/alphagov/pay-publicapi](https://github.com/alphagov/pay-publicapi)
+* **Payments Public API** (MIT), [jdk_11_maven/cs/rest/pay-publicapi](jdk_11_maven/cs/rest/pay-publicapi), from [https://github.com/alphagov/pay-publicapi](https://github.com/alphagov/pay-publicapi)
 
-* Session Service (not-known license), [jdk_8_maven/cs/rest/original/session-service](jdk_8_maven/cs/rest/original/session-service), from [https://github.com/cBioPortal/session-service](https://github.com/cBioPortal/session-service)
+* **Session Service** (not-known license), [jdk_8_maven/cs/rest/original/session-service](jdk_8_maven/cs/rest/original/session-service), from [https://github.com/cBioPortal/session-service](https://github.com/cBioPortal/session-service)
 
-* Bibliothek (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
+* **Bibliothek** (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
 
-* Reservations API (not-known license), [jdk_11_gradle/cs/rest/reservations-api](jdk_11_gradle/cs/rest/reservations-api), from [https://github.com/cyrilgavala/reservations-api](https://github.com/cyrilgavala/reservations-api)
+* **Reservations API** (not-known license), [jdk_11_gradle/cs/rest/reservations-api](jdk_11_gradle/cs/rest/reservations-api), from [https://github.com/cyrilgavala/reservations-api](https://github.com/cyrilgavala/reservations-api)
 
-* Genome Nexus (MIT), [jdk_8_maven/cs/rest-gui/genome-nexus](jdk_8_maven/cs/rest-gui/genome-nexus), from [https://github.com/genome-nexus/genome-nexus](https://github.com/genome-nexus/genome-nexus)
+* **Genome Nexus** (MIT), [jdk_8_maven/cs/rest-gui/genome-nexus](jdk_8_maven/cs/rest-gui/genome-nexus), from [https://github.com/genome-nexus/genome-nexus](https://github.com/genome-nexus/genome-nexus)
 
-* Market (MIT), [jdk_11_maven/cs/rest-gui/market](jdk_11_maven/cs/rest-gui/market), from [https://github.com/aleksey-lukyanets/market](https://github.com/aleksey-lukyanets/market)
+* **Market** (MIT), [jdk_11_maven/cs/rest-gui/market](jdk_11_maven/cs/rest-gui/market), from [https://github.com/aleksey-lukyanets/market](https://github.com/aleksey-lukyanets/market)
 
-* Features-Service (Apache), [jdk_8_maven/cs/rest/original/features-service](jdk_8_maven/cs/rest/original/features-service), from [https://github.com/JavierMF/features-service](https://github.com/JavierMF/features-service)
+* **Features-Service** (Apache), [jdk_8_maven/cs/rest/original/features-service](jdk_8_maven/cs/rest/original/features-service), from [https://github.com/JavierMF/features-service](https://github.com/JavierMF/features-service)
 
-* Scout-API (MIT), [jdk_8_maven/cs/rest/original/scout-api](jdk_8_maven/cs/rest/original/scout-api), from [https://github.com/mikaelsvensson/scout-api](https://github.com/mikaelsvensson/scout-api)
+* **Scout-API** (MIT), [jdk_8_maven/cs/rest/original/scout-api](jdk_8_maven/cs/rest/original/scout-api), from [https://github.com/mikaelsvensson/scout-api](https://github.com/mikaelsvensson/scout-api)
 
-* ProxyPrint (Apache), [jdk_8_maven/cs/rest/original/proxyprint](jdk_8_maven/cs/rest/original/proxyprint), from [https://github.com/ProxyPrint/proxyprint-kitchen](https://github.com/ProxyPrint/proxyprint-kitchen)
+* **ProxyPrint** (Apache), [jdk_8_maven/cs/rest/original/proxyprint](jdk_8_maven/cs/rest/original/proxyprint), from [https://github.com/ProxyPrint/proxyprint-kitchen](https://github.com/ProxyPrint/proxyprint-kitchen)
 
-* CatWatch (Apache), [jdk_8_maven/cs/rest/original/catwatch](jdk_8_maven/cs/rest/original/catwatch), from [https://github.com/zalando-incubator/catwatch](https://github.com/zalando-incubator/catwatch)
+* **CatWatch** (Apache), [jdk_8_maven/cs/rest/original/catwatch](jdk_8_maven/cs/rest/original/catwatch), from [https://github.com/zalando-incubator/catwatch](https://github.com/zalando-incubator/catwatch)
 
-* OCVN (MIT), [jdk_8_maven/cs/rest-gui/ocvn](jdk_8_maven/cs/rest-gui/ocvn), from [https://github.com/devgateway/ocvn](https://github.com/devgateway/ocvn)
+* **OCVN** (MIT), [jdk_8_maven/cs/rest-gui/ocvn](jdk_8_maven/cs/rest-gui/ocvn), from [https://github.com/devgateway/ocvn](https://github.com/devgateway/ocvn)
 
-* News (LGPL), [jdk_8_maven/cs/rest/artificial/news](jdk_8_maven/cs/rest/artificial/news), from [https://github.com/arcuri82/testing_security_development_enterprise_systems](https://github.com/arcuri82/testing_security_development_enterprise_systems)
+* **News** (LGPL), [jdk_8_maven/cs/rest/artificial/news](jdk_8_maven/cs/rest/artificial/news), from [https://github.com/arcuri82/testing_security_development_enterprise_systems](https://github.com/arcuri82/testing_security_development_enterprise_systems)
 
-* Restcountries (MPL), [jdk_8_maven/cs/rest/original/restcountries](jdk_8_maven/cs/rest/original/restcountries), from [https://github.com/apilayer/restcountries](https://github.com/apilayer/restcountries)
+* **Restcountries** (MPL), [jdk_8_maven/cs/rest/original/restcountries](jdk_8_maven/cs/rest/original/restcountries), from [https://github.com/apilayer/restcountries](https://github.com/apilayer/restcountries)
 
-* Languagetool (LGPL), [jdk_8_maven/cs/rest/original/languagetool](jdk_8_maven/cs/rest/original/languagetool), from [https://github.com/languagetool-org/languagetool](https://github.com/languagetool-org/languagetool)
+* **Languagetool** (LGPL), [jdk_8_maven/cs/rest/original/languagetool](jdk_8_maven/cs/rest/original/languagetool), from [https://github.com/languagetool-org/languagetool](https://github.com/languagetool-org/languagetool)
 
-* CWA-Verification-Server (Apache), [jdk_11_maven/cs/rest/cwa-verification-server](jdk_11_maven/cs/rest/cwa-verification-server), from [https://github.com/corona-warn-app/cwa-verification-server](https://github.com/corona-warn-app/cwa-verification-server)
+* **CWA-Verification-Server** (Apache), [jdk_11_maven/cs/rest/cwa-verification-server](jdk_11_maven/cs/rest/cwa-verification-server), from [https://github.com/corona-warn-app/cwa-verification-server](https://github.com/corona-warn-app/cwa-verification-server)
 
-* Gestao Hospital (not-known license), [jdk_8_maven/cs/rest-gui/gestaohospital](jdk_8_maven/cs/rest-gui/gestaohospital), from [https://github.com/ValchanOficial/GestaoHospital](https://github.com/ValchanOficial/GestaoHospital)
+* **Gestao Hospital** (not-known license), [jdk_8_maven/cs/rest-gui/gestaohospital](jdk_8_maven/cs/rest-gui/gestaohospital), from [https://github.com/ValchanOficial/GestaoHospital](https://github.com/ValchanOficial/GestaoHospital)
 
-* NCS, [jdk_8_maven/cs/rest/artificial/ncs](jdk_8_maven/cs/rest/artificial/ncs), (not-known license, artificial numerical examples coming from different sources)
+* **NCS**, [jdk_8_maven/cs/rest/artificial/ncs](jdk_8_maven/cs/rest/artificial/ncs), (not-known license, artificial numerical examples coming from different sources)
 
-* SCS, [jdk_8_maven/cs/rest/artificial/scs](jdk_8_maven/cs/rest/artificial/scs), (not-known license, artificial string examples coming from different sources)
+* **SCS**, [jdk_8_maven/cs/rest/artificial/scs](jdk_8_maven/cs/rest/artificial/scs), (not-known license, artificial string examples coming from different sources)
 
 
 
 ### GraphQL: Java/Kotlin (5)
 
-* Spring-Pet-Clinic (Apache), [jdk_8_maven/cs/graphql/petclinic-graphql](jdk_8_maven/cs/graphql/petclinic-graphql), from [https://github.com/spring-petclinic/spring-petclinic-graphql]()
+* **Spring-Pet-Clinic** (Apache), [jdk_8_maven/cs/graphql/petclinic-graphql](jdk_8_maven/cs/graphql/petclinic-graphql), from [https://github.com/spring-petclinic/spring-petclinic-graphql]()
 
-* Patio-Api (GPL), [jdk_11_gradle/cs/graphql/patio-api](jdk_11_gradle/cs/graphql/patio-api), from [https://github.com/patio-team/patio-api]()
+* **Patio-Api** (GPL), [jdk_11_gradle/cs/graphql/patio-api](jdk_11_gradle/cs/graphql/patio-api), from [https://github.com/patio-team/patio-api]()
 
-* Timbuctoo (GPL), [jdk_11_maven/cs/graphql/timbuctoo](jdk_11_maven/cs/graphql/timbuctoo), from [https://github.com/HuygensING/timbuctoo]()
+* **Timbuctoo** (GPL), [jdk_11_maven/cs/graphql/timbuctoo](jdk_11_maven/cs/graphql/timbuctoo), from [https://github.com/HuygensING/timbuctoo]()
 
-* NCS, [jdk_8_maven/cs/graphql/graphql-ncs](jdk_8_maven/cs/graphql/graphql-ncs), (not-known license, artificial numerical examples coming from different sources)
+* **NCS**, [jdk_8_maven/cs/graphql/graphql-ncs](jdk_8_maven/cs/graphql/graphql-ncs), (not-known license, artificial numerical examples coming from different sources)
 
-* SCS, [jdk_8_maven/cs/graphql/graphql-scs](jdk_8_maven/cs/graphql/graphql-scs), (not-known license, artificial string examples coming from different sources)
+* **SCS**, [jdk_8_maven/cs/graphql/graphql-scs](jdk_8_maven/cs/graphql/graphql-scs), (not-known license, artificial string examples coming from different sources)
 
 
 ### RPC (e.g.,Thrift and gRPC): Java
 
-* Signal-Registration (not-known license), [jdk_17_maven/cs/grpc/signal-registration](jdk_17_maven/cs/grpc/signal-registration), from [https://github.com/signalapp/registration-service]()
+* **Signal-Registration** (not-known license), [jdk_17_maven/cs/grpc/signal-registration](jdk_17_maven/cs/grpc/signal-registration), from [https://github.com/signalapp/registration-service]()
 
-* NCS (not-known license, artificial numerical examples coming from different sources).
+* **NCS** (not-known license, artificial numerical examples coming from different sources).
  Thrift: [jdk_8_maven/cs/rpc/thrift/artificial/thrift-ncs](jdk_8_maven/cs/rpc/thrift/artificial/thrift-ncs).
  gRPC: [jdk_8_maven/cs/rpc/grpc/artificial/grpc-ncs](jdk_8_maven/cs/rpc/grpc/artificial/grpc-ncs).
 
-* SCS (not-known license, artificial string examples coming from different sources).
+* **SCS** (not-known license, artificial string examples coming from different sources).
   Thrift: [jdk_8_maven/cs/rpc/thrift/artificial/thrift-scs](jdk_8_maven/cs/rpc/thrift/artificial/thrift-scs).
   gRPC: [jdk_8_maven/cs/rpc/grpc/artificial/grpc-scs](jdk_8_maven/cs/rpc/grpc/artificial/grpc-scs).
 
 
 ### WEB: backend in Java/Kotlin (1)
 
-* Spring-PetClinic (Apache), [jdk_17_maven/cs/web/spring-petclinic](jdk_17_maven/cs/web/spring-petclinic), from [https://github.com/spring-projects/spring-petclinic]()
+* **Spring-PetClinic** (Apache), [jdk_17_maven/cs/web/spring-petclinic](jdk_17_maven/cs/web/spring-petclinic), from [https://github.com/spring-projects/spring-petclinic]()
 
 
 [//]: # (### REST: JavaScript/TypeScript)
