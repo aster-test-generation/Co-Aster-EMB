@@ -156,10 +156,10 @@ class DockerGenerator:
         template = self.template_env.get_template("template.docker-compose.yml")
         result = template.render(params)
 
-        with open(os.path.join(self.SCRIPT_LOCATION, f"{self.DOCKER_FILE_FOLDER}/{self.sut_name}.yml"), "w") as f:
+        with open(os.path.join(self.SCRIPT_LOCATION, f"{self.DOCKER_FILE_FOLDER}/{self.sut_name}.yaml"), "w") as f:
             f.write(result)
 
-        print(f"Created {self.sut_name}.yml")
+        print(f"Created {self.sut_name}.yaml")
 
     # def run_docker(self):
     #     # just for testing to see if the docker-compose file is working
