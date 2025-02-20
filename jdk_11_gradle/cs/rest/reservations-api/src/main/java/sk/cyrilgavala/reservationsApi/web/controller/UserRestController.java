@@ -24,6 +24,7 @@ import sk.cyrilgavala.reservationsApi.web.request.RegisterRequest;
 import sk.cyrilgavala.reservationsApi.web.response.AuthResponse;
 
 import javax.validation.Valid;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 @Tag(name = "Users")
@@ -41,7 +42,7 @@ public class UserRestController {
 	@Operation(summary = "Perform user's login to retrieve access token.", description = "Perform user's login to retrieve access token.")
 	@PostMapping("/login")
 	public AuthResponse login(@Valid @RequestBody LoginRequest loginRequest) {
-		String token = authenticateAndGetToken(loginRequest.getUsername(), new String(Base64.getDecoder().decode(loginRequest.getPassword())));
+		String token = authenticateAndGetToken(loginRequest.getUsername(), new String(Base64.getDecoder().decode(loginRequest.getPassword()), StandardCharsets.ISO_8859_1));
 		return new AuthResponse(token);
 	}
 
