@@ -9,9 +9,9 @@ services:
     ports:
       - "${HOST_PORT:-{{EXPOSE_PORT}}}:8080"
       - "${JACOCO_PORT:-6300}:6300"
-    volumes:
+#    volumes:
       # default env does not work on volumes
-      - ${JACOCODIR}:/jacoco
+#      - ${JACOCODIR}:/jacoco
     {%- if HEALTH_CHECK %}
     depends_on:
       db:
