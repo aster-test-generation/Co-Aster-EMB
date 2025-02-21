@@ -3,14 +3,15 @@ services:
     build:
       dockerfile: ./dockerfiles/pay-publicapi.dockerfile
       context: ..
-    environment:
-      TOOL: ${TOOL:-undefined}
-      RUN: ${RUN:-0}
+#    environment:
+#      TOOL: ${TOOL:-undefined}
+#      RUN: ${RUN:-0}
     ports:
       - "${HOST_PORT:-8080}:8080"
-    volumes:
+      - "${JACOCO_PORT:-6300}:6300"
+#    volumes:
       # default env does not work on volumes
-      - ${JACOCODIR}:/jacoco
+#      - ${JACOCODIR}:/jacoco
   db:
     image: redis:7.2.3
     

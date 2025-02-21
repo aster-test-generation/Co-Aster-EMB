@@ -10,11 +10,13 @@ COPY {{file['source']}} .
 {% endfor %}
 {% endif %}
 
-ENV TOOL="undefined"
-ENV RUN="0"
+#ENV TOOL="undefined"
+#ENV RUN="0"
 
 ENTRYPOINT \
     java \
-    -javaagent:jacocoagent.jar=destfile=./jacoco/{{SUT_NAME}}__${TOOL}__${RUN}__jacoco.exec,append=false,dumponexit=true \
+#    unfortunately dumponexit is completely unreliable in Docker :(
+#    -javaagent:jacocoagent.jar=destfile=./jacoco/{{SUT_NAME}}__${TOOL}__${RUN}__jacoco.exec,append=false,dumponexit=true \
+    -javaagent:jacocoagent.jar=output=tcpserver,address=*,port=6300,append=false,dumponexit=false \
     {{ JVM_PARAMETERS if JVM_PARAMETERS }} -jar {{SUT_NAME}}-sut.jar \
     {{ INPUT_PARAMETERS if INPUT_PARAMETERS }}
