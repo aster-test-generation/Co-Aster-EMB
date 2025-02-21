@@ -87,10 +87,11 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     private int oAuth2Port;
 
-    private final String ISSUER_ID = "azuread";
 
-    private final String DEFAULT_AUDIENCE = "some-audience";
-
+    private final String ISSUER_ID = "aad";
+    private final String BESLUTTER_AD_GROUP = "99ea78dc-db77-44d0-b193-c5dc22f01e1d";
+    private final String TOKEN_PARAM = "NAVident";
+    private static final String NAV1 = "Q987654";
 
 
     public ExternalEvoMasterController(){
@@ -124,6 +125,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
     public String[] getInputParameters() {
 
         String wellKnownUrl = oAuth2Server.wellKnownUrl(ISSUER_ID).toString();
+        String wellKnownUrlTokenX = oAuth2Server.wellKnownUrl("tokenx").toString();
 
         return new String[]{
                 "--server.port=" + sutPort,
@@ -131,7 +133,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
                 "--spring.datasource.driverClassName=org.postgresql.Driver",
                 "--spring.sql.init.platform=postgres",
                 "--no.nav.security.jwt.issuer.aad.discoveryurl=" + wellKnownUrl,
-                "--no.nav.security.jwt.issuer.tokenx.discoveryurl=" + wellKnownUrl,
+                "--no.nav.security.jwt.issuer.tokenx.discoveryurl=" + wellKnownUrlTokenX,
                 "--management.server.port=-1",
                 "--server.ssl.enabled=false",
                 "--spring.datasource.url=" + dbUrl(),
@@ -146,7 +148,25 @@ public class ExternalEvoMasterController extends ExternalSutController {
     }
 
     public String[] getJVMParameters() {
+        String wellKnownUrl = oAuth2Server.wellKnownUrl(ISSUER_ID).toString();
+        String wellKnownUrlTokenX = oAuth2Server.wellKnownUrl("tokenx").toString();
+
         return new String[]{
+                "-DAZURE_APP_WELL_KNOWN_URL=" + wellKnownUrl,
+                "-DTOKEN_X_WELL_KNOWN_URL=" + wellKnownUrlTokenX,
+                "-DVAULT_TOKEN=VAULT_TOKEN",
+                "-DKAFKA_BROKERS=KAFKA_BROKERS",
+                "-DKAFKA_TRUSTSTORE_PATH=KAFKA_TRUSTSTORE_PATH",
+                "-DKAFKA_CREDSTORE_PASSWORD=KAFKA_CREDSTORE_PASSWORD",
+                "-DKAFKA_KEYSTORE_PATH=KAFKA_KEYSTORE_PATH",
+                "-DKAFKA_CREDSTORE_PASSWORD=KAFKA_CREDSTORE_PASSWORD",
+                "-DKAFKA_SCHEMA_REGISTRY=KAFKA_SCHEMA_REGISTRY",
+                "-DKAFKA_SCHEMA_REGISTRY_USER=KAFKA_SCHEMA_REGISTRY_USER",
+                "-DKAFKA_SCHEMA_REGISTRY_PASSWORD=KAFKA_SCHEMA_REGISTRY_PASSWORD",
+                "-DAZURE_APP_TENANT_ID=AZURE_APP_TENANT_ID",
+                "-DAZURE_APP_CLIENT_ID=aad",
+                "-DAZURE_APP_CLIENT_SECRET=secret",
+                "-Dbeslutter.ad.gruppe=" + BESLUTTER_AD_GROUP
         };
     }
 
@@ -179,10 +199,27 @@ public class ExternalEvoMasterController extends ExternalSutController {
         return timeoutSeconds;
     }
 
+    private RequestMapping getRequestMapping(String id, List<String> groups, String name) {
+        Map<String,Object> claims = new HashMap<>();
+        claims.put("groups",groups);
+        claims.put("name",name);
+        claims.put("NAVident", id);
+        claims.put("sub","sub");
+        claims.put("aud",Arrays.asList("fake-aad"));
+        claims.put("tid",ISSUER_ID);
+        claims.put("azp",id);
+        claims.put("acr","Level4");
+        claims.put("nonce","myNonce");
+
+        RequestMapping rm = new RequestMapping("NAVident",id, claims, JOSEObjectType.JWT.getType());
+
+        return rm;
+    }
 
     private OAuth2Config getOAuth2Config(){
 
         List<RequestMapping> mappings = Arrays.asList(
+                getRequestMapping(NAV1, Arrays.asList(BESLUTTER_AD_GROUP),"Mock McMockface")
         );
 
         RequestMappingTokenCallback callback = new RequestMappingTokenCallback(
@@ -270,12 +307,34 @@ public class ExternalEvoMasterController extends ExternalSutController {
         return SutInfoDto.OutputFormat.JAVA_JUNIT_5;
     }
 
+    private AuthenticationDto getAuthenticationDto(String label, String oauth2Url){
+
+        AuthenticationDto dto = new AuthenticationDto(label);
+        LoginEndpointDto x = new LoginEndpointDto();
+        dto.loginEndpointAuth = x;
+
+        x.externalEndpointURL = oauth2Url;
+        x.payloadRaw = TOKEN_PARAM+"="+label+"&grant_type=client_credentials&code=foo&client_id=foo&client_secret=secret";
+        x.verb = HttpVerb.POST;
+        x.contentType = "application/x-www-form-urlencoded";
+        x.expectCookies = false;
+
+        TokenHandlingDto token = new TokenHandlingDto();
+        token.headerPrefix = "Bearer ";
+        token.httpHeaderName = "Authorization";
+        token.extractFromField = "/access_token";
+        x.token = token;
+
+        return dto;
+    }
 
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
-
-        //TODO
-        return null;
+//        NAVident=Q987654&grant_type=client_credentials&code=foo&client_id=foo&client_secret=secret
+        String url = oAuth2Server.baseUrl() + ISSUER_ID + "/token";
+        return Arrays.asList(
+                getAuthenticationDto(NAV1,url)
+        );
     }
 
 
