@@ -11,5 +11,5 @@ ENV RUN="0"
 ENTRYPOINT \
     java \
     -javaagent:jacocoagent.jar=destfile=./jacoco/reservations-api__${TOOL}__${RUN}__jacoco.exec,append=false,dumponexit=true \
-    -Dfile.encoding=ISO-8859-1 -jar reservations-api-sut.jar \
+     -jar reservations-api-sut.jar \
     --server.port=8080 --databaseUrl=mongodb://db:27017/mongo_db --spring.data.mongodb.uri=mongodb://db:27017/mongo_db --app.jwt.secret=abcdef012345678901234567890123456789abcdef012345678901234567890123456789
