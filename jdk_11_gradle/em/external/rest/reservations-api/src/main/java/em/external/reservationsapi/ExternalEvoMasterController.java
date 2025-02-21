@@ -121,7 +121,14 @@ public class ExternalEvoMasterController extends ExternalSutController {
     }
 
     public String[] getJVMParameters() {
-        return new String[]{};
+
+        return new String[]{
+                /*
+                 This parameter is related to "cs/rest/reservations-api/src/main/java/sk/cyrilgavala/reservationsApi/web/controller/UserRestController.java" class.
+                 In this class, after the password received as input is decoded, a new String is created. While creating this string, the current computer's default Charset is used and may exhibit different behaviors on different computers. To prevent this, we define a charset.
+                 */
+                "-Dfile.encoding=ISO-8859-1"
+        };
     }
 
     @Override

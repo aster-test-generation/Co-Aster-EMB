@@ -88,6 +88,12 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         mongoDbUrl = "mongodb://" + mongodbContainer.getContainerIpAddress() + ":" + mongodbContainer.getMappedPort(MONGODB_PORT) + "/" + MONGODB_DATABASE_NAME;
         mongoClient = MongoClients.create(mongoDbUrl);
 
+        /*
+         This parameter is related to "cs/rest/reservations-api/src/main/java/sk/cyrilgavala/reservationsApi/web/controller/UserRestController.java" class.
+         In this class, after the password received as input is decoded, a new String is created. While creating this string, the current computer's default Charset is used and may exhibit different behaviors on different computers. To prevent this, we define a charset.
+         */
+        System.setProperty("file.encoding", "ISO-8859-1");
+
         ctx = SpringApplication.run(ReservationsApi.class,
                 new String[]{"--server.port=0",
                         "--databaseUrl=" + mongoDbUrl,
