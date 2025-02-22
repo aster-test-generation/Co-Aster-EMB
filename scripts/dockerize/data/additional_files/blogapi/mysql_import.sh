@@ -1,2 +1,2 @@
-mysql -u root -proot blogapi < /fixtures/blogapi.sql
-mysql -u root -proot blogapi < /fixtures/data.sql
+mysql -u root -proot blogapi < /docker-entrypoint-initdb.d/blogapi.sql
+mysql -u root -proot blogapi < /docker-entrypoint-initdb.d/data.sql

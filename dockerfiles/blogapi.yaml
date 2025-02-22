@@ -30,8 +30,8 @@ services:
 
     volumes:
       - ../scripts/dockerize/data/additional_files/blogapi/mysql_import.sh:/docker-entrypoint-initdb.d/mysql_import.sh
-      - ../scripts/dockerize/data/additional_files/blogapi/blogapi.sql:/fixtures/blogapi.sql
-      - ../scripts/dockerize/data/additional_files/blogapi/data.sql:/fixtures/data.sql
+      - ../scripts/dockerize/data/additional_files/blogapi/blogapi.sql:/docker-entrypoint-initdb.d/blogapi.sql
+      - ../scripts/dockerize/data/additional_files/blogapi/data.sql:/docker-entrypoint-initdb.d/data.sql
       
 
 
