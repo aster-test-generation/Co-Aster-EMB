@@ -78,7 +78,7 @@ latex <- function(TABLE,SUTS){
 
   cat("\\begin{tabular}{l rrr}\\\\ \n")
   cat("\\toprule \n")
-  cat("SUT & \\#SourceFiles & \\#LOCs & \\#Enbdpoints \\\\ \n")
+  cat("SUT & \\#SourceFiles & \\#LOCs & \\#Endpoints \\\\ \n")
   cat("\\midrule \n")
 
   for (i in 1:nrow(dt)){
