@@ -1,0 +1,31 @@
+{
+  "interactiveLogin": true,
+  "httpServer": "NettyWrapper",
+  "tokenCallbacks": [
+    {
+      "issuerId": "aad",
+      "tokenExpiry": 360000,
+      "requestMappings": [
+        {
+          "requestParam": "NAVident",
+          "match": "NAV1",
+          "claims": {
+            "sub": "sub",
+            "aud": [
+              "fake-aad"
+            ],
+            "acr": "Level4",
+            "NAVident": "Q987654",
+            "azp": "Q987654",
+            "name": "Mock McMockface",
+            "groups": [
+              "99ea78dc-db77-44d0-b193-c5dc22f01e1d"
+            ],
+            "nonce": "myNonce",
+            "tid": "aad"
+          }
+        }
+      ]
+    }
+  ]
+}
