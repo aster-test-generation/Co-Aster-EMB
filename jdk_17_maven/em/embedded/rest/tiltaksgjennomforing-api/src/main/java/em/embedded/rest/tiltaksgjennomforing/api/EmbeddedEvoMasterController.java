@@ -6,6 +6,7 @@ import no.nav.security.mock.oauth2.OAuth2Config;
 import no.nav.security.mock.oauth2.token.RequestMapping;
 import no.nav.security.mock.oauth2.token.RequestMappingTokenCallback;
 import no.nav.tag.tiltaksgjennomforing.TiltaksgjennomforingApplication;
+import no.nav.tag.tiltaksgjennomforing.autorisasjon.TokenUtils;
 import org.evomaster.client.java.controller.EmbeddedSutController;
 import org.evomaster.client.java.controller.InstrumentedSutStarter;
 import org.evomaster.client.java.controller.api.dto.SutInfoDto;
@@ -49,11 +50,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     private List<DbSpecification> dbSpecification;
 
     private MockOAuth2Server oAuth2Server;
-    private final String ISSUER_ID = "aad";
-    private final String DEFAULT_AUDIENCE = "some-audience";
     private final String BESLUTTER_AD_GROUP = "99ea78dc-db77-44d0-b193-c5dc22f01e1d";
-    private final String TOKEN_PARAM = "NAVident";
-    private static final String NAV1 = "Q987654";
 
 
     public EmbeddedEvoMasterController() {
@@ -86,14 +83,14 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         return "no.nav.tag.tiltaksgjennomforing.";
     }
 
-    private AuthenticationDto getAuthenticationDto(String label, String oauth2Url){
+    private AuthenticationDto getAuthenticationDto(String label, String keyValue, String oauth2Url){
 
         AuthenticationDto dto = new AuthenticationDto(label);
         LoginEndpointDto x = new LoginEndpointDto();
         dto.loginEndpointAuth = x;
 
         x.externalEndpointURL = oauth2Url;
-        x.payloadRaw = TOKEN_PARAM+"="+label+"&grant_type=client_credentials&code=foo&client_id=foo&client_secret=secret";
+        x.payloadRaw = keyValue+"&grant_type=client_credentials&code=foo&client_id=foo&client_secret=secret";
         x.verb = HttpVerb.POST;
         x.contentType = "application/x-www-form-urlencoded";
         x.expectCookies = false;
@@ -109,10 +106,15 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
-//        NAVident=Q987654&grant_type=client_credentials&code=foo&client_id=foo&client_secret=secret
-        String url = oAuth2Server.baseUrl() + ISSUER_ID + "/token";
+        String urlAad = oAuth2Server.baseUrl() + "aad/token";
+        String urlSystem = oAuth2Server.baseUrl() + "system/token";
+        String urlTokenX = oAuth2Server.baseUrl() + "tokenx/token";
+
         return Arrays.asList(
-                getAuthenticationDto(NAV1,url)
+                getAuthenticationDto("aad","NAVident=Q987654", urlAad),
+                getAuthenticationDto("system","sub=system", urlSystem),
+                getAuthenticationDto("tokenxLevel3","pid=88888888888", urlTokenX),
+                getAuthenticationDto("tokenxLevel4","pid=99999999999", urlTokenX)
         );
     }
 
@@ -129,19 +131,21 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         return SutInfoDto.OutputFormat.JAVA_JUNIT_5;
     }
 
-    private RequestMapping getRequestMapping(String id, List<String> groups, String name) {
+    private RequestMapping getRequestMapping(String key, String value, String issuer, String subject, List<String> audience, String navIdent, String acrLevel, List<String> groups, String pid) {
         Map<String,Object> claims = new HashMap<>();
-        claims.put("groups",groups);
-        claims.put("name",name);
-        claims.put("NAVident", id);
-        claims.put("sub","sub");
-        claims.put("aud",Arrays.asList("fake-aad"));
-        claims.put("tid",ISSUER_ID);
-        claims.put("azp",id);
-        claims.put("acr","Level4");
-        claims.put("nonce","myNonce");
+        claims.put("groups", groups);
+        claims.put("NAVident", navIdent);
+        claims.put("sub", subject);
+        claims.put("aud", audience);
+        claims.put("roles", Arrays.asList("access_as_application"));
+        claims.put("pid", pid);
+        claims.put("tid", issuer);
+        claims.put("azp", navIdent);
+        claims.put("acr", acrLevel);
+        claims.put("ver", "1.0");
+        claims.put("nonce", "myNonce");
 
-        RequestMapping rm = new RequestMapping("NAVident",id, claims, JOSEObjectType.JWT.getType());
+        RequestMapping rm = new RequestMapping(key, value, claims, JOSEObjectType.JWT.getType());
 
         return rm;
     }
@@ -149,20 +153,42 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     private OAuth2Config getOAuth2Config(){
 
         List<RequestMapping> mappings = Arrays.asList(
-                getRequestMapping(NAV1, Arrays.asList(BESLUTTER_AD_GROUP),"Mock McMockface")
+                getRequestMapping("NAVident", "Q987654", "aad","blablabla", Arrays.asList("aad"), "Q987654", "Level4", Arrays.asList(BESLUTTER_AD_GROUP), "aad")
+        );
+
+        List<RequestMapping> mappingsSystem = Arrays.asList(
+                getRequestMapping("sub", "system", "system","system", Arrays.asList("system"), null, null, null, "system")
+        );
+
+        List<RequestMapping> mappingsTokenx = Arrays.asList(
+                getRequestMapping("pid", "88888888888", "tokenx","tokenx", Arrays.asList("tokenx"), null, "Level3", null, "88888888888"),
+                getRequestMapping("pid", "99999999999", "tokenx","tokenx", Arrays.asList("tokenx"), null, "Level4", null, "99999999999")
         );
 
         RequestMappingTokenCallback callback = new RequestMappingTokenCallback(
-                ISSUER_ID,
+                "aad",
                 mappings,
+                360000
+        );
+        RequestMappingTokenCallback callbackSystem = new RequestMappingTokenCallback(
+                "system",
+                mappingsSystem,
+                360000
+        );
+
+        RequestMappingTokenCallback callbackTokenx = new RequestMappingTokenCallback(
+                "tokenx",
+                mappingsTokenx,
                 360000
         );
 
         Set<RequestMappingTokenCallback> callbacks = Set.of(
-                callback
+                callback,
+                callbackSystem,
+                callbackTokenx
         );
 
-        OAuth2Config config = new OAuth2Config(
+        return new OAuth2Config(
                 true,
                 null,
                 null,
@@ -170,8 +196,6 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
                 new no.nav.security.mock.oauth2.token.OAuth2TokenProvider(),
                 callbacks
         );
-
-        return config;
     }
 
     @Override
@@ -182,7 +206,8 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
         oAuth2Server = new  MockOAuth2Server(getOAuth2Config());
         oAuth2Server.start(8081); //ephemeral gives issues in generated tests
-        String wellKnownUrl = oAuth2Server.wellKnownUrl(ISSUER_ID).toString();
+        String wellKnownUrl = oAuth2Server.wellKnownUrl("aad").toString();
+        String wellKnownUrlSystem = oAuth2Server.wellKnownUrl("system").toString();
         String wellKnownUrlTokenX = oAuth2Server.wellKnownUrl("tokenx").toString();
 
         //TODO should go through all the environment variables in application properties
@@ -210,7 +235,11 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
                 "--spring.datasource.driverClassName=org.postgresql.Driver",
                 "--spring.sql.init.platform=postgres",
                 "--no.nav.security.jwt.issuer.aad.discoveryurl=" + wellKnownUrl,
+                "--no.nav.security.jwt.issuer.aad.accepted_audience=aad",
+                "--no.nav.security.jwt.issuer.system.discoveryurl=" + wellKnownUrlSystem,
+                "--no.nav.security.jwt.issuer.system.accepted_audience=system",
                 "--no.nav.security.jwt.issuer.tokenx.discoveryurl=" + wellKnownUrlTokenX,
+                "--no.nav.security.jwt.issuer.tokenx.accepted_audience=tokenx",
                 "--management.server.port=-1",
                 "--server.ssl.enabled=false",
                 "--spring.datasource.url=" + postgresURL,
