@@ -1,17 +1,17 @@
 auth:
   - name: ROLE_ADMIN
     loginEndpointAuth:
-      payloadRaw: "{\"username\": \"admin\", \"password\": \"test\"}"
+      payloadRaw: "username=admin&password=test"
   - name: ROLE_EMP
     loginEndpointAuth:
-      payloadRaw: "{\"username\": \"selimhorri\", \"password\": \"test\"}"
+      payloadRaw: "username=selimhorri&password=test"
   - name: ROLE_MGR
     loginEndpointAuth:
-      payloadRaw: "{\"username\": \"soumayahajjem\", \"password\": \"test\"}"
+      payloadRaw: "username=soumayahajjem&password=test"
 
 authTemplate:
-    loginEndpointAuth:
-        endpoint: /app/api/authenticate
-        verb: POST
-        contentType: application/json
-        expectCookies: true
+  loginEndpointAuth:
+    endpoint: /app/login
+    verb: POST
+    contentType: application/x-www-form-urlencoded
+    expectCookies: true
