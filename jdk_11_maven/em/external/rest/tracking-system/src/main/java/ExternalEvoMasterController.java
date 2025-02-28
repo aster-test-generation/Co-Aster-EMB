@@ -209,8 +209,10 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
-        // TODO setup with also data in DB
-        return null;
+        return Arrays.asList(
+                AuthUtils.getForDefaultSpringFormLogin("ROLE_ADMIN", "admin", "test"),
+                AuthUtils.getForDefaultSpringFormLogin("ROLE_EMP", "selimhorri", "test"),
+                AuthUtils.getForDefaultSpringFormLogin("ROLE_MGR", "soumayahajjem", "test"));
     }
 
 
