@@ -209,10 +209,15 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
+        //TODO after AuthUtils changes in the EvoMaster, this should be updated
         return Arrays.asList(
+//                AuthUtils.getForDefaultSpringFormLogin("ROLE_ADMIN", "admin", "test", "/app/login"),
+//                AuthUtils.getForDefaultSpringFormLogin("ROLE_EMP", "selimhorri", "test", "/app/login"),
+//                AuthUtils.getForDefaultSpringFormLogin("ROLE_MGR", "soumayahajjem", "test", "/app/login")
                 AuthUtils.getForDefaultSpringFormLogin("ROLE_ADMIN", "admin", "test"),
                 AuthUtils.getForDefaultSpringFormLogin("ROLE_EMP", "selimhorri", "test"),
-                AuthUtils.getForDefaultSpringFormLogin("ROLE_MGR", "soumayahajjem", "test"));
+                AuthUtils.getForDefaultSpringFormLogin("ROLE_MGR", "soumayahajjem", "test")
+        );
     }
 
 
