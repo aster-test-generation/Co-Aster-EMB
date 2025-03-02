@@ -35,4 +35,5 @@ services:
       JSON_CONFIG_PATH: /app/mockoauth2.json
     volumes:
       - ../scripts/dockerize/data/additional_files/tiltaksgjennomforing-api/mockoauth2.json:/app/mockoauth2.json
-  
+    ports:
+        - "8083:8083"

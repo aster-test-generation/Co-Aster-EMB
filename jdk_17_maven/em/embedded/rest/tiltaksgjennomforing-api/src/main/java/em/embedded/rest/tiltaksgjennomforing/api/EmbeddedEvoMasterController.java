@@ -1,14 +1,19 @@
 package em.embedded.rest.tiltaksgjennomforing.api;
 
+import com.nimbusds.jose.JOSEObjectType;
 import no.nav.security.mock.oauth2.MockOAuth2Server;
 import no.nav.security.mock.oauth2.OAuth2Config;
 import no.nav.security.mock.oauth2.token.RequestMapping;
 import no.nav.security.mock.oauth2.token.RequestMappingTokenCallback;
 import no.nav.tag.tiltaksgjennomforing.TiltaksgjennomforingApplication;
+import no.nav.tag.tiltaksgjennomforing.autorisasjon.TokenUtils;
 import org.evomaster.client.java.controller.EmbeddedSutController;
 import org.evomaster.client.java.controller.InstrumentedSutStarter;
 import org.evomaster.client.java.controller.api.dto.SutInfoDto;
 import org.evomaster.client.java.controller.api.dto.auth.AuthenticationDto;
+import org.evomaster.client.java.controller.api.dto.auth.HttpVerb;
+import org.evomaster.client.java.controller.api.dto.auth.LoginEndpointDto;
+import org.evomaster.client.java.controller.api.dto.auth.TokenHandlingDto;
 import org.evomaster.client.java.controller.api.dto.database.schema.DatabaseType;
 import org.evomaster.client.java.controller.problem.ProblemInfo;
 import org.evomaster.client.java.controller.problem.RestProblem;
@@ -45,8 +50,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     private List<DbSpecification> dbSpecification;
 
     private MockOAuth2Server oAuth2Server;
-    private final String ISSUER_ID = "azuread";
-    private final String DEFAULT_AUDIENCE = "some-audience";
+    private final String BESLUTTER_AD_GROUP = "99ea78dc-db77-44d0-b193-c5dc22f01e1d";
 
 
     public EmbeddedEvoMasterController() {
@@ -79,10 +83,39 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         return "no.nav.tag.tiltaksgjennomforing.";
     }
 
+    private AuthenticationDto getAuthenticationDto(String label, String keyValue, String oauth2Url){
+
+        AuthenticationDto dto = new AuthenticationDto(label);
+        LoginEndpointDto x = new LoginEndpointDto();
+        dto.loginEndpointAuth = x;
+
+        x.externalEndpointURL = oauth2Url;
+        x.payloadRaw = keyValue+"&grant_type=client_credentials&code=foo&client_id=foo&client_secret=secret";
+        x.verb = HttpVerb.POST;
+        x.contentType = "application/x-www-form-urlencoded";
+        x.expectCookies = false;
+
+        TokenHandlingDto token = new TokenHandlingDto();
+        token.headerPrefix = "Bearer ";
+        token.httpHeaderName = "Authorization";
+        token.extractFromField = "/access_token";
+        x.token = token;
+
+        return dto;
+    }
+
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
-        //TODO
-        return null;
+        String urlAad = oAuth2Server.baseUrl() + "aad/token";
+        String urlSystem = oAuth2Server.baseUrl() + "system/token";
+        String urlTokenX = oAuth2Server.baseUrl() + "tokenx/token";
+
+        return Arrays.asList(
+                getAuthenticationDto("aad","NAVident=Q987654", urlAad),
+                getAuthenticationDto("system","sub=system", urlSystem),
+                getAuthenticationDto("tokenxLevel3","pid=88888888888", urlTokenX),
+                getAuthenticationDto("tokenxLevel4","pid=99999999999", urlTokenX)
+        );
     }
 
     @Override
@@ -98,23 +131,64 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         return SutInfoDto.OutputFormat.JAVA_JUNIT_5;
     }
 
+    private RequestMapping getRequestMapping(String key, String value, String issuer, String subject, List<String> audience, String navIdent, String acrLevel, List<String> groups, String pid) {
+        Map<String,Object> claims = new HashMap<>();
+        claims.put("groups", groups);
+        claims.put("NAVident", navIdent);
+        claims.put("sub", subject);
+        claims.put("aud", audience);
+        claims.put("roles", Arrays.asList("access_as_application"));
+        claims.put("pid", pid);
+        claims.put("tid", issuer);
+        claims.put("azp", navIdent);
+        claims.put("acr", acrLevel);
+        claims.put("ver", "1.0");
+        claims.put("nonce", "myNonce");
+
+        RequestMapping rm = new RequestMapping(key, value, claims, JOSEObjectType.JWT.getType());
+
+        return rm;
+    }
 
     private OAuth2Config getOAuth2Config(){
 
         List<RequestMapping> mappings = Arrays.asList(
+                getRequestMapping("NAVident", "Q987654", "aad","blablabla", Arrays.asList("aad"), "Q987654", "Level4", Arrays.asList(BESLUTTER_AD_GROUP), "aad")
+        );
+
+        List<RequestMapping> mappingsSystem = Arrays.asList(
+                getRequestMapping("sub", "system", "system","system", Arrays.asList("system"), null, null, null, "system")
+        );
+
+        List<RequestMapping> mappingsTokenx = Arrays.asList(
+                getRequestMapping("pid", "88888888888", "tokenx","tokenx", Arrays.asList("tokenx"), null, "Level3", null, "88888888888"),
+                getRequestMapping("pid", "99999999999", "tokenx","tokenx", Arrays.asList("tokenx"), null, "Level4", null, "99999999999")
         );
 
         RequestMappingTokenCallback callback = new RequestMappingTokenCallback(
-                ISSUER_ID,
+                "aad",
                 mappings,
+                360000
+        );
+        RequestMappingTokenCallback callbackSystem = new RequestMappingTokenCallback(
+                "system",
+                mappingsSystem,
+                360000
+        );
+
+        RequestMappingTokenCallback callbackTokenx = new RequestMappingTokenCallback(
+                "tokenx",
+                mappingsTokenx,
                 360000
         );
 
         Set<RequestMappingTokenCallback> callbacks = Set.of(
-                callback
+                callback,
+                callbackSystem,
+                callbackTokenx
         );
 
-        OAuth2Config config = new OAuth2Config(
+        return new OAuth2Config(
                 true,
                 null,
                 null,
@@ -122,8 +196,6 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
                 new no.nav.security.mock.oauth2.token.OAuth2TokenProvider(),
                 callbacks
         );
-
-        return config;
     }
 
     @Override
@@ -134,12 +206,14 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
         oAuth2Server = new  MockOAuth2Server(getOAuth2Config());
         oAuth2Server.start(8081); //ephemeral gives issues in generated tests
-        String wellKnownUrl = oAuth2Server.wellKnownUrl(ISSUER_ID).toString();
+        String wellKnownUrl = oAuth2Server.wellKnownUrl("aad").toString();
+        String wellKnownUrlSystem = oAuth2Server.wellKnownUrl("system").toString();
+        String wellKnownUrlTokenX = oAuth2Server.wellKnownUrl("tokenx").toString();
 
         //TODO should go through all the environment variables in application properties
         //TODO some of these might not be needed any more after change of profile
         System.setProperty("AZURE_APP_WELL_KNOWN_URL",wellKnownUrl);
-        System.setProperty("TOKEN_X_WELL_KNOWN_URL",wellKnownUrl);
+        System.setProperty("TOKEN_X_WELL_KNOWN_URL",wellKnownUrlTokenX);
         System.setProperty("VAULT_TOKEN","VAULT_TOKEN");
         System.setProperty("KAFKA_BROKERS","KAFKA_BROKERS");
         System.setProperty("KAFKA_TRUSTSTORE_PATH","KAFKA_TRUSTSTORE_PATH");
@@ -150,9 +224,9 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         System.setProperty("KAFKA_SCHEMA_REGISTRY_USER","KAFKA_SCHEMA_REGISTRY_USER");
         System.setProperty("KAFKA_SCHEMA_REGISTRY_PASSWORD","KAFKA_SCHEMA_REGISTRY_PASSWORD");
         System.setProperty("AZURE_APP_TENANT_ID","AZURE_APP_TENANT_ID");
-        System.setProperty("AZURE_APP_CLIENT_ID","AZURE_APP_CLIENT_ID");
-        System.setProperty("AZURE_APP_CLIENT_SECRET","AZURE_APP_CLIENT_SECRET");
-        System.setProperty("beslutter.ad.gruppe","99ea78dc-db77-44d0-b193-c5dc22f01e1d");
+        System.setProperty("AZURE_APP_CLIENT_ID","aad");
+        System.setProperty("AZURE_APP_CLIENT_SECRET","secret");
+        System.setProperty("beslutter.ad.gruppe",BESLUTTER_AD_GROUP);
 
         ctx = SpringApplication.run(TiltaksgjennomforingApplication.class, new String[]{
                 "--server.port=0",
@@ -161,7 +235,11 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
                 "--spring.datasource.driverClassName=org.postgresql.Driver",
                 "--spring.sql.init.platform=postgres",
                 "--no.nav.security.jwt.issuer.aad.discoveryurl=" + wellKnownUrl,
-                "--no.nav.security.jwt.issuer.tokenx.discoveryurl=" + wellKnownUrl,
+                "--no.nav.security.jwt.issuer.aad.accepted_audience=aad",
+                "--no.nav.security.jwt.issuer.system.discoveryurl=" + wellKnownUrlSystem,
+                "--no.nav.security.jwt.issuer.system.accepted_audience=system",
+                "--no.nav.security.jwt.issuer.tokenx.discoveryurl=" + wellKnownUrlTokenX,
+                "--no.nav.security.jwt.issuer.tokenx.accepted_audience=tokenx",
                 "--management.server.port=-1",
                 "--server.ssl.enabled=false",
                 "--spring.datasource.url=" + postgresURL,
