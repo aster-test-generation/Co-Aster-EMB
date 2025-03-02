@@ -13,4 +13,5 @@ INSERT INTO employees (employee_id, first_name, last_name, email, phone, hiredat
 (11, 'Marwen', 'Mejri', 'springabcxyzboot@gmail.com', '22125144', NULL, 'Digital', '5000.60', 9, 5),
 (12, 'Mayssa', 'Hassine', 'springabcxyzboot@gmail.com', '22125144', '2019-04-30', 'Data Warehouse', '5000.00', 5, 4),
 (13, 'Mouna', 'Chaouachi', 'springabcxyzboot@gmail.com', '22125144', NULL, 'Data Warehouse', '5000.50', 5, 4),
-(14, 'admin', 'admin', 'springabcxyzboot@gmail.com', '22125144', NULL, 'RH', '5000.00', NULL, NULL);
+(14, 'admin', 'admin', 'springabcxyzboot@gmail.com', '22125144', NULL, 'RH', '5000.00', NULL, NULL),
+(15, 'test', 'test', 'test@foo.com', '22125144', NULL, 'TEST', '5000.00', NULL, NULL);
