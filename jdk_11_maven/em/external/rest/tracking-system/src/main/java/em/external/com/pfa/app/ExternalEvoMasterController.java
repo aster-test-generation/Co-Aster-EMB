@@ -64,7 +64,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
     private List<DbSpecification> dbSpecification;
     private Server h2;
 
-    //private String INIT_DB_SCRIPT_PATH = "/data.sql";
+    private String INIT_DB_SCRIPT_PATH = "/data.sql";
 
     public ExternalEvoMasterController() {
         this(40100, "../core/target", 12345, 120, "java");
@@ -149,11 +149,10 @@ public class ExternalEvoMasterController extends ExternalSutController {
             Class.forName("org.h2.Driver");
             sqlConnection = DriverManager.getConnection(dbUrl(), "sa", "");
 
-//            SqlScriptRunnerCached.runScriptFromResourceFile(sqlConnection,"/schema.sql");
-//            DbCleaner.clearDatabase_H2(sqlConnection);
+            DbCleaner.clearDatabase_H2(sqlConnection, Arrays.asList("flyway_schema_history"));
 
             dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.H2,sqlConnection)
-            //        .withInitSqlOnResourcePath(INIT_DB_SCRIPT_PATH)
+                    .withInitSqlOnResourcePath(INIT_DB_SCRIPT_PATH)
             );
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -162,6 +161,8 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     @Override
     public void resetStateOfSUT() {
+        DbCleaner.clearDatabase_H2(sqlConnection, Arrays.asList("flyway_schema_history"));
+        SqlScriptRunnerCached.runScriptFromResourceFile(sqlConnection, INIT_DB_SCRIPT_PATH);
     }
 
     @Override

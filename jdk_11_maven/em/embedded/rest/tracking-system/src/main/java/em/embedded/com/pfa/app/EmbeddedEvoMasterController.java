@@ -74,18 +74,14 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
                 throw new RuntimeException(e);
             }
         }
-        JdbcTemplate jdbc = ctx.getBean(JdbcTemplate.class);try {
+        JdbcTemplate jdbc = ctx.getBean(JdbcTemplate.class);
+        try {
             sqlConnection = jdbc.getDataSource().getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-//        SqlScriptRunnerCached.runScriptFromResourceFile(sqlConnection,"/schema.sql");
-//        DbCleaner.clearDatabase_H2(sqlConnection);
-
-        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.H2,sqlConnection)
-//                .withInitSqlOnResourcePath(INIT_DB_SCRIPT_PATH)
-                );
+        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.H2,sqlConnection));
 
         return "http://localhost:" + getSutPort();
     }
@@ -114,6 +110,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public void resetStateOfSUT() {
+        SqlScriptRunnerCached.runScriptFromResourceFile(sqlConnection, INIT_DB_SCRIPT_PATH);
     }
 
     @Override
