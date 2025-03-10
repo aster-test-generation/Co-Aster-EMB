@@ -1,4 +1,4 @@
-INSERT INTO projects (project_id, title, start_date, end_date, status) VALUES
+insert into projects (project_id, title, start_date, end_date, status) values
 (1, 'TRANSBSCS', '2020-09-28', '2020-11-04', 'COMPLETED'),
 (2, 'SYNCH_BSCS_IMX', '2020-11-26', '2021-03-25', 'IN_PROGRESS'),
 (3, 'TASYI9A LILVIRANDA', '2020-11-26', '2020-11-26', 'COMPLETED'),
@@ -9,17 +9,17 @@ INSERT INTO projects (project_id, title, start_date, end_date, status) VALUES
 (8, 'GREENPLUME_UPGRADE', '2020-11-02', '2021-05-01', 'IN_PROGRESS'),
 (9, 'COMMISION_AUTOMATION', '2020-06-01', '2021-03-02', 'IN_PROGRESS');
 
-INSERT INTO locations (location_id, adr, postal_code, city) VALUES
+insert into locations (location_id, adr, postal_code, city) values
 (1, 'RUE DE LA BOURSE', '2016', 'LAC2'),
 (2, 'RUE DE BLA BLA', '2016', 'CHARGUIA');
 
-INSERT INTO departments (department_id, department_name, location_id) VALUES
+insert into departments (department_id, department_name, location_id) values
 (4, 'DWH', 1),
 (5, 'Digital', 1),
 (6, 'Billing', 1);
 
 
-INSERT INTO employees (employee_id, first_name, last_name, email, phone, hiredate, job, salary, manager_id, department_id) VALUES
+insert into employees (employee_id, first_name, last_name, email, phone, hiredate, job, salary, manager_id, department_id) values
 (1, 'Selim', 'Horri', 'springabcxyzboot@gmail.com', '22125144', '2019-04-15', 'Billing', '5000.00', NULL, NULL),
 (2, 'Badr', 'Idoudi', 'springabcxyzboot@gmail.com', '22125144', '2019-04-15', 'Digital', '5000.00', NULL, NULL),
 (3, 'Imen', 'Touk', 'springabcxyzboot@gmail.com', '22125144', '2019-04-15', 'Data Warehouse', '5000.00', NULL, NULL),
@@ -35,63 +35,63 @@ INSERT INTO employees (employee_id, first_name, last_name, email, phone, hiredat
 (13, 'Mouna', 'Chaouachi', 'springabcxyzboot@gmail.com', '22125144', NULL, 'Data Warehouse', '5000.50', NULL, NULL),
 (14, 'admin', 'admin', 'springabcxyzboot@gmail.com', '22125144', NULL, 'RH', '5000.00', NULL, NULL);
 
-UPDATE employees
-SET manager_id = 4, department_id = 6
-WHERE employee_id = 1;
+update employees
+set manager_id = 4, department_id = 6
+where employee_id = 1;
 
-UPDATE employees
-SET manager_id = 9, department_id = 5
-WHERE employee_id = 2;
+update employees
+set manager_id = 9, department_id = 5
+where employee_id = 2;
 
-UPDATE employees
-SET manager_id = 5, department_id = 4
-WHERE employee_id = 3;
+update employees
+set manager_id = 5, department_id = 4
+where employee_id = 3;
 
-UPDATE employees
-SET manager_id = NULL, department_id = 6
-WHERE employee_id = 4;
+update employees
+set manager_id = NULL, department_id = 6
+where employee_id = 4;
 
-UPDATE employees
-SET manager_id = NULL, department_id = 4
-WHERE employee_id = 5;
+update employees
+set manager_id = NULL, department_id = 4
+where employee_id = 5;
 
-UPDATE employees
-SET manager_id = 4, department_id = 6
-WHERE employee_id = 6;
+update employees
+set manager_id = 4, department_id = 6
+where employee_id = 6;
 
-UPDATE employees
-SET manager_id = 4, department_id = 6
-WHERE employee_id = 7;
+update employees
+set manager_id = 4, department_id = 6
+where employee_id = 7;
 
-UPDATE employees
-SET manager_id = 4, department_id = 6
-WHERE employee_id = 8;
+update employees
+set manager_id = 4, department_id = 6
+where employee_id = 8;
 
-UPDATE employees
-SET manager_id = NULL, department_id = 5
-WHERE employee_id = 9;
+update employees
+set manager_id = NULL, department_id = 5
+where employee_id = 9;
 
-UPDATE employees
-SET manager_id = 9, department_id = 5
-WHERE employee_id = 10;
+update employees
+set manager_id = 9, department_id = 5
+where employee_id = 10;
 
-UPDATE employees
-SET manager_id = 9, department_id = 5
-WHERE employee_id = 11;
+update employees
+set manager_id = 9, department_id = 5
+where employee_id = 11;
 
-UPDATE employees
-SET manager_id = 5, department_id = 4
-WHERE employee_id = 12;
+update employees
+set manager_id = 5, department_id = 4
+where employee_id = 12;
 
-UPDATE employees
-SET manager_id = 5, department_id = 4
-WHERE employee_id = 13;
+update employees
+set manager_id = 5, department_id = 4
+where employee_id = 13;
 
-UPDATE employees
-SET manager_id = NULL, department_id = NULL
-WHERE employee_id = 14;
+update employees
+set manager_id = NULL, department_id = NULL
+where employee_id = 14;
 
-INSERT INTO assignments (employee_id, project_id, commit_date, commit_emp_desc, commit_mgr_desc) VALUES
+insert into assignments (employee_id, project_id, commit_date, commit_emp_desc, commit_mgr_desc) values
 (1, 1, '2020-11-26 10:50:09', NULL, 'init'),
 (1, 1, '2020-11-26 13:14:22', 'set up some configs', 'you need to implement sec solution'),
 (1, 1, '2020-12-12 16:49:42', 'implement customer by invoice', NULL),
@@ -102,7 +102,7 @@ INSERT INTO assignments (employee_id, project_id, commit_date, commit_emp_desc, 
 (1, 2, '2020-11-26 13:14:22', 'generate xml file', 'check out marshaling correctness'),
 (1, 2, '2020-12-12 11:57:18', 'files on CRMIMX', NULL),
 (1, 2, '2020-12-12 12:13:51', '00000', NULL),
-(1, 2, '2020-12-12 12:23:39', 'Set up xml for CRMIMX1', NULL),
+(1, 2, '2020-12-12 12:23:39', 'set up xml for CRMIMX1', NULL),
 (1, 2, '2020-12-12 12:30:14', 'implement BSCSIMX2 business layer', NULL),
 (1, 2, '2020-12-12 12:37:53', 'synchronize BSCSIMX2', NULL),
 (1, 2, '2020-12-12 16:40:17', 'create a simple xml file for IMX CX', NULL),
@@ -125,7 +125,7 @@ INSERT INTO assignments (employee_id, project_id, commit_date, commit_emp_desc, 
 (3, 4, '2020-12-17 11:30:09', 'ta7dhirat ........$$**', NULL),
 (3, 9, '2020-12-19 16:06:20', NULL, 'init'),
 (6, 1, '2020-11-26 10:49:41', NULL, 'init'),
-(6, 1, '2020-11-26 10:50:53', 'SET UP DIFFERENT LAYERS', NULL),
+(6, 1, '2020-11-26 10:50:53', 'set UP DIFFERENT LAYERS', NULL),
 (6, 1, '2020-12-12 15:16:55', 'import new libs', NULL),
 (6, 1, '2020-12-12 15:17:31', 'set exception payload', NULL),
 (10, 6, '2020-12-19 11:34:11', NULL, 'init'),
@@ -152,7 +152,7 @@ INSERT INTO assignments (employee_id, project_id, commit_date, commit_emp_desc, 
 (13, 9, '2020-12-19 16:13:01', 'get first ids', NULL),
 (13, 9, '2020-12-19 16:13:17', 'create new workspace', NULL);
 
-INSERT INTO user_credentials (user_id, username, password, enabled, role, employee_id) VALUES
+insert into user_credentials (user_id, username, password, enabled, role, employee_id) values
 (1, 'imentouk', '$2a$10$6pNV34gbMAEj6vuyVmQMdOfSKk.kuxOUOeucg78/cvOprSR3lsZL2', 1, 'ROLE_EMP', 3),
 (2, 'badridoudi', '$2a$10$6pNV34gbMAEj6vuyVmQMdOfSKk.kuxOUOeucg78/cvOprSR3lsZL2', 1, 'ROLE_EMP', 2),
 (3, 'selimhorri', '$2a$10$6pNV34gbMAEj6vuyVmQMdOfSKk.kuxOUOeucg78/cvOprSR3lsZL2', 1, 'ROLE_EMP', 1),

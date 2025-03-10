@@ -10,7 +10,6 @@ import org.evomaster.client.java.controller.problem.ProblemInfo;
 import org.evomaster.client.java.controller.problem.RestProblem;
 import org.evomaster.client.java.sql.DbCleaner;
 import org.evomaster.client.java.sql.DbSpecification;
-import org.evomaster.client.java.sql.SqlScriptRunnerCached;
 import org.h2.tools.Server;
 
 import java.sql.Connection;
@@ -99,8 +98,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
                 "--spring.profiles.active=dev",
                 "--spring.datasource.url=" + dbUrl() + ";DB_CLOSE_DELAY=-1",
                 "--spring.datasource.username=sa",
-                "--spring.datasource.password",
-
+                "--spring.datasource.password"
         };
     }
 
@@ -150,10 +148,9 @@ public class ExternalEvoMasterController extends ExternalSutController {
             sqlConnection = DriverManager.getConnection(dbUrl(), "sa", "");
 
             DbCleaner.clearDatabase_H2(sqlConnection, Arrays.asList("flyway_schema_history"));
-
             dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.H2,sqlConnection)
-                    .withInitSqlOnResourcePath(INIT_DB_SCRIPT_PATH)
-            );
+                    .withInitSqlOnResourcePath(INIT_DB_SCRIPT_PATH));
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -161,8 +158,6 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     @Override
     public void resetStateOfSUT() {
-        DbCleaner.clearDatabase_H2(sqlConnection, Arrays.asList("flyway_schema_history"));
-        SqlScriptRunnerCached.runScriptFromResourceFile(sqlConnection, INIT_DB_SCRIPT_PATH);
     }
 
     @Override

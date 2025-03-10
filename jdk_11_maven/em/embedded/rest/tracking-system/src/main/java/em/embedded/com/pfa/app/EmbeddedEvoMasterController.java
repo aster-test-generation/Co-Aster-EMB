@@ -48,8 +48,6 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     private String INIT_DB_SCRIPT_PATH = "/data.sql";
 
-    private String initSQLScript;
-
     public EmbeddedEvoMasterController() {
         this(40100);
     }
@@ -64,7 +62,9 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         ctx = SpringApplication.run(ProjectTrackingSystemApplication.class, new String[]{
                 "--server.port=0",
                 "--spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;",
-                "--spring.profiles.active=dev"
+                "--spring.profiles.active=dev",
+                // to not execute sql file (data.sql) located in resources folder. Because flyway handles it.
+                "--spring.datasource.initialization-mode=never"
         });
 
         if (sqlConnection != null) {
@@ -81,7 +81,9 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
             throw new RuntimeException(e);
         }
 
-        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.H2,sqlConnection));
+        DbCleaner.clearDatabase_H2(sqlConnection, Arrays.asList("flyway_schema_history"));
+        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.H2,sqlConnection)
+                .withInitSqlOnResourcePath(INIT_DB_SCRIPT_PATH));
 
         return "http://localhost:" + getSutPort();
     }
@@ -110,7 +112,6 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public void resetStateOfSUT() {
-        SqlScriptRunnerCached.runScriptFromResourceFile(sqlConnection, INIT_DB_SCRIPT_PATH);
     }
 
     @Override
