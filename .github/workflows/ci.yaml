@@ -30,10 +30,10 @@ jobs:
           # Gradle
           - folder: jdk_11_gradle
             jdk-version: 11
-            command: gradle build -x test
+            command: chmod +x gradlew & ./gradlew build -x test
           - folder: jdk_17_gradle
             jdk-version: 17
-            command: gradle build -x test
+            command: chmod +x gradlew & ./gradlew build -x test
     steps:
       - name: Setup JDK for EvoMaster
         uses: actions/setup-java@v1
