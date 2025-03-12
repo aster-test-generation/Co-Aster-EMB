@@ -2,8 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - "**"
     branches-ignore:
       - 'master'  # issue with dependency with EvoMaster releases
     tags-ignore:
