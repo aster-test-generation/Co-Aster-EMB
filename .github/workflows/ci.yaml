@@ -12,11 +12,21 @@ jobs:
   jdk_8_maven:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - name: Setup JDK
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Build with Maven
+      - name: Checkout EvoMaster
+        uses: actions/checkout@v4
+        with:
+          repository: WebFuzzing/EvoMaster
+          path: evomaster
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install EvoMaster
+        run: mvn clean install -DskipTests
+        working-directory: evomaster
+      - name: Checkout EMB
+        uses: actions/checkout@v4
+      - name: Build EMB
         run: mvn clean install -DskipTests
         working-directory: jdk_8_maven
