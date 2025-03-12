@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - 'master'  # issue with dependency with EvoMaster releases
+    tags-ignore:
+      - '**'
+
+jobs:
+
+  projects:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          # Maven
+          - folder: jdk_8_maven
+            jdk-version: 1.8
+            command: mvn clean install -DskipTests
+          - folder: jdk_11_maven
+            jdk-version: 11
+            command: mvn clean install -DskipTests
+          - folder: jdk_17_maven
+            jdk-version: 17
+            command: mvn clean install -DskipTests
+          - folder: jdk_21_maven
+            jdk-version: 21
+            command: mvn clean install -DskipTests
+          # Gradle
+          - folder: jdk_11_gradle
+            jdk-version: 11
+            command: chmod +x gradlew & ./gradlew build -x test
+          - folder: jdk_17_gradle
+            jdk-version: 17
+            command: chmod +x gradlew & ./gradlew build -x test
+    steps:
+      - name: Setup JDK for EvoMaster
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Checkout EvoMaster
+        uses: actions/checkout@v4
+        with:
+          repository: WebFuzzing/EvoMaster
+          path: evomaster
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install EvoMaster
+        run: mvn clean install -DskipTests
+        working-directory: evomaster
+      - name: Setup JDK for EMB
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.jdk-version }}
+      - name: Checkout EMB
+        uses: actions/checkout@v4
+      - name: Build EMB
+        run: ${{ matrix.command }}
+        working-directory: ${{ matrix.folder }}
