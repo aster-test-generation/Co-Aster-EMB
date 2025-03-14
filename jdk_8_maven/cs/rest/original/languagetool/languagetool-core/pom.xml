@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.languagetool</groupId>
         <artifactId>languagetool-parent</artifactId>
         <version>5.2-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    
+
     <artifactId>languagetool-core</artifactId>
     <url>http://www.languagetool.org</url>
     <name>LanguageTool Style and Grammar Checker Core</name>
@@ -20,7 +20,7 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    
+
     <packaging>jar</packaging>
 
     <developers>
@@ -75,22 +75,28 @@
               -->
             <!-- START OF gRPC code generation -->
             <plugin>
-                <groupId>org.xolstice.maven.plugins</groupId>
-                <artifactId>protobuf-maven-plugin</artifactId>
-                <version>0.6.1</version>
+<!--                <groupId>org.xolstice.maven.plugins</groupId>--> <!-- Disable to enable Apple Silicon support -->
+<!--                <artifactId>protobuf-maven-plugin</artifactId>--> <!-- Disable to enable Apple Silicon support -->
+<!--                <version>0.6.1</version>-->
+                <groupId>com.github.os72</groupId>
+                <artifactId>protoc-jar-maven-plugin</artifactId>
+                <version>3.11.4</version>
                 <configuration>
-                    <protocArtifact>com.google.protobuf:protoc:3.11.0:exe:${os.detected.classifier}</protocArtifact>
-                    <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.27.1:exe:${os.detected.classifier}</pluginArtifact>
+<!--                    <protocArtifact>com.google.protobuf:protoc:3.11.0:exe:${os.detected.classifier}</protocArtifact>--> <!-- Disable to enable Apple Silicon support -->
+<!--                    <pluginId>grpc-java</pluginId>--> <!-- Disable to enable Apple Silicon support -->
+                    <protocArtifact>com.google.protobuf:protoc:3.17.3:exe:${os.detected.classifier}</protocArtifact>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.42.1:exe:${os.detected.classifier}</pluginArtifact>
+<!--                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.27.1:exe:${os.detected.classifier}</pluginArtifact>--> <!-- Disable to enable Apple Silicon support -->
                     <!-- output into src/main/java, but don't ever clear it (would delete all regular source files) -->
                     <outputDirectory>${project.build.sourceDirectory}/</outputDirectory>
-                    <clearOutputDirectory>false</clearOutputDirectory>
+<!--                    <clearOutputDirectory>false</clearOutputDirectory>--> <!-- Disable to enable Apple Silicon support -->
                 </configuration>
                 <executions>
                     <execution>
                         <goals>
-                            <goal>compile</goal>
-                            <goal>compile-custom</goal>
+                            <goal>run</goal>
+<!--                            <goal>compile</goal>--> <!-- Disable to enable Apple Silicon support -->
+<!--                            <goal>compile-custom</goal>--> <!-- Disable to enable Apple Silicon support -->
                         </goals>
                     </execution>
                 </executions>
@@ -248,7 +254,7 @@
             <artifactId>hunspell</artifactId>
             <version>1.1.1</version>
         </dependency>
-        
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
