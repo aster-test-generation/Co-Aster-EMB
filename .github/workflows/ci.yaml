@@ -10,9 +10,10 @@ on:
 jobs:
 
   projects:
-    runs-on: ubuntu-latest
+    runs-on:  ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
         include:
           # Maven
           - folder: jdk_8_maven
