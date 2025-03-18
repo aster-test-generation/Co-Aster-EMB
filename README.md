@@ -341,8 +341,3 @@ the following plugin dependency version:
 Branch *develop* is using the most recent SNAPSHOT version of _EvoMaster_.
 As that is not published online, you need to clone its repository, and build
 it locally (see its documentation on how to do it).
-
-### Building on Apple Silicon
-
-When building on Apple Silicon, use JDKs that are built for x86 instead of Arm (i.e., *AArch64*).
-Since, not all the dependencies are available for Arm, especially older versions.
