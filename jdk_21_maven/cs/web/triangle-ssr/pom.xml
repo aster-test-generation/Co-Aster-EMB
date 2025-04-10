@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>springmvc-docker</artifactId>
+    <artifactId>triangle-ssr</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SpringMVCDocker</name>
-    <description>SpringMVCDocker</description>
+    <name>TriangleSSR</name>
+    <description>TriangleSSR</description>
     <url/>
     <licenses>
         <license/>
