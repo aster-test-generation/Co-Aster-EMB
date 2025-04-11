@@ -16,8 +16,17 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
 
+
+    <appender name="REPLACED_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>SECURE_LOG: %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <logger name="secureLogger" level="INFO" additivity="false">
-        <appender-ref ref="secureLog"/>
+        <appender-ref ref="REPLACED_APPENDER"/>
+<!--   This gives issues under Mac, also it create unnecessary files on disk when running experiments -->
+<!--        <appender-ref ref="secureLog"/>-->
     </logger>
 
     <appender name="auditLogger" class="com.papertrailapp.logback.Syslog4jAppender">
