@@ -2,37 +2,37 @@ source("analyze.R")
 
 suts <- function(){
 
-  # This generated table should be added to Git, as will change based on papers
+  # This generated table should NOT be added to Git, as will change based on papers
   TABLE = "./table_suts.tex"
 
   #Names here should match what in data.csv
   SUTS = c(
 ### REST
-"bibliothek",
+# "bibliothek",
 "blogapi",
-"catwatch",
-"cwa-verification",
+# "catwatch",
+# "cwa-verification",
 "familie-ba-sak",
-"features-service",
-"genome-nexus",
-"gestaohospital",
-"languagetool",
+# "features-service",
+# "genome-nexus",
+# "gestaohospital",
+# "languagetool",
 "market",
 "ocvn",
 "pay-publicapi",
-"person-controller",
+# "person-controller",
 "proxyprint",
 "reservations-api",
-"rest-ncs",
-"rest-news",
-"rest-scs",
-"restcountries",
+# "rest-ncs",
+# "rest-news",
+# "rest-scs",
+# "restcountries",
 "scout-api",
-"session-service",
+# "session-service",
 "tiltaksgjennomforing-api",
 "tracking-system",
-"user-management",
-"youtube-mock",
+# "user-management",
+# "youtube-mock",
 ### GraphQL
     # "petclinic-graphql",
     # "patio-api",
