@@ -149,9 +149,12 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
   gRPC: [jdk_8_maven/cs/rpc/grpc/artificial/grpc-scs](jdk_8_maven/cs/rpc/grpc/artificial/grpc-scs).
 
 
-### WEB: backend in Java/Kotlin (1)
 
-* **Spring-PetClinic** (Apache), [jdk_17_maven/cs/web/spring-petclinic](jdk_17_maven/cs/web/spring-petclinic), from [https://github.com/spring-projects/spring-petclinic]()
+[//]: # (FIXME: temporarely removed until we fully support Web)
+[//]: # (### WEB: backend in Java/Kotlin &#40;1&#41;)
+
+[//]: # ()
+[//]: # (* **Spring-PetClinic** &#40;Apache&#41;, [jdk_17_maven/cs/web/spring-petclinic]&#40;jdk_17_maven/cs/web/spring-petclinic&#41;, from [https://github.com/spring-projects/spring-petclinic]&#40;&#41;)
 
 
 [//]: # (### REST: JavaScript/TypeScript)
