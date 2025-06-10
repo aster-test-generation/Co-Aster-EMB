@@ -326,3 +326,5 @@ scripts/dockerize/dockerfiles
 /jdk_11_maven/em/external/rest/tracking-system/target/
 /jdk_17_maven/em/embedded/rest/tiltaksgjennomforing-api/target/
 /jdk_17_maven/em/external/rest/tiltaksgjennomforing-api/target/
+
+jdk_17_maven/cs/rest/ohsome-api/target/
