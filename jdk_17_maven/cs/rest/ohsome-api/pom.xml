@@ -212,6 +212,10 @@
             <goals>
               <goal>repackage</goal>
             </goals>
+            <configuration>
+              <finalName>ohsome-api</finalName>
+              <classifier>sut</classifier>
+            </configuration>
           </execution>
         </executions>
       </plugin>
