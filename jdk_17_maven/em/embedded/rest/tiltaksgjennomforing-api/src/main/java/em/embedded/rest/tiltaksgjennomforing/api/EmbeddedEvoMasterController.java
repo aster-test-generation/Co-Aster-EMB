@@ -1,6 +1,8 @@
 package em.embedded.rest.tiltaksgjennomforing.api;
 
 import com.nimbusds.jose.JOSEObjectType;
+import com.webfuzzing.commons.auth.LoginEndpoint;
+import com.webfuzzing.commons.auth.TokenHandling;
 import no.nav.security.mock.oauth2.MockOAuth2Server;
 import no.nav.security.mock.oauth2.OAuth2Config;
 import no.nav.security.mock.oauth2.token.RequestMapping;
@@ -11,9 +13,6 @@ import org.evomaster.client.java.controller.EmbeddedSutController;
 import org.evomaster.client.java.controller.InstrumentedSutStarter;
 import org.evomaster.client.java.controller.api.dto.SutInfoDto;
 import org.evomaster.client.java.controller.api.dto.auth.AuthenticationDto;
-import org.evomaster.client.java.controller.api.dto.auth.HttpVerb;
-import org.evomaster.client.java.controller.api.dto.auth.LoginEndpointDto;
-import org.evomaster.client.java.controller.api.dto.auth.TokenHandlingDto;
 import org.evomaster.client.java.controller.api.dto.database.schema.DatabaseType;
 import org.evomaster.client.java.controller.problem.ProblemInfo;
 import org.evomaster.client.java.controller.problem.RestProblem;
@@ -86,20 +85,20 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     private AuthenticationDto getAuthenticationDto(String label, String keyValue, String oauth2Url){
 
         AuthenticationDto dto = new AuthenticationDto(label);
-        LoginEndpointDto x = new LoginEndpointDto();
-        dto.loginEndpointAuth = x;
+        LoginEndpoint x = new LoginEndpoint();
+        dto.setLoginEndpointAuth(x);
 
-        x.externalEndpointURL = oauth2Url;
-        x.payloadRaw = keyValue+"&grant_type=client_credentials&code=foo&client_id=foo&client_secret=secret";
-        x.verb = HttpVerb.POST;
-        x.contentType = "application/x-www-form-urlencoded";
-        x.expectCookies = false;
+        x.setExternalEndpointURL(oauth2Url);
+        x.setPayloadRaw(keyValue+"&grant_type=client_credentials&code=foo&client_id=foo&client_secret=secret");
+        x.setVerb(LoginEndpoint.HttpVerb.POST);
+        x.setContentType("application/x-www-form-urlencoded");
+        x.setExpectCookies(false);
 
-        TokenHandlingDto token = new TokenHandlingDto();
-        token.headerPrefix = "Bearer ";
-        token.httpHeaderName = "Authorization";
-        token.extractFromField = "/access_token";
-        x.token = token;
+        TokenHandling token = new TokenHandling();
+        token.setHeaderPrefix("Bearer ");
+        token.setHttpHeaderName("Authorization");
+        token.setExtractFromField("/access_token");
+        x.setToken(token);
 
         return dto;
     }
