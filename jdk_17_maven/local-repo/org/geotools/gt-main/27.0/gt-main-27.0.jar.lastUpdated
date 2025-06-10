@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jun 10 12:39:22 CEST 2025
+https\://repo.maven.apache.org/maven2/.lastUpdated=1749551962429
+https\://nexus.heigit.org/repository/maven-public/.error=Could not transfer artifact org.geotools\:gt-main\:jar\:27.0 from/to heigit-nexus-public (https\://nexus.heigit.org/repository/maven-public/)\: status code\: 403, reason phrase\: Forbidden (403)
+file\://D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\cs\\rest\\ohsome-api/../../../local-repo/.error=
+@default-heigit-nexus-public-https\://nexus.heigit.org/repository/maven-public/.lastUpdated=1749549631819
+https\://repo.maven.apache.org/maven2/.error=
+https\://repo.osgeo.org/repository/release/.lastUpdated=1749549636030
+file\://D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\cs\\rest\\ohsome-api/../../../local-repo/.lastUpdated=1749551961807

@@ -1,0 +1,13 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jun 10 12:57:15 CEST 2025
+file\://D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\local-repo/.error=
+https\://repo.maven.apache.org/maven2/.lastUpdated=1749552934683
+https\://nexus.heigit.org/repository/maven-public/.error=Could not transfer artifact org.geotools\:plugin\:pom\:27.0 from/to heigit-nexus-public (https\://nexus.heigit.org/repository/maven-public/)\: status code\: 403, reason phrase\: Forbidden (403)
+@default-local-repo2-D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\local-repo/.lastUpdated=1749552947303
+file\://D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\cs\\rest\\ohsome-api/../../../local-repo/.error=
+@default-heigit-nexus-public-https\://nexus.heigit.org/repository/maven-public/.lastUpdated=1749549631031
+D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\local-repo/.error=Could not transfer artifact org.geotools\:plugin\:pom\:27.0 from/to local-repo2 (D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\local-repo)\: Cannot access D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\local-repo with type default using the available connector factories\: BasicRepositoryConnectorFactory
+https\://repo.maven.apache.org/maven2/.error=
+https\://repo.osgeo.org/repository/release/.lastUpdated=1749549631438
+file\://D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\local-repo/.lastUpdated=1749552934553
+file\://D\:\\Github\\Akademik\\FLA\\EMB\\jdk_17_maven\\cs\\rest\\ohsome-api/../../../local-repo/.lastUpdated=1749553035127

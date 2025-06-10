@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jun 10 12:00:27 CEST 2025
+https\://nexus.heigit.org/repository/maven-public/.error=Could not transfer artifact org.geotools\:geotools\:pom\:27.0 from/to heigit-nexus-public (https\://nexus.heigit.org/repository/maven-public/)\: status code\: 403, reason phrase\: Forbidden (403)
+@default-heigit-nexus-public-https\://nexus.heigit.org/repository/maven-public/.lastUpdated=1749549626235
+https\://repo.osgeo.org/repository/release/.lastUpdated=1749549627023
