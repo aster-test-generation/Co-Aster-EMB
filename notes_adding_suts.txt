@@ -139,3 +139,4 @@ As there are quite a few things to keep in mind, we list here the most important
 
 - If the SUT is a REST API, need to add its OpenAPI schema into "openapi-swagger" folder
 
+- If REST APIs, must support BB experiments via Docker files. This done in files under "scripts/dockerize".
