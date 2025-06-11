@@ -8,8 +8,6 @@ import org.evomaster.client.java.controller.problem.ProblemInfo;
 import org.evomaster.client.java.controller.problem.RestProblem;
 import org.evomaster.client.java.sql.DbSpecification;
 import org.heigit.ohsome.ohsomeapi.Application;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import java.util.*;
 
