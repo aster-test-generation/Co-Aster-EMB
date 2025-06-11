@@ -16,6 +16,7 @@ TRUE,features-service,REST,Java,JDK 8,Maven,39,2275,H2,Apache,18,FALSE,https://g
 TRUE,gestaohospital,REST,Java,JDK 8,Maven,33,3506,MongoDB,UNDEFINED,20,FALSE,https://github.com/ValchanOficial/GestaoHospital
 TRUE,languagetool,REST,Java,JDK 8,Maven,1385,174781,,LGPL,2,FALSE,https://github.com/languagetool-org/languagetool
 TRUE,ocvn,REST,Java,JDK 8,Maven,526,45521,H2;MongoDB,MIT,258,TRUE,https://github.com/devgateway/ocvn
+TRUE,ohsome-api,REST,Java,JDK 17,Maven,87,14166,OSHDB,AGPL-3.0,134,FALSE,https://github.com/GIScience/ohsome-api
 TRUE,proxyprint,REST,Java,JDK 8,Maven,73,8338,H2,Apache,74,TRUE,https://github.com/ProxyPrint/proxyprint-kitchen
 TRUE,rest-ncs,REST,Java,JDK 8,Maven,9,605,,UNDEFINED,6,FALSE,UNDEFINED
 TRUE,rest-news,REST,Kotlin,JDK 8,Maven,11,857,H2,LGPL,7,FALSE,https://github.com/arcuri82/testing_security_development_enterprise_systems

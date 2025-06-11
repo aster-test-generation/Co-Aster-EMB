@@ -328,3 +328,5 @@ scripts/dockerize/dockerfiles
 /jdk_17_maven/em/external/rest/tiltaksgjennomforing-api/target/
 
 jdk_17_maven/cs/rest/ohsome-api/target/
+jdk_17_maven/em/embedded/rest/ohsome-api/target/
+jdk_17_maven/em/external/rest/ohsome-api/target/

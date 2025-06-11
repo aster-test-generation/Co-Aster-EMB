@@ -15,6 +15,7 @@
     <modules>
         <module>familie-ba-sak</module>
         <module>tiltaksgjennomforing-api</module>
+        <module>ohsome-api</module>
     </modules>
 
 </project>
