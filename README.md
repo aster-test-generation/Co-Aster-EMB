@@ -96,9 +96,9 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 
 * **News** (LGPL), [jdk_8_maven/cs/rest/artificial/news](jdk_8_maven/cs/rest/artificial/news), from [https://github.com/arcuri82/testing_security_development_enterprise_systems](https://github.com/arcuri82/testing_security_development_enterprise_systems)
 
-* **Ohsome API** (MIT), [jdk_17_maven/cs/rest/ohsome-api](jdk_17_maven/cs/rest/ohsome-api), from [https://github.com/GIScience/ohsome-api](https://github.com/GIScience/ohsome-api)
-
 * **OCVN** (MIT), [jdk_8_maven/cs/rest-gui/ocvn](jdk_8_maven/cs/rest-gui/ocvn), from [https://github.com/devgateway/ocvn](https://github.com/devgateway/ocvn)
+
+* **Ohsome API** (MIT), [jdk_17_maven/cs/rest/ohsome-api](jdk_17_maven/cs/rest/ohsome-api), from [https://github.com/GIScience/ohsome-api](https://github.com/GIScience/ohsome-api)
 
 * **Payments Public API** (MIT), [jdk_11_maven/cs/rest/pay-publicapi](jdk_11_maven/cs/rest/pay-publicapi), from [https://github.com/alphagov/pay-publicapi](https://github.com/alphagov/pay-publicapi)
 
