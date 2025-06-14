@@ -70,7 +70,7 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 > **IMPORTANT**: More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
 
 
-### REST: Java/Kotlin (26)
+### REST: Java/Kotlin (27)
 
 * **Bibliothek** (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
 
@@ -98,7 +98,7 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 
 * **OCVN** (MIT), [jdk_8_maven/cs/rest-gui/ocvn](jdk_8_maven/cs/rest-gui/ocvn), from [https://github.com/devgateway/ocvn](https://github.com/devgateway/ocvn)
 
-* **Ohsome API** (MIT), [jdk_17_maven/cs/rest/ohsome-api](jdk_17_maven/cs/rest/ohsome-api), from [https://github.com/GIScience/ohsome-api](https://github.com/GIScience/ohsome-api)
+* **Ohsome API** (AGPL-3.0), [jdk_17_maven/cs/rest/ohsome-api](jdk_17_maven/cs/rest/ohsome-api), from [https://github.com/GIScience/ohsome-api](https://github.com/GIScience/ohsome-api)
 
 * **Payments Public API** (MIT), [jdk_11_maven/cs/rest/pay-publicapi](jdk_11_maven/cs/rest/pay-publicapi), from [https://github.com/alphagov/pay-publicapi](https://github.com/alphagov/pay-publicapi)
 
@@ -117,6 +117,8 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 * **SCS**, [jdk_8_maven/cs/rest/artificial/scs](jdk_8_maven/cs/rest/artificial/scs), (not-known license, artificial string examples coming from different sources)
 
 * **Session Service** (not-known license), [jdk_8_maven/cs/rest/original/session-service](jdk_8_maven/cs/rest/original/session-service), from [https://github.com/cBioPortal/session-service](https://github.com/cBioPortal/session-service)
+
+* **Spring-batch-rest** (Apache), [jdk_8_maven/cs/rest/original/spring-batch-rest](jdk_8_maven/cs/rest/original/spring-batch-rest), from [https://github.com/chrisgleissner/spring-batch-rest](https://github.com/chrisgleissner/spring-batch-rest)
 
 * **Tiltaksgjennomføring API** (MIT), [jdk_17_maven/cs/rest/tiltaksgjennomforing-api](jdk_17_maven/cs/rest/tiltaksgjennomforing-api), from [https://github.com/navikt/tiltaksgjennomforing-api](https://github.com/navikt/tiltaksgjennomforing-api)
 
