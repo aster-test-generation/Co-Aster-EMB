@@ -110,9 +110,8 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     @Override
     public String getLogMessageOfInitializedServer() {
-        return "Started spring-batch-rest-sut in ";
+        return "Started SpringBatchRestCoreSampleApplication in";
     }
-
 
     @Override
     public void preStart() {
