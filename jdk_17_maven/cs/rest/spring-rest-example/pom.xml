@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>project-api</artifactId>
+	<artifactId>spring-rest-example</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>project-api</name>
+	<name>spring-rest-example</name>
 	<description>project-api</description>
 
 	<parent>
@@ -60,7 +60,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -68,6 +73,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>spring-rest-example</finalName>
+					<classifier>sut</classifier>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -4,16 +4,16 @@ spring:
        
 ## Hibernate Properties
 # The SQL dialect makes Hibernate generate better SQL for the chosen database
-    jpa:
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.MySQLDialect
-          format_sql: true
-      # Hibernate ddl auto (create, create-drop, validate, update)
+  jpa:
+    properties:
       hibernate:
-        ddl-auto: update
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    # Hibernate ddl auto (create, create-drop, validate, update)
+    hibernate:
+      ddl-auto: update
 
-      show-sql: true
+    show-sql: true
   datasource:
     url: jdbc:mysql://{YOUR_MSQL_SERVER}:3306/{DATABASE NAME}?useSSL=false
     username: { YOUR_MYSQL_ID }
