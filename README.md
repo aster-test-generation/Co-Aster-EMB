@@ -120,6 +120,8 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 
 * **Spring-batch-rest** (Apache), [jdk_8_maven/cs/rest/original/spring-batch-rest](jdk_8_maven/cs/rest/original/spring-batch-rest), from [https://github.com/chrisgleissner/spring-batch-rest](https://github.com/chrisgleissner/spring-batch-rest)
 
+* **Spring Boot Restful API Example** (MIT), [jdk_17_maven/cs/rest/spring-rest-example](jdk_17_maven/cs/rest/spring-rest-example), from [https://github.com/phantasmicmeans/spring-boot-restful-api-example](https://github.com/phantasmicmeans/spring-boot-restful-api-example)
+
 * **Tiltaksgjennomføring API** (MIT), [jdk_17_maven/cs/rest/tiltaksgjennomforing-api](jdk_17_maven/cs/rest/tiltaksgjennomforing-api), from [https://github.com/navikt/tiltaksgjennomforing-api](https://github.com/navikt/tiltaksgjennomforing-api)
 
 * **User Management** (MIT), [jdk_8_maven/cs/rest/original/user-management](jdk_8_maven/cs/rest/original/user-management), from [https://github.com/andreagiassi/microservice-rbac-user-management](https://github.com/andreagiassi/microservice-rbac-user-management)
