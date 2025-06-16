@@ -12,6 +12,7 @@ TRUE,bibliothek,REST,Java,JDK 17,Gradle,33,2176,MongoDB,MIT,8,FALSE,https://gith
 TRUE,reservations-api,REST,Java,JDK 11,Gradle,39,1853,MongoDB,UNDEFINED,7,TRUE,https://github.com/cyrilgavala/reservations-api
 TRUE,catwatch,REST,Java,JDK 8,Maven,106,9636,H2,Apache,14,FALSE,https://github.com/zalando-incubator/catwatch
 TRUE,cwa-verification,REST,Java,JDK 11,Maven,47,3955,H2,Apache,5,FALSE,https://github.com/corona-warn-app/cwa-verification-server
+TRUE,erc20-rest-service,REST,Java,JDK 8,Gradle,7,1378,,UNDEFINED,13,FALSE,https://github.com/web3labs/erc20-rest-service
 TRUE,features-service,REST,Java,JDK 8,Maven,39,2275,H2,Apache,18,FALSE,https://github.com/JavierMF/features-service
 TRUE,gestaohospital,REST,Java,JDK 8,Maven,33,3506,MongoDB,UNDEFINED,20,FALSE,https://github.com/ValchanOficial/GestaoHospital
 TRUE,languagetool,REST,Java,JDK 8,Maven,1385,174781,,LGPL,2,FALSE,https://github.com/languagetool-org/languagetool
