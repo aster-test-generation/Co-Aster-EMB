@@ -65,6 +65,10 @@
                         </goals>
                         <configuration>
                             <attach>false</attach>
+                            <!--                            Modified -->
+                            <finalName>spring-batch-rest</finalName>
+                            <classifier>sut</classifier>
+                            <!--                            Modified -->
                         </configuration>
                     </execution>
                 </executions>

@@ -200,6 +200,9 @@ def build_jdk_8_maven():
     copy(folder + "/cs/rpc/grpc/artificial/grpc-scs/target/rpc-grpc-scs-sut.jar", DIST)
     copy(folder + "/em/external/grpc/scs/target/rpc-grpc-scs-evomaster-runner.jar", DIST)
 
+    copy(folder + "/cs/rest/original/spring-batch-rest/example/api/target/spring-batch-rest-sut.jar", DIST)
+    copy(folder + "/em/external/rest/spring-batch-rest/target/spring-batch-rest-evomaster-runner.jar", DIST)
+
     ind0 = os.environ.get('SUT_LOCATION_IND0', '')
     if ind0 == '':
         print("\nWARN: SUT_LOCATION_IND0 env variable is not defined")

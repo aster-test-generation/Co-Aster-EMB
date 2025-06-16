@@ -330,3 +330,11 @@ scripts/dockerize/dockerfiles
 jdk_17_maven/cs/rest/ohsome-api/target/
 jdk_17_maven/em/embedded/rest/ohsome-api/target/
 jdk_17_maven/em/external/rest/ohsome-api/target/
+
+jdk_8_maven/cs/rest/original/spring-batch-rest/api/target
+jdk_8_maven/cs/rest/original/spring-batch-rest/quartz-api/target
+jdk_8_maven/cs/rest/original/spring-batch-rest/util/target
+jdk_8_maven/cs/rest/original/spring-batch-rest/example/api/target
+jdk_8_maven/cs/rest/original/spring-batch-rest/example/quartz-api/target
+jdk_8_maven/em/embedded/rest/spring-batch-rest/target
+jdk_8_maven/em/external/rest/spring-batch-rest/target
