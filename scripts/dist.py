@@ -260,6 +260,9 @@ def build_jdk_17_maven():
     copy(folder + "/cs/rest/ohsome-api/target/ohsome-api-sut.jar", DIST)
     copy(folder + "/em/external/rest/ohsome-api/target/ohsome-api-evomaster-runner.jar", DIST)
 
+    copy(folder + "/cs/rest/spring-rest-example/target/spring-rest-example-sut.jar", DIST)
+    copy(folder + "/em/external/rest/spring-rest-example/target/spring-rest-example-evomaster-runner.jar", DIST)
+
 ####################
 def build_jdk_21_maven():
     folder = "jdk_21_maven"
