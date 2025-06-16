@@ -51,12 +51,6 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
                 new String[]{"--server.port=0",
                 });
 
-        try {
-            Thread.sleep(3_000);
-        } catch (InterruptedException e) {
-            // do nothing
-        }
-
         return "http://localhost:" + getSutPort();
     }
 

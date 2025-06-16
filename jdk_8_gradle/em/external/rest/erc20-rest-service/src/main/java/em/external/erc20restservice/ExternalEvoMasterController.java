@@ -119,11 +119,6 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
     @Override
     public void postStart() {
-        try {
-            Thread.sleep(3_000);
-        } catch (InterruptedException e) {
-            // do nothing
-        }
     }
 
     @Override
