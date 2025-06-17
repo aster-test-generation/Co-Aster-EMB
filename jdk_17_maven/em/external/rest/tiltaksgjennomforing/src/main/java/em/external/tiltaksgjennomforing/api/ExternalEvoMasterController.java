@@ -35,12 +35,12 @@ public class ExternalEvoMasterController extends ExternalSutController {
         if (args.length > 1) {
             sutPort = Integer.parseInt(args[1]);
         }
-        String jarLocation = "cs/rest/tiltaksgjennomforing-api/target";
+        String jarLocation = "cs/rest/tiltaksgjennomforing/target";
         if (args.length > 2) {
             jarLocation = args[2];
         }
         if(! jarLocation.endsWith(".jar")) {
-            jarLocation += "/tiltaksgjennomforing-api-sut.jar";
+            jarLocation += "/tiltaksgjennomforing-sut.jar";
         }
 
         int timeoutSeconds = 120;

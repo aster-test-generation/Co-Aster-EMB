@@ -276,7 +276,7 @@ jdk_17_maven/em/embedded/rest/signal-server/target/
 jdk_17_maven/cs/rest/familie-tilbake/target/
 jdk_17_maven/em/embedded/rest/familie-tilbake/target/
 jdk_17_maven/cs/rest/familie-ba-sak/target/
-jdk_17_maven/cs/rest/tiltaksgjennomforing-api/target/
+jdk_17_maven/cs/rest/tiltaksgjennomforing/target/
 jdk_17_maven/em/embedded/rest/familie-ba-sak/target/
 
 /jdk_8_maven/em/embedded/grpc/ncs/target/
@@ -324,8 +324,8 @@ scripts/dockerize/dockerfiles
 /jdk_21_maven/em/external/rest/person-controller/target/
 /jdk_11_maven/em/embedded/rest/tracking-system/target/
 /jdk_11_maven/em/external/rest/tracking-system/target/
-/jdk_17_maven/em/embedded/rest/tiltaksgjennomforing-api/target/
-/jdk_17_maven/em/external/rest/tiltaksgjennomforing-api/target/
+/jdk_17_maven/em/embedded/rest/tiltaksgjennomforing/target/
+/jdk_17_maven/em/external/rest/tiltaksgjennomforing/target/
 
 jdk_17_maven/cs/rest/ohsome-api/target/
 jdk_17_maven/em/embedded/rest/ohsome-api/target/

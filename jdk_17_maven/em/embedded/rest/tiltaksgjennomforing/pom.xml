@@ -9,7 +9,7 @@
         <version>3.4.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>evomaster-benchmark-jdk17-em-embedded-rest-tiltaksgjennomforing-api</artifactId>
+    <artifactId>evomaster-benchmark-jdk17-em-embedded-rest-tiltaksgjennomforing</artifactId>
     <packaging>jar</packaging>
 
     <repositories>
@@ -59,7 +59,7 @@
 
         <dependency>
             <groupId>no.nav.tag</groupId>
-            <artifactId>tiltaksgjennomforing-api</artifactId>
+            <artifactId>tiltaksgjennomforing</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
