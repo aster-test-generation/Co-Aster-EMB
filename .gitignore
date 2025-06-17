@@ -345,3 +345,9 @@ jdk_8_maven/em/external/rest/spring-batch-rest/target
 /jdk_17_maven/cs/rest/spring-rest-example/target/
 /jdk_17_maven/em/embedded/rest/spring-rest-example/target/
 /jdk_17_maven/em/external/rest/spring-rest-example/target/
+
+/jdk_8_gradle/.gradle
+/jdk_8_gradle/cs/rest/erc20-rest-service/build
+/jdk_8_gradle/em/embedded/rest/erc20-rest-service/build
+/jdk_8_gradle/em/external/rest/erc20-rest-service/build
+/jdk_8_gradle/cs/rest/erc20-rest-service/.gradle
