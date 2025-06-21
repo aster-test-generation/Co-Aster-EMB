@@ -32,6 +32,7 @@
 |__person-controller__|REST|1112|16|12|Java|JDK 21|Maven|MongoDB||
 |__rest-scs__|REST|862|13|11|Java|JDK 8|Maven|||
 |__rest-ncs__|REST|605|9|6|Java|JDK 8|Maven|||
+|__spring-actuator-demo__|REST|117|5|2|Java|JDK 8|Maven||&check;|
 |__familie-ba-sak__|REST|143556|1089|183|Kotlin|JDK 17|Maven|PostgreSQL|&check;|
 |__rest-news__|REST|857|11|7|Kotlin|JDK 8|Maven|H2||
 |__thrift-scs__|Thrift|772|14|11|Java|JDK 8|Maven|||

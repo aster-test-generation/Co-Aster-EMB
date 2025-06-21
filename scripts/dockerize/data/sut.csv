@@ -28,3 +28,4 @@ ohsome-api,TRUE,"",--server.port=8080 --database.db=heidelberg,http:///localhost
 spring-batch-rest,TRUE,"",--server.port=8080 --spring.batch.job.enabled=false --lastNamePrefix= --upperCase=false,http://localhost:8080/v3/api-docs,http://localhost:8080,FALSE,,,,,,FALSE,FALSE,
 spring-rest-example,TRUE,"","--server.port=8080 --spring.datasource.username=root --spring.datasource.password=root --spring.datasource.url=""jdbc:mysql://db:3306/example?useSSL=false&allowPublicKeyRetrieval=true""",http://localhost:8080/v3/api-docs,http://localhost:8080,FALSE,mysql:8.0,3306,/var/lib/mysql,MYSQL_ROOT_PASSWORD: root;MYSQL_DATABASE: example,,FALSE,TRUE,"""CMD""; ""mysqladmin""; ""ping""; ""-h""; ""localhost"""
 erc20-rest-service,TRUE,"",--server.port=8080,http://localhost:8080/v2/api-docs,http://localhost:8080,FALSE,,,,,,FALSE,FALSE,
+spring-actuator-demo,TRUE,"",--server.port=8080,http://localhost:8080/v3/api-docs,http://localhost:8080,FALSE,,,,,,FALSE,FALSE,
