@@ -5,14 +5,12 @@
 |__petclinic-graphql__|GraphQL|5212|89|15|Java|JDK 8|Maven|PostgreSQL||
 |__graphql-scs__|GraphQL|577|13|11|Kotlin|JDK 8|Maven|||
 |__graphql-ncs__|GraphQL|548|8|6|Kotlin|JDK 8|Maven|||
-|__signal-registration__|gRPC|13652|177|5|Java|JDK 17|Maven|||
-|__grpc-scs__|gRPC|894|14|11|Java|JDK 8|Maven|||
-|__grpc-ncs__|gRPC|638|9|6|Java|JDK 8|Maven|||
 |__languagetool__|REST|174781|1385|2|Java|JDK 8|Maven|||
 |__ocvn__|REST|45521|526|258|Java|JDK 8|Maven|H2, MongoDB|&check;|
 |__pay-publicapi__|REST|34576|377|10|Java|JDK 11|Maven|Redis|&check;|
 |__genome-nexus__|REST|30004|405|23|Java|JDK 8|Maven|MongoDB||
-|__tiltaksgjennomforing-api__|REST|27316|472|79|Java|JDK 17|Maven|PostgreSQL|&check;|
+|__tiltaksgjennomforing__|REST|27316|472|79|Java|JDK 17|Maven|PostgreSQL|&check;|
+|__ohsome-api__|REST|14166|87|134|Java|JDK 17|Maven|OSHDB||
 |__market__|REST|9861|124|13|Java|JDK 11|Maven|H2|&check;|
 |__scout-api__|REST|9736|93|49|Java|JDK 8|Maven|H2|&check;|
 |__catwatch__|REST|9636|106|14|Java|JDK 8|Maven|H2||
@@ -21,6 +19,7 @@
 |__blogapi__|REST|4787|89|52|Java|JDK 8|Maven|MySQL|&check;|
 |__user-management__|REST|4274|69|21|Java|JDK 8|Maven|MySQL||
 |__cwa-verification__|REST|3955|47|5|Java|JDK 11|Maven|H2||
+|__spring-batch-rest__|REST|3668|65|5|Java|JDK 8|Maven|||
 |__gestaohospital__|REST|3506|33|20|Java|JDK 8|Maven|MongoDB||
 |__youtube-mock__|REST|3229|29|1|Java|JDK 8|Maven|||
 |__features-service__|REST|2275|39|18|Java|JDK 8|Maven|H2||
@@ -28,10 +27,16 @@
 |__restcountries__|REST|1977|24|22|Java|JDK 8|Maven|||
 |__reservations-api__|REST|1853|39|7|Java|JDK 11|Gradle|MongoDB|&check;|
 |__session-service__|REST|1471|15|8|Java|JDK 8|Maven|MongoDB||
+|__spring-rest-example__|REST|1426|32|9|Java|JDK 17|Maven|MySQL||
+|__erc20-rest-service__|REST|1378|7|13|Java|JDK 8|Gradle|||
 |__person-controller__|REST|1112|16|12|Java|JDK 21|Maven|MongoDB||
 |__rest-scs__|REST|862|13|11|Java|JDK 8|Maven|||
 |__rest-ncs__|REST|605|9|6|Java|JDK 8|Maven|||
+|__spring-actuator-demo__|REST|117|5|2|Java|JDK 8|Maven||&check;|
 |__familie-ba-sak__|REST|143556|1089|183|Kotlin|JDK 17|Maven|PostgreSQL|&check;|
 |__rest-news__|REST|857|11|7|Kotlin|JDK 8|Maven|H2||
 |__thrift-scs__|Thrift|772|14|11|Java|JDK 8|Maven|||
 |__thrift-ncs__|Thrift|585|9|6|Java|JDK 8|Maven|||
+|__signal-registration__|gRPC|13652|177|5|Java|JDK 17|Maven|||
+|__grpc-scs__|gRPC|894|14|11|Java|JDK 8|Maven|||
+|__grpc-ncs__|gRPC|638|9|6|Java|JDK 8|Maven|||

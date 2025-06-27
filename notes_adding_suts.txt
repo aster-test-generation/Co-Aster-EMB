@@ -14,7 +14,8 @@ As there are quite a few things to keep in mind, we list here the most important
 - adding a new SUT should always be done on a branch of "develop", as needs to be reviewed.
 
 - need to check which built tool is used (e.g., Maven or Gradle), and which LTS version of the JDK is used.
-  Currently, we support from 8 on, ie, 8, 11 and 17 (and soon 21).
+  Currently, we support from 8 on, ie, 8, 11, 17 and 21.
+  If an API uses a non-LTS version, need to discuss/make a decision (eg, check a previous commit with latest LTS).
   Based on this, the SUT will belong to a folder matching such settings, eg, "jdk_8_maven".
   If such folder does not exist yet, it needs to be created and configured.
   See pom.xml from the other existing folders, to use as starting point (ie, copy&paste&update)
@@ -46,7 +47,7 @@ As there are quite a few things to keep in mind, we list here the most important
   A common example is parent pom declarations for SpringBoot applications, which mess up a lot of things (more on this later).
 
 - when adding the SUT, some files should be skipped, like ".idea", ".gitignore", "mvnw", ".github", etc., as those can
-  mess up the configurations of EMB. in other words, we only need the files to be able to build an executable JAR file.
+  mess up the configurations of EMB. In other words, we only need the files to be able to build an executable JAR file.
   Other files could be added, as long as not too heavy (eg readme.md) or potentially messing up EMB (eg netsted .gitignore).
 
 - Maven: when creating pom.xml tree-structures for "jdk_X_Y/cs/<type>", it makes sense to copy&paste from the other existing pom
@@ -138,3 +139,4 @@ As there are quite a few things to keep in mind, we list here the most important
 
 - If the SUT is a REST API, need to add its OpenAPI schema into "openapi-swagger" folder
 
+- If REST APIs, must support BB experiments via Docker files. This done in files under "scripts/dockerize".

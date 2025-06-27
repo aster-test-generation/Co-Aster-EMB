@@ -14,7 +14,9 @@
 
     <modules>
         <module>familie-ba-sak</module>
-        <module>tiltaksgjennomforing-api</module>
+        <module>tiltaksgjennomforing</module>
+        <module>ohsome-api</module>
+        <module>spring-rest-example</module>
 
 
         <!-- TODO: need to solve issue with Google OAuth2       -->
