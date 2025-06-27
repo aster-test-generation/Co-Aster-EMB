@@ -17,11 +17,11 @@ public class FormController {
 
     @PostMapping("/process")
     public String processForm(
-            @RequestParam("a") int a,
-            @RequestParam("b") int b,
-            @RequestParam("c") int c)
+            @RequestParam("a") String a,
+            @RequestParam("b") String b,
+            @RequestParam("c") String c)
     {
-        int value = TriangleClassification.classify(a, b, c);
+        int value = TriangleClassification.classify(Integer.parseInt(a), Integer.parseInt(b), Integer.parseInt(c));
         String triangleType = getTriangleType(value);
         return "redirect:/" + triangleType.toLowerCase().replace(" ", "-");
     }
