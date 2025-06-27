@@ -120,6 +120,8 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 
 * **Session Service** (not-known license), [jdk_8_maven/cs/rest/original/session-service](jdk_8_maven/cs/rest/original/session-service), from [https://github.com/cBioPortal/session-service](https://github.com/cBioPortal/session-service)
 
+* **Spring-actuator-demo** (not-known license), [jdk_8_maven/cs/rest/original/spring-actuator-demo](jdk_8_maven/cs/rest/original/spring-actuator-demo), from [https://github.com/callicoder/spring-boot-actuator-demo](https://github.com/callicoder/spring-boot-actuator-demo)
+
 * **Spring-batch-rest** (Apache), [jdk_8_maven/cs/rest/original/spring-batch-rest](jdk_8_maven/cs/rest/original/spring-batch-rest), from [https://github.com/chrisgleissner/spring-batch-rest](https://github.com/chrisgleissner/spring-batch-rest)
 
 * **Spring Boot Restful API Example** (MIT), [jdk_17_maven/cs/rest/spring-rest-example](jdk_17_maven/cs/rest/spring-rest-example), from [https://github.com/phantasmicmeans/spring-boot-restful-api-example](https://github.com/phantasmicmeans/spring-boot-restful-api-example)

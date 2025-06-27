@@ -31,6 +31,7 @@
         <module>user-management</module>
         <module>blogapi</module>
         <module>spring-batch-rest</module>
+        <module>spring-actuator-demo</module>
     </modules>
 
 </project>
