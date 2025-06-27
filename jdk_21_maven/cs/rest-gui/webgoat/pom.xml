@@ -6,6 +6,7 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.3.5</version>
+    <relativePath></relativePath>
   </parent>
 
   <groupId>org.owasp.webgoat</groupId>
@@ -108,6 +109,8 @@
 
   <dependencyManagement>
     <dependencies>
+
+
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-exec</artifactId>
@@ -432,6 +435,10 @@
           <excludeDevtools>true</excludeDevtools>
           <executable>true</executable>
           <mainClass>org.owasp.webgoat.server.StartWebGoat</mainClass>
+          <!--          MODIFIED-->
+          <finalName>webgoat</finalName>
+          <classifier>sut</classifier>
+          <!--          MODIFIED-->
           <!-- See http://docs.spring.io/spring-boot/docs/current/reference/html/howto-build.html#howto-extract-specific-libraries-when-an-executable-jar-runs -->
           <requiresUnpack>
             <dependency>
@@ -695,7 +702,9 @@
                     <argument>java.base/java.io=ALL-UNNAMED</argument>
                     <argument>--add-opens</argument>
                     <argument>java.base/java.util=ALL-UNNAMED</argument>
-                    <argument>${project.build.directory}/webgoat-${project.version}.jar</argument>
+                    <!--                    MODIFIED-->
+                    <argument>${project.build.directory}/webgoat-sut.jar</argument>
+                    <!--                    MODIFIED-->
                   </arguments>
                   <waitForInterrupt>false</waitForInterrupt>
                   <waitAfterLaunch>${waittimeForServerStart}</waitAfterLaunch>
