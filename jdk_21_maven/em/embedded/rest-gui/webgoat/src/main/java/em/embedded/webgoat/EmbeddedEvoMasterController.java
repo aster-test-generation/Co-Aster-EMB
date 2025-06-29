@@ -1,17 +1,21 @@
 package em.embedded.webgoat;
 
+import org.evomaster.client.java.controller.AuthUtils;
 import org.evomaster.client.java.controller.EmbeddedSutController;
 import org.evomaster.client.java.controller.InstrumentedSutStarter;
 import org.evomaster.client.java.controller.api.dto.auth.AuthenticationDto;
 import org.evomaster.client.java.controller.api.dto.SutInfoDto;
+import org.evomaster.client.java.controller.api.dto.database.schema.DatabaseType;
 import org.evomaster.client.java.sql.DbSpecification;
 import org.evomaster.client.java.controller.problem.ProblemInfo;
 import org.evomaster.client.java.controller.problem.RestProblem;
 import org.owasp.webgoat.server.StartWebGoat;
-import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import java.sql.Connection;
+import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.util.Collections;
+import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +40,8 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
 
     private ConfigurableApplicationContext ctx;
+    private Connection sqlConnection;
+    private List<DbSpecification> dbSpecification;
 
 
     public EmbeddedEvoMasterController() {
@@ -53,11 +59,37 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
         app.main(new String[]{
                 "--server.port=0",
-                "--spring.profiles.active=dev"
+                "--spring.profiles.active=dev",
+                "--spring.datasource.driver-class-name=org.h2.Driver",
+                "--spring.datasource.url=jdbc:h2:mem:testdb;INIT=CREATE SCHEMA IF NOT EXISTS CONTAINER;DB_CLOSE_DELAY=-1;",
+                "--spring.jpa.database-platform=org.hibernate.dialect.H2Dialect",
+                "--spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true",
+                "--spring.datasource.username=sa",
+                "--spring.datasource.password",
+                "--spring.jpa.properties.jakarta.persistence.schema-generation.scripts.action=none",
+                "--spring.sql.init.mode=never"
         });
 
 
         ctx = (ConfigurableApplicationContext) app.getApplicationContext();
+
+        if (sqlConnection != null) {
+            try {
+                sqlConnection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        JdbcTemplate jdbc = ctx.getBean(JdbcTemplate.class);
+
+        try {
+            sqlConnection = jdbc.getDataSource().getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.H2, sqlConnection)
+                .withInitSqlOnResourcePath("/data.sql"));
+
 
         return "http://localhost:" + getSutPort();
     }
@@ -93,14 +125,19 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public List<DbSpecification> getDbSpecifications() {
-        return null;
+        return dbSpecification;
     }
+
 
 
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
-        return null;
+
+        return Arrays.asList(
+                AuthUtils.getForDefaultSpringFormLogin("user1", "testuser", "testuser", "/WebGoat/login"),
+                AuthUtils.getForDefaultSpringFormLogin("user2", "testuser2", "testuser", "/WebGoat/login"));
     }
+
 
 
     @Override
