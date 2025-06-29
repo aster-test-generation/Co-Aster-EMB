@@ -357,3 +357,4 @@ jdk_8_maven/em/external/rest/spring-batch-rest/target
 /jdk_8_maven/em/external/rest/spring-actuator-demo/target
 
 /jdk_21_maven/cs/rest-gui/webgoat/target
+/jdk_21_maven/em/embedded/rest-gui/webgoat/target

@@ -30,13 +30,14 @@ import org.owasp.webgoat.container.WebGoat;
 import org.owasp.webgoat.webwolf.WebWolf;
 import org.springframework.boot.ResourceBanner;
 import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
 @Slf4j
 public class StartWebGoat {
-
+  static ApplicationContext webGoatContext; //MODIFIED
   public static void main(String[] args) {
     var parentBuilder =
         new SpringApplicationBuilder().parent(ParentConfig.class).web(WebApplicationType.NONE);
@@ -46,7 +47,8 @@ public class StartWebGoat {
         .web(WebApplicationType.SERVLET)
         .run(args);
 
-    ApplicationContext webGoatContext =
+    //MODIFIED
+    webGoatContext =
         parentBuilder
             .child(WebGoat.class)
             .banner(new ResourceBanner(new ClassPathResource("banner-webgoat.txt")))
@@ -54,6 +56,11 @@ public class StartWebGoat {
             .run(args);
 
     printStartUpMessage(webGoatContext);
+  }
+
+  //MODIFIED: Added this method to allow access to the ApplicationContext
+  public static ApplicationContext getApplicationContext() {
+      return webGoatContext;
   }
 
   private static void printStartUpMessage(ApplicationContext webGoatContext) {
