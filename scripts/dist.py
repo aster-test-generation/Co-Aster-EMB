@@ -277,10 +277,9 @@ def build_jdk_21_maven():
 
 
 ####################
-def build_jdk_11_gradle():
+def call_gradle(java_home, folder):
     env_vars = os.environ.copy()
-    env_vars["JAVA_HOME"] = JAVA_HOME_11
-    folder = "jdk_11_gradle"
+    env_vars["JAVA_HOME"] = java_home
 
     command = "gradlew"
 
@@ -297,6 +296,24 @@ def build_jdk_11_gradle():
     if gradleres != 0:
         print("\nERROR: Gradle command failed")
         exit(1)
+
+####################
+def build_jdk_8_gradle():
+
+    java_home = JAVA_HOME_8
+    folder = "jdk_8_gradle"
+    call_gradle(java_home,folder)
+
+    copy(folder + "/cs/rest/erc20-rest-service/build/libs/erc20-rest-service-sut.jar", DIST)
+    copy(folder + "/em/external/rest/erc20-rest-service/build/libs/erc20-rest-service-evomaster-runner.jar", DIST)
+
+
+####################
+def build_jdk_11_gradle():
+
+    java_home = JAVA_HOME_11
+    folder = "jdk_11_gradle"
+    call_gradle(java_home,folder)
 
     # Copy JAR files
     copy(folder + "/cs/graphql/patio-api/build/libs/patio-api-sut.jar", DIST)
@@ -306,26 +323,10 @@ def build_jdk_11_gradle():
 
 ####################
 def build_jdk_17_gradle():
-    env_vars = os.environ.copy()
-    env_vars["JAVA_HOME"] = JAVA_HOME_17
+
+    java_home = JAVA_HOME_17
     folder = "jdk_17_gradle"
-
-    command = "gradlew"
-
-    if platform.system() == "Darwin":
-
-        # make sure gradlew command is executable
-        os.system("chmod +x " + os.getcwd() + "/" + folder + "/gradlew")
-
-        command = "./gradlew"
-
-    gradleres = run([command, "build", "-x", "test"], shell=SHELL, cwd=os.path.join(PROJ_LOCATION, folder),
-                    env=env_vars)
-    gradleres = gradleres.returncode
-
-    if gradleres != 0:
-        print("\nERROR: Gradle command failed")
-        exit(1)
+    call_gradle(java_home,folder)
 
     # Copy JAR files
     copy(folder + "/cs/rest/bibliothek/build/libs/bibliothek-sut.jar", DIST)
@@ -428,6 +429,7 @@ build_jdk_8_maven()
 build_jdk_11_maven()
 build_jdk_17_maven()
 build_jdk_21_maven()
+build_jdk_8_gradle()
 build_jdk_11_gradle()
 build_jdk_17_gradle()
 
