@@ -60,16 +60,12 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         app.main(new String[]{
                 "--server.port=0",
                 "--spring.profiles.active=dev",
-                "--spring.datasource.driver-class-name=org.h2.Driver",
-                "--spring.datasource.url=jdbc:h2:mem:testdb;INIT=CREATE SCHEMA IF NOT EXISTS CONTAINER;DB_CLOSE_DELAY=-1;",
-                "--spring.jpa.database-platform=org.hibernate.dialect.H2Dialect",
                 "--spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true",
                 "--spring.datasource.username=sa",
                 "--spring.datasource.password",
                 "--spring.jpa.properties.jakarta.persistence.schema-generation.scripts.action=none",
                 "--spring.sql.init.mode=never"
         });
-
 
         ctx = (ConfigurableApplicationContext) app.getApplicationContext();
 
@@ -87,7 +83,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.H2, sqlConnection)
+        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.OTHER, sqlConnection)
                 .withInitSqlOnResourcePath("/data.sql"));
 
 
@@ -110,6 +106,13 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     public void stopSut() {
         ctx.stop();
         ctx.close();
+        if (sqlConnection != null) {
+            try {
+                sqlConnection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
