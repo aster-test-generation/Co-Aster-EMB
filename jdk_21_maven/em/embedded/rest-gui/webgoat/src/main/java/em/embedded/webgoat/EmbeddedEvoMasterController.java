@@ -60,6 +60,9 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         app.main(new String[]{
                 "--server.port=0",
                 "--spring.profiles.active=dev",
+                "--spring.datasource.driver-class-name=org.h2.Driver",
+                "--spring.datasource.url=jdbc:h2:mem:testdb;INIT=CREATE SCHEMA IF NOT EXISTS CONTAINER;DB_CLOSE_DELAY=-1;",
+                "--spring.jpa.database-platform=org.hibernate.dialect.H2Dialect",
                 "--spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true",
                 "--spring.datasource.username=sa",
                 "--spring.datasource.password",
@@ -83,7 +86,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.OTHER, sqlConnection)
+        dbSpecification = Arrays.asList(new DbSpecification(DatabaseType.H2, sqlConnection)
                 .withInitSqlOnResourcePath("/data.sql"));
 
 
