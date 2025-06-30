@@ -70,7 +70,7 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 > **IMPORTANT**: More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
 
 
-### REST: Java/Kotlin (30)
+### REST: Java/Kotlin (31)
 
 * **Bibliothek** (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
 
@@ -129,6 +129,8 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 * **Tiltaksgjennomføring** (MIT), [jdk_17_maven/cs/rest/tiltaksgjennomforing](jdk_17_maven/cs/rest/tiltaksgjennomforing), from [https://github.com/navikt/tiltaksgjennomforing-api](https://github.com/navikt/tiltaksgjennomforing-api)
 
 * **User Management** (MIT), [jdk_8_maven/cs/rest/original/user-management](jdk_8_maven/cs/rest/original/user-management), from [https://github.com/andreagiassi/microservice-rbac-user-management](https://github.com/andreagiassi/microservice-rbac-user-management)
+
+* **WebGoat** (GPL), [jdk_21_maven/cs/rest-gui/webgoat](jdk_21_maven/cs/rest-gui/webgoat), from [https://github.com/WebGoat/WebGoat](https://github.com/WebGoat/WebGoat)
 
 * **YouTubeMock** (not-known license), [jdk_8_maven/cs/rest/original/youtube-mock](jdk_8_maven/cs/rest/original/youtube-mock), from [https://github.com/opensourcingapis/YouTubeMock](https://github.com/opensourcingapis/YouTubeMock)
 
