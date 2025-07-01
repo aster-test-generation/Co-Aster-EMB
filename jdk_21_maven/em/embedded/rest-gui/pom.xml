@@ -4,16 +4,15 @@
 
     <parent>
         <groupId>org.evomaster</groupId>
-        <artifactId>evomaster-benchmark-jdk21-em</artifactId>
+        <artifactId>evomaster-benchmark-jdk21-em-embedded</artifactId>
         <version>3.4.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>evomaster-benchmark-jdk21-em-embedded</artifactId>
+    <artifactId>evomaster-benchmark-jdk21-em-embedded-rest-gui</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>rest</module>
-        <module>rest-gui</module>
+        <module>webgoat</module>
     </modules>
 
 </project>
