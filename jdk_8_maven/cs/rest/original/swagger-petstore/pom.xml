@@ -2,7 +2,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.swagger</groupId>
     <artifactId>swagger-petstore</artifactId>
-    <packaging>war</packaging>
+<!--    <packaging>war</packaging>-->
+    <packaging>jar</packaging>
     <name>swagger-petstore</name>
     <description>swagger-petstore</description>
     <url>https://github.com/swagger-api/swagger-petstore</url>
@@ -37,8 +38,38 @@
     <build>
         <defaultGoal>install</defaultGoal>
         <directory>target</directory>
-        <finalName>${project.artifactId}-${project.version}</finalName>
+        <finalName>${project.artifactId}-sut</finalName>
         <plugins>
+<!--            MODIFIED-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>shade</goal></goals>
+                        <configuration>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>io.swagger.petstore.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+<!--            MODIFIED-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
@@ -175,7 +206,23 @@
         </plugins>
     </build>
     <dependencies>
-
+<!--MODIFIED-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>9.0.89</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>9.0.89</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+<!--        MODIFIED-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
