@@ -13,6 +13,10 @@ public class Main {
 
     public void startServer(int port) throws Exception {
         tomcat = new Tomcat();
+
+        String tmpDir = System.getProperty("java.io.tmpdir");
+        tomcat.setBaseDir(tmpDir);
+
         tomcat.setPort(port);
         tomcat.getConnector();
         URL webappUrl = Main.class.getClassLoader().getResource("webapp");
