@@ -50,6 +50,21 @@ public class Main {
                     }
                 }
             }
+            System.out.println(tempDir);
+            //also extract inflector.yaml
+            try (java.io.InputStream is = Main.class.getClassLoader().getResourceAsStream("inflector.yaml")) {
+                if (is != null) {
+                    File inflectorFile = new File("./", "inflector.yaml");
+                    try (java.io.FileOutputStream fos = new java.io.FileOutputStream(inflectorFile)) {
+                        byte[] buffer = new byte[1024];
+                        int bytesRead;
+                        while ((bytesRead = is.read(buffer)) != -1) {
+                            fos.write(buffer, 0, bytesRead);
+                        }
+                    }
+                }
+            }
+
 
             webappDirLocation = tempDir.getAbsolutePath();
         } else {
