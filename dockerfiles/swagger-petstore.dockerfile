@@ -5,6 +5,11 @@ COPY ./dist/jacocoagent.jar .
 
 
 
+
+COPY ./scripts/dockerize/data/additional_files/swagger-petstore/inflector.yaml .
+
+
+
 #ENV TOOL="undefined"
 #ENV RUN="0"
 

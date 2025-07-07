@@ -9,6 +9,11 @@ import org.evomaster.client.java.controller.problem.ProblemInfo;
 import org.evomaster.client.java.controller.problem.RestProblem;
 import org.evomaster.client.java.sql.DbSpecification;
 
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 public class ExternalEvoMasterController extends ExternalSutController {
@@ -54,6 +59,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
     private final int timeoutSeconds;
     private final int sutPort;
     private  String jarLocation;
+    private final String CONFIG_FILE = "inflector.yaml";
 
     private List<DbSpecification> dbSpecification;
 
@@ -79,6 +85,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
         this.timeoutSeconds = timeoutSeconds;
         setControllerPort(controllerPort);
         setJavaCommand(command);
+        createConfigurationFile();
     }
 
     @Override
@@ -88,9 +95,30 @@ public class ExternalEvoMasterController extends ExternalSutController {
         };
     }
 
+    private void createConfigurationFile() {
+
+        //save config to same folder of JAR file
+        Path path = getConfigPath();
+
+        try(InputStream is = this.getClass().getResourceAsStream("/"+ CONFIG_FILE )){
+            Files.copy(is, path, StandardCopyOption.REPLACE_EXISTING);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    private Path getConfigPath(){
+        return Paths.get(jarLocation)
+                .toAbsolutePath()
+                .getParent()
+                .resolve(CONFIG_FILE)
+                .normalize();
+    }
+
     @Override
     public String[] getJVMParameters() {
         return new String[]{
+                "-Dconfig="+getConfigPath().toAbsolutePath().toString(),
         };
     }
 

@@ -27,7 +27,7 @@
 |__bibliothek__|REST|2176|33|8|Java|JDK 17|Gradle|MongoDB||
 |__restcountries__|REST|1977|24|22|Java|JDK 8|Maven|||
 |__reservations-api__|REST|1853|39|7|Java|JDK 11|Gradle|MongoDB|&check;|
-|__swagger-petstore__|REST|1640|23|19|Java|JDK 8|Maven|||
+|__swagger-petstore__|REST|1631|23|19|Java|JDK 8|Maven|||
 |__session-service__|REST|1471|15|8|Java|JDK 8|Maven|MongoDB||
 |__spring-rest-example__|REST|1426|32|9|Java|JDK 17|Maven|MySQL||
 |__erc20-rest-service__|REST|1378|7|13|Java|JDK 8|Gradle|||

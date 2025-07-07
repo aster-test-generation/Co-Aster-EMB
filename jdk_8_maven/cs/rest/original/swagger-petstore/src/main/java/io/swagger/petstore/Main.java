@@ -2,11 +2,24 @@
 
 package io.swagger.petstore;
 
+import org.apache.catalina.Context;
+import org.apache.catalina.Wrapper;
 import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.webresources.DirResourceSet;
+import org.apache.catalina.webresources.JarResourceSet;
+import org.apache.catalina.webresources.StandardRoot;
 
+import javax.servlet.Servlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.nio.file.Files;
+import java.security.CodeSource;
 
 public class Main {
     Tomcat tomcat;
@@ -19,59 +32,37 @@ public class Main {
 
         tomcat.setPort(port);
         tomcat.getConnector();
-        URL webappUrl = Main.class.getClassLoader().getResource("webapp");
 
-        String webappDirLocation;
+        Context ctx = tomcat.addContext("", null);
 
-        // Handle the case where the webapp is inside a JAR
-        if (webappUrl.getProtocol().equals("jar")) {
-            // Extract the JAR file path and the entry path
-            String jarPath = webappUrl.getPath().substring(5, webappUrl.getPath().indexOf("!"));
-            String entryPath = webappUrl.getPath().substring(webappUrl.getPath().indexOf("!") + 2);
-
-            // Create a temporary directory to extract the webapp resources
-            File tempDir = Files.createTempDirectory("webapp").toFile();
-            tempDir.deleteOnExit();
-
-            // Extract the JAR entry to the temporary directory
-            try (java.util.jar.JarFile jar = new java.util.jar.JarFile(new File(jarPath))) {
-                java.util.Enumeration<java.util.jar.JarEntry> entries = jar.entries();
-                while (entries.hasMoreElements()) {
-                    java.util.jar.JarEntry entry = entries.nextElement();
-                    if (entry.getName().startsWith(entryPath) && !entry.isDirectory()) {
-                        File file = new File(tempDir, entry.getName().substring(entryPath.length()));
-                        file.getParentFile().mkdirs();
-                        try (java.io.InputStream is = jar.getInputStream(entry);
-                             java.io.FileOutputStream fos = new java.io.FileOutputStream(file)) {
-                            while (is.available() > 0) {
-                                fos.write(is.read());
-                            }
-                        }
-                    }
-                }
+        StandardRoot resources = new StandardRoot(ctx);
+        CodeSource src = Main.class.getProtectionDomain().getCodeSource();
+        if (src != null) {
+            URL jar = src.getLocation();
+            String jarPath = new File(jar.toURI()).getAbsolutePath();
+            if (jarPath.endsWith(".jar")) {
+                resources.addJarResources(new JarResourceSet(resources, "/", jarPath, "/webapp"));
+            }else {
+                URL webappUrl = Main.class.getClassLoader().getResource("webapp");
+               String webappDirLocation = new File(webappUrl.toURI()).getAbsolutePath();
+                resources.addPreResources(new DirResourceSet(resources, "/", webappDirLocation, "/"));
             }
-            System.out.println(tempDir);
-            //also extract inflector.yaml
-            try (java.io.InputStream is = Main.class.getClassLoader().getResourceAsStream("inflector.yaml")) {
-                if (is != null) {
-                    File inflectorFile = new File("./", "inflector.yaml");
-                    try (java.io.FileOutputStream fos = new java.io.FileOutputStream(inflectorFile)) {
-                        byte[] buffer = new byte[1024];
-                        int bytesRead;
-                        while ((bytesRead = is.read(buffer)) != -1) {
-                            fos.write(buffer, 0, bytesRead);
-                        }
-                    }
-                }
-            }
-
-
-            webappDirLocation = tempDir.getAbsolutePath();
-        } else {
-            // Handle the case where the webapp is in the filesystem
-            webappDirLocation = new File(webappUrl.toURI()).getAbsolutePath();
         }
-        tomcat.addWebapp("", new File(webappDirLocation).getAbsolutePath());
+        ctx.setResources(resources);
+        ctx.addWelcomeFile("index.html");
+
+        // Swagger-Inflector / Jersey servlet
+        Wrapper jerseyServlet = Tomcat.addServlet(ctx, "jersey-container-servlet",
+                "org.glassfish.jersey.servlet.ServletContainer");
+
+        jerseyServlet.addInitParameter("javax.ws.rs.Application", "io.swagger.oas.inflector.OpenAPIInflector");
+        jerseyServlet.setLoadOnStartup(1);
+
+        ctx.addServletMappingDecoded("/api/*", "jersey-container-servlet");
+
+        Wrapper defaultServlet = Tomcat.addServlet(ctx, "default", "org.apache.catalina.servlets.DefaultServlet");
+        defaultServlet.setLoadOnStartup(1);
+        ctx.addServletMappingDecoded("/", "default");
 
         System.out.println("Swagger Petstore running at http://localhost:" + port);
         tomcat.start();
