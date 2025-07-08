@@ -29,6 +29,7 @@
 |__reservations-api__|REST|1853|39|7|Java|JDK 11|Gradle|MongoDB|&check;|
 |__swagger-petstore__|REST|1631|23|19|Java|JDK 8|Maven|||
 |__session-service__|REST|1471|15|8|Java|JDK 8|Maven|MongoDB||
+|__http-patch-spring__|REST|1450|30|6|Java|JDK 11|Maven|||
 |__spring-rest-example__|REST|1426|32|9|Java|JDK 17|Maven|MySQL||
 |__erc20-rest-service__|REST|1378|7|13|Java|JDK 8|Gradle|||
 |__person-controller__|REST|1112|16|12|Java|JDK 21|Maven|MongoDB||

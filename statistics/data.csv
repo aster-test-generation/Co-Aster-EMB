@@ -15,6 +15,7 @@ TRUE,cwa-verification,REST,Java,JDK 11,Maven,47,3955,H2,Apache,5,FALSE,https://g
 TRUE,erc20-rest-service,REST,Java,JDK 8,Gradle,7,1378,,UNDEFINED,13,FALSE,https://github.com/web3labs/erc20-rest-service
 TRUE,features-service,REST,Java,JDK 8,Maven,39,2275,H2,Apache,18,FALSE,https://github.com/JavierMF/features-service
 TRUE,gestaohospital,REST,Java,JDK 8,Maven,33,3506,MongoDB,UNDEFINED,20,FALSE,https://github.com/ValchanOficial/GestaoHospital
+TRUE,http-patch-spring,REST,Java,JDK 11,Maven,30,1450,,MIT,6,FALSE,https://github.com/cassiomolin/http-patch-spring
 TRUE,languagetool,REST,Java,JDK 8,Maven,1385,174781,,LGPL,2,FALSE,https://github.com/languagetool-org/languagetool
 TRUE,ocvn,REST,Java,JDK 8,Maven,526,45521,H2;MongoDB,MIT,258,TRUE,https://github.com/devgateway/ocvn
 TRUE,ohsome-api,REST,Java,JDK 17,Maven,87,14166,OSHDB,AGPL-3.0,134,FALSE,https://github.com/GIScience/ohsome-api

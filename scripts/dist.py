@@ -241,6 +241,8 @@ def build_jdk_11_maven():
     copy(folder + "/cs/rest/pay-publicapi/target/pay-publicapi-sut.jar", DIST)
     copy(folder + "/em/external/rest/pay-publicapi/target/pay-publicapi-evomaster-runner.jar", DIST)
 
+    copy(folder + "/cs/rest/http-patch-spring/target/http-patch-spring-sut.jar", DIST)
+    copy(folder + "/em/external/rest/http-patch-spring/target/http-patch-spring-evomaster-runner.jar", DIST)
 
     ind1 = os.environ.get('SUT_LOCATION_IND1', '')
     if ind1 == '':
