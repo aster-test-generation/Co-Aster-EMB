@@ -25,6 +25,7 @@
         <module>blogapi</module>
         <module>spring-batch-rest</module>
         <module>spring-actuator-demo</module>
+        <module>swagger-petstore</module>
     </modules>
 
 

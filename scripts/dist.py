@@ -177,6 +177,18 @@ def build_jdk_8_maven():
     copy(folder + "/cs/rest-gui/genome-nexus/web/target/genome-nexus-sut.jar", DIST)
     copy(folder + "/em/external/rest/genome-nexus/target/genome-nexus-evomaster-runner.jar", DIST)
 
+    copy(folder + "/cs/rest/original/spring-batch-rest/example/api/target/spring-batch-rest-sut.jar", DIST)
+    copy(folder + "/em/external/rest/spring-batch-rest/target/spring-batch-rest-evomaster-runner.jar", DIST)
+
+
+    copy(folder + "/cs/rest/original/spring-actuator-demo/target/spring-actuator-demo-sut.jar", DIST)
+    copy(folder + "/em/external/rest/spring-actuator-demo/target/spring-actuator-demo-evomaster-runner.jar", DIST)
+
+    copy(folder + "/cs/rest/original/swagger-petstore/target/swagger-petstore-sut.jar", DIST)
+    copy(folder + "/em/external/rest/swagger-petstore/target/swagger-petstore-evomaster-runner.jar", DIST)
+
+    # graphql
+
     copy(folder + "/cs/graphql/petclinic-graphql/target/petclinic-graphql-sut.jar", DIST)
     copy(folder + "/em/external/graphql/petclinic-graphql/target/petclinic-graphql-evomaster-runner.jar", DIST)
 
@@ -200,12 +212,6 @@ def build_jdk_8_maven():
     copy(folder + "/cs/rpc/grpc/artificial/grpc-scs/target/rpc-grpc-scs-sut.jar", DIST)
     copy(folder + "/em/external/grpc/scs/target/rpc-grpc-scs-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/rest/original/spring-batch-rest/example/api/target/spring-batch-rest-sut.jar", DIST)
-    copy(folder + "/em/external/rest/spring-batch-rest/target/spring-batch-rest-evomaster-runner.jar", DIST)
-
-
-    copy(folder + "/cs/rest/original/spring-actuator-demo/target/spring-actuator-demo-sut.jar", DIST)
-    copy(folder + "/em/external/rest/spring-actuator-demo/target/spring-actuator-demo-evomaster-runner.jar", DIST)
 
     ind0 = os.environ.get('SUT_LOCATION_IND0', '')
     if ind0 == '':

@@ -70,7 +70,7 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 > **IMPORTANT**: More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
 
 
-### REST: Java/Kotlin (31)
+### REST: Java/Kotlin (32)
 
 * **Bibliothek** (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
 
@@ -125,6 +125,8 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 * **Spring-batch-rest** (Apache), [jdk_8_maven/cs/rest/original/spring-batch-rest](jdk_8_maven/cs/rest/original/spring-batch-rest), from [https://github.com/chrisgleissner/spring-batch-rest](https://github.com/chrisgleissner/spring-batch-rest)
 
 * **Spring Boot Restful API Example** (MIT), [jdk_17_maven/cs/rest/spring-rest-example](jdk_17_maven/cs/rest/spring-rest-example), from [https://github.com/phantasmicmeans/spring-boot-restful-api-example](https://github.com/phantasmicmeans/spring-boot-restful-api-example)
+
+* **Swagger Petstore** (Apache), [jdk_8_maven/cs/rest/original/swagger-petstore](jdk_8_maven/cs/rest/original/swagger-petstore), from [https://github.com/swagger-api/swagger-petstore](https://github.com/swagger-api/swagger-petstore)
 
 * **Tiltaksgjennomføring** (MIT), [jdk_17_maven/cs/rest/tiltaksgjennomforing](jdk_17_maven/cs/rest/tiltaksgjennomforing), from [https://github.com/navikt/tiltaksgjennomforing-api](https://github.com/navikt/tiltaksgjennomforing-api)
 
