@@ -17,6 +17,7 @@
         <module>market</module>
         <module>pay-publicapi</module>
         <module>tracking-system</module>
+        <module>http-patch-spring</module>
     </modules>
 
 </project>
