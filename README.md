@@ -70,7 +70,7 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 > **IMPORTANT**: More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
 
 
-### REST: Java/Kotlin (32)
+### REST: Java/Kotlin (33)
 
 * **Bibliothek** (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
 
@@ -89,6 +89,8 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 * **Genome Nexus** (MIT), [jdk_8_maven/cs/rest-gui/genome-nexus](jdk_8_maven/cs/rest-gui/genome-nexus), from [https://github.com/genome-nexus/genome-nexus](https://github.com/genome-nexus/genome-nexus)
 
 * **Gestao Hospital** (not-known license), [jdk_8_maven/cs/rest-gui/gestaohospital](jdk_8_maven/cs/rest-gui/gestaohospital), from [https://github.com/ValchanOficial/GestaoHospital](https://github.com/ValchanOficial/GestaoHospital)
+
+* **HTTP Patch Spring** (MIT), [jdk_11_maven/cs/rest/http-patch-spring](jdk_11_maven/cs/rest/http-patch-spring), from [https://github.com/cassiomolin/http-patch-spring](https://github.com/cassiomolin/http-patch-spring)
 
 * **Languagetool** (LGPL), [jdk_8_maven/cs/rest/original/languagetool](jdk_8_maven/cs/rest/original/languagetool), from [https://github.com/languagetool-org/languagetool](https://github.com/languagetool-org/languagetool)
 

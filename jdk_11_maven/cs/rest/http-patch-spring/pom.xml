@@ -38,6 +38,13 @@
     </dependencyManagement>
 
     <dependencies>
+        <!--MODIFIED-->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.14</version>
+        </dependency>
+        <!--MODIFIED-->
 
         <!-- Spring Boot Starter Web -->
         <dependency>
@@ -130,6 +137,10 @@
                         <goals>
                             <goal>repackage</goal>
                         </goals>
+                        <configuration>
+                            <finalName>http-patch-spring</finalName>
+                            <classifier>sut</classifier>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
