@@ -39,7 +39,7 @@
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Main-Class>em.external.spring.batch.rest.ExternalEvoMasterController
+                                        <Main-Class>em.external.swagger.petstore.ExternalEvoMasterController
                                         </Main-Class>
                                         <Premain-Class>org.evomaster.client.java.instrumentation.InstrumentingAgent
                                         </Premain-Class>
