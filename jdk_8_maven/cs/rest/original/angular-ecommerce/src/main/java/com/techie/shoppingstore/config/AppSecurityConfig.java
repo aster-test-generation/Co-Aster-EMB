@@ -63,7 +63,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/auth/**")
                 .permitAll()
-                .antMatchers("/api/store/catalog/**")
+                .antMatchers("/api/store/catalog/**",
+//                        MODIFIED
+                        "/v2/api-docs/**")
                 .permitAll()
                 .anyRequest().authenticated();
 
