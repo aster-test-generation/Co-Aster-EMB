@@ -33,6 +33,7 @@
         <module>spring-batch-rest</module>
         <module>spring-actuator-demo</module>
         <module>swagger-petstore</module>
+        <module>angular-ecommerce</module>
     </modules>
 
 </project>
