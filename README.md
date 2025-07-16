@@ -70,7 +70,9 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 > **IMPORTANT**: More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
 
 
-### REST: Java/Kotlin (33)
+### REST: Java/Kotlin (34)
+
+* **Angular ECommerce** (not-known license), [jdk_8_maven/cs/rest/original/angular-ecommerce](jdk_8_maven/cs/rest/original/angular-ecommerce), from [https://github.com/SaiUpadhyayula/SpringAngularEcommerce](https://github.com/SaiUpadhyayula/SpringAngularEcommerce)
 
 * **Bibliothek** (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
 

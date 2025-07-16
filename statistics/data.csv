@@ -1,4 +1,5 @@
 EMB,NAME,TYPE,LANGUAGE,RUNTIME,BUILD,FILES,LOCS,DATABASE,LICENSE,ENDPOINTS,AUTHENTICATION,URL
+TRUE,angular-ecommerce,REST,Java,JDK 8,Maven,58,2223,MongoOB;Redis;Elasticsearch,UNDEFINED,26,TRUE,https://github.com/SaiUpadhyayula/SpringAngularEcommerce
 TRUE,tiltaksgjennomforing,REST,Java,JDK 17,Maven,472,27316,PostgreSQL,MIT,79,TRUE,https://github.com/navikt/tiltaksgjennomforing-api
 TRUE,person-controller,REST,Java,JDK 21,Maven,16,1112,MongoDB,Apache,12,FALSE,https://github.com/mongodb-developer/java-spring-boot-mongodb-starter
 TRUE,tracking-system,REST,Java,JDK 11,Maven,87,5947,H2,UNDEFINED,67,TRUE,https://github.com/SelimHorri/project-tracking-system-backend-app
