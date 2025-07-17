@@ -137,7 +137,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
                 "--spring.redis.host=" + redisContainer.getContainerIpAddress(),
                 "--spring.redis.port=" + redisContainer.getMappedPort(REDIS_PORT),
                 "--spring.data.elasticsearch.cluster-name=elasticsearch",
-                "--spring.data.elsticsearch.cluster-nodes=" + elasticsearchContainer.getContainerIpAddress() + ":" + elasticsearchContainer.getMappedPort(TRANSPORT_PORT),
+                "--spring.data.elasticsearch.cluster-nodes=" + elasticsearchContainer.getContainerIpAddress() + ":" + elasticsearchContainer.getMappedPort(TRANSPORT_PORT),
                 "--spring.cache.type=NONE"
         };
     }
