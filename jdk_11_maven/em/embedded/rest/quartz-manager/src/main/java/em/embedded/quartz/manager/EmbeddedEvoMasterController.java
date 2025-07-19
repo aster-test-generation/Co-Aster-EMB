@@ -51,7 +51,13 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     public String startSut() {
 
         ctx = SpringApplication.run(QuartzManagerDemoApplication.class, new String[]{
-//                "--server.port=0"
+                "--server.port=0",
+                "--quartz-manager.security.accounts.in-memory.users[0].username=foo",
+                "--quartz-manager.security.accounts.in-memory.users[0].password=bar",
+                "--quartz-manager.security.accounts.in-memory.users[0].roles[0]=admin",
+                "--quartz-manager.security.accounts.in-memory.users[1].username=foo2",
+                "--quartz-manager.security.accounts.in-memory.users[1].password=bar",
+                "--quartz-manager.security.accounts.in-memory.users[1].roles[0]=admin",
         });
 
         return "http://localhost:" + getSutPort();
@@ -76,7 +82,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public String getPackagePrefixesToCover() {
-        return "it.fabioformosa.quartz-manager.";
+        return "it.fabioformosa.";
     }
 
     @Override
@@ -104,14 +110,14 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
             AuthUtils.getForJsonToken(
                     "USER_1",
                     "/quartz-manager/auth/login",
-                    "username=admin&password=admin",
+                    "username=foo&password=bar",
                     "/accessToken",
                     "Bearer ",
                     "application/x-www-form-urlencoded"),
                 AuthUtils.getForJsonToken(
                         "USER_2",
                         "/quartz-manager/auth/login",
-                        "username=admin&password=admin",
+                        "username=foo2&password=bar",
                         "/accessToken",
                         "Bearer ",
                         "application/x-www-form-urlencoded")
