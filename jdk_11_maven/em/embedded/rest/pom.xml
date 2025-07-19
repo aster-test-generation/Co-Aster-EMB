@@ -18,6 +18,7 @@
         <module>pay-publicapi</module>
         <module>tracking-system</module>
         <module>http-patch-spring</module>
+        <module>quartz-manager</module>
     </modules>
 
 </project>

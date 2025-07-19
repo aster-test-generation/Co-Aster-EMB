@@ -9,8 +9,9 @@
     </parent>
 
 	<artifactId>quartz-manager-web-showcase</artifactId>
-
-    <packaging>war</packaging>
+<!--MODIFIED-->
+<!--  <packaging>war</packaging>-->
+  <packaging>jar</packaging>
 
 	<name>Quartz Manager Web Showcase</name>
 	<description>A webapp that imports Quartz Manager API lib and the frontend webjar</description>
@@ -147,6 +148,27 @@
 			    </plugin>
 			</plugins>
 		</pluginManagement>
+    <!--MODIFIED-->
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.5.6</version>
+        <configuration>
+          <mainClass>it.fabioformosa.QuartzManagerDemoApplication</mainClass>
+          <finalName>quartz-manager</finalName>
+          <classifier>sut</classifier>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <!--MODIFIED-->
 	</build>
 
 

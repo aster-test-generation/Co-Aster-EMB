@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>evomaster-benchmark-jdk11-em-embedded-rest-quartz-manager</artifactId>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.evomaster</groupId>
+        <artifactId>evomaster-benchmark-jdk11-em-embedded-rest</artifactId>
+        <version>3.4.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>it.fabioformosa.quartz-manager</groupId>
+            <artifactId>quartz-manager-web-showcase</artifactId>
+            <version>4.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.5.12</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+
+</project>
