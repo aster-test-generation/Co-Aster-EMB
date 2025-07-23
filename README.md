@@ -72,8 +72,6 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 
 ### REST: Java/Kotlin (34)
 
-* **Angular ECommerce** (not-known license), [jdk_8_maven/cs/rest/original/angular-ecommerce](jdk_8_maven/cs/rest/original/angular-ecommerce), from [https://github.com/SaiUpadhyayula/SpringAngularEcommerce](https://github.com/SaiUpadhyayula/SpringAngularEcommerce)
-
 * **Bibliothek** (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
 
 * **Blog** (AGPL), [jdk_8_maven/cs/rest/original/blogapi](jdk_8_maven/cs/rest/original/blogapi), from [https://github.com/osopromadze/Spring-Boot-Blog-REST-API](https://github.com/osopromadze/Spring-Boot-Blog-REST-API)
@@ -129,6 +127,8 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 * **Spring-batch-rest** (Apache), [jdk_8_maven/cs/rest/original/spring-batch-rest](jdk_8_maven/cs/rest/original/spring-batch-rest), from [https://github.com/chrisgleissner/spring-batch-rest](https://github.com/chrisgleissner/spring-batch-rest)
 
 * **Spring Boot Restful API Example** (MIT), [jdk_17_maven/cs/rest/spring-rest-example](jdk_17_maven/cs/rest/spring-rest-example), from [https://github.com/phantasmicmeans/spring-boot-restful-api-example](https://github.com/phantasmicmeans/spring-boot-restful-api-example)
+
+* **Spring ECommerce** (not-known license), [jdk_8_maven/cs/rest/original/spring-ecommerce](jdk_8_maven/cs/rest/original/spring-ecommerce), from [https://github.com/SaiUpadhyayula/SpringAngularEcommerce](https://github.com/SaiUpadhyayula/SpringAngularEcommerce)
 
 * **Swagger Petstore** (Apache), [jdk_8_maven/cs/rest/original/swagger-petstore](jdk_8_maven/cs/rest/original/swagger-petstore), from [https://github.com/swagger-api/swagger-petstore](https://github.com/swagger-api/swagger-petstore)
 

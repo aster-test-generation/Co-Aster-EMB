@@ -1,4 +1,4 @@
-package em.external.angular.ecommerce;
+package em.external.spring.ecommerce;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;
@@ -35,12 +35,12 @@ public class ExternalEvoMasterController extends ExternalSutController {
         if (args.length > 1) {
             sutPort = Integer.parseInt(args[1]);
         }
-        String jarLocation = "cs/rest/original/angular-ecommerce/target";
+        String jarLocation = "cs/rest/original/spring-ecommerce/target";
         if (args.length > 2) {
             jarLocation = args[2];
         }
         if(! jarLocation.endsWith(".jar")) {
-            jarLocation += "/angular-ecommerce-sut.jar";
+            jarLocation += "/spring-ecommerce-sut.jar";
         }
 
         int timeoutSeconds = 120;

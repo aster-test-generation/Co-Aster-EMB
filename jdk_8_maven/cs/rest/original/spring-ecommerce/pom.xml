@@ -133,7 +133,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
 <!--                MODIFIED-->
                 <configuration>
-                    <finalName>angular-ecommerce</finalName>
+                    <finalName>spring-ecommerce</finalName>
                     <classifier>sut</classifier>
                 </configuration>
 <!--                MODIFIED-->

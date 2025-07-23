@@ -1,4 +1,4 @@
-package em.embedded.angular.ecommerce;
+package em.embedded.spring.ecommerce;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;

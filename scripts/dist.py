@@ -187,8 +187,8 @@ def build_jdk_8_maven():
     copy(folder + "/cs/rest/original/swagger-petstore/target/swagger-petstore-sut.jar", DIST)
     copy(folder + "/em/external/rest/swagger-petstore/target/swagger-petstore-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/rest/original/angular-ecommerce/target/angular-ecommerce-sut.jar", DIST)
-    copy(folder + "/em/external/rest/angular-ecommerce/target/angular-ecommerce-evomaster-runner.jar", DIST)
+    copy(folder + "/cs/rest/original/spring-ecommerce/target/spring-ecommerce-sut.jar", DIST)
+    copy(folder + "/em/external/rest/spring-ecommerce/target/spring-ecommerce-evomaster-runner.jar", DIST)
 
     # graphql
 
