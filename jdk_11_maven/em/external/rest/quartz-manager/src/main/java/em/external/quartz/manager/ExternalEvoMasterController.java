@@ -25,7 +25,7 @@ public class ExternalEvoMasterController extends ExternalSutController {
         if (args.length > 1) {
             sutPort = Integer.parseInt(args[1]);
         }
-        String jarLocation = "cs/rest/quartz-manager/quartz-manager-parent/quartz-manager-web-showcase/target";
+        String jarLocation = "cs/rest-gui/quartz-manager/quartz-manager-parent/quartz-manager-web-showcase/target";
         if (args.length > 2) {
             jarLocation = args[2];
         }

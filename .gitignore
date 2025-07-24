@@ -369,6 +369,6 @@ jdk_8_maven/em/external/rest/spring-batch-rest/target
 /jdk_11_maven/em/embedded/rest/http-patch-spring/target
 /jdk_11_maven/em/external/rest/http-patch-spring/target
 
-/jdk_11_maven/cs/rest/quartz-manager/target
+/jdk_11_maven/cs/rest-gui/quartz-manager/target
 /jdk_11_maven/em/embedded/rest/quartz-manager/target
 /jdk_11_maven/em/external/rest/quartz-manager/target
