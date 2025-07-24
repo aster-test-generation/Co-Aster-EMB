@@ -12,6 +12,7 @@ services:
 #    volumes:
       # default env does not work on volumes
 #      - ${JACOCODIR}:/jacoco
+
   db:
     image: bitnami/mongodb:4.4
     tmpfs:
@@ -28,6 +29,7 @@ services:
       - ../scripts/dockerize/data/additional_files/reservations-api/mongo_import.sh:/docker-entrypoint-initdb.d/mongo_import.sh
       - ../scripts/dockerize/data/additional_files/reservations-api/init.json:/fixtures/init.json
       
+
 
 
 

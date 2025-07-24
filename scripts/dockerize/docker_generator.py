@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 
@@ -54,16 +55,9 @@ class DockerGenerator:
         self.swagger_url = str(sut[1]['SWAGGER_URL']) if str(sut[1]['SWAGGER_URL']) != 'nan' else ''
         self.target_url = str(sut[1]['TARGET_URL']) if str(sut[1]['TARGET_URL']) != 'nan' else ''
         self.copy_additional_files = bool(sut[1]['COPY_ADDITIONAL_FILES'])
-        self.database_types = str(sut_info[1]['DATABASE']).split(';') if str(sut_info[1]['DATABASE']) != 'nan' else None
-        self.database_image = str(sut[1]['DATABASE_IMAGE_NAME']) if str(sut[1]['DATABASE_IMAGE_NAME']) != 'nan' else ''
-        self.database_port = int(sut[1]['DATABASE_PORT']) if str(sut[1]['DATABASE_PORT']) != 'nan' else ''
-        self.tmp_fs = str(sut[1]['TMP_FS']) if str(sut[1]['TMP_FS']) != 'nan' else ''
-        self.database_environments = str(sut[1]['DATABASE_ENVIRONMENT']).split(';') if str(sut[1]['DATABASE_ENVIRONMENT']) != 'nan' else None
-        self.database_volumes = str(sut[1]['DATABASE_VOLUME']).split(';') if str(sut[1]['DATABASE_VOLUME']) != 'nan' else None
         self.is_mock_oauth = bool(sut[1]['MOCK_OAUTH'])
-        self.health_check = bool(sut[1]['HEALTH_CHECK'])
-        self.health_check_commands = str(sut[1]['HEALTH_CHECK_COMMAND']).split(';') if str(sut[1]['HEALTH_CHECK_COMMAND']) != 'nan' else ''
-
+        self.database_config = json.loads(sut[1]['SERVICES']) if str(sut[1]['SERVICES']) != 'nan' else []
+        self.depends_on = str(sut[1]['DEPENDS_ON']).split(';') if str(sut[1]['DEPENDS_ON']) != 'nan' else []
     # def prepare_run_docker(self):
     #     # prepare the required files
     #     shutil.copy(self.jacoco_env_file_path, self.DOCKER_FILE_FOLDER)
@@ -131,27 +125,27 @@ class DockerGenerator:
             'SUT_NAME': self.sut_name,
             'EXPOSE_PORT': self.expose_port,
             'MOCK_OAUTH': self.is_mock_oauth,
-            'HEALTH_CHECK': self.health_check,
+            'DEPENDS_ON': self.depends_on
         }
 
-        if self.database_types and any(db in ['PostgreSQL', 'MySQL', 'Redis', 'MongoDB'] for db in self.database_types):
-            database_template = self.template_env.get_template("db.template")
-            if self.health_check:
-                health_chec_command = ",".join(self.health_check_commands)
-            else:
-                health_chec_command = ""
+        database_template = self.template_env.get_template("db.template")
+        db_images = []
+        for db in self.database_config:
+            health_check_command = db['health_check_command']
+
             database_params = {
-                'DATABASE_IMAGE_NAME': self.database_image,
-                'DATABASE_PORT': self.database_port,
-                'TMP_FS': self.tmp_fs,
-                'DATABASE_ENVIRONMENT': self.database_environments,
-                'DATABASE_VOLUME': self.database_volumes,
-                'HEALTH_CHECK': self.health_check,
-                'HEALTH_CHECK_COMMAND': health_chec_command
+                'name': db['name'] if 'name' in db else 'db',
+                'DATABASE_IMAGE_NAME': db['image_name'],
+                'DATABASE_PORT': db['port'],
+                'TMP_FS': db['tmp_fs'],
+                'DATABASE_ENVIRONMENT': str(db['environment']).split(';') if str(db['environment']) != '' else None,
+                'DATABASE_VOLUME': str(db['volume']).split(';') if str(db['volume']) != '' else None,
+                'HEALTH_CHECK': health_check_command != "",
+                'HEALTH_CHECK_COMMAND': health_check_command
             }
             database_image = database_template.render(database_params)
-            params['MONGODB_DATABASE'] = database_image
-
+            db_images.append(database_image)
+        params['DATABASES'] = db_images
 
         template = self.template_env.get_template("template.docker-compose.yml")
         result = template.render(params)
