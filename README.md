@@ -70,7 +70,7 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 > **IMPORTANT**: More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
 
 
-### REST: Java/Kotlin (34)
+### REST: Java/Kotlin (35)
 
 * **Bibliothek** (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
 
@@ -111,6 +111,8 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 * **Project Tracking System** (not-known license), [jdk_11_maven/cs/rest/tracking-system](jdk_11_maven/cs/rest/tracking-system), from [https://github.com/SelimHorri/project-tracking-system-backend-app](https://github.com/SelimHorri/project-tracking-system-backend-app)
 
 * **ProxyPrint** (Apache), [jdk_8_maven/cs/rest/original/proxyprint](jdk_8_maven/cs/rest/original/proxyprint), from [https://github.com/ProxyPrint/proxyprint-kitchen](https://github.com/ProxyPrint/proxyprint-kitchen)
+
+* **Quartz Manager** (Apache), [jdk_11_maven/cs/rest-gui/quartz-manager](jdk_11_maven/cs/rest-gui/quartz-manager), from [https://github.com/fabioformosa/quartz-manager](https://github.com/fabioformosa/quartz-manager)
 
 * **Reservations API** (not-known license), [jdk_11_gradle/cs/rest/reservations-api](jdk_11_gradle/cs/rest/reservations-api), from [https://github.com/cyrilgavala/reservations-api](https://github.com/cyrilgavala/reservations-api)
 

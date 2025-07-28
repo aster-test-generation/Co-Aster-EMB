@@ -17,6 +17,7 @@
 |__catwatch__|REST|9636|106|14|Java|JDK 8|Maven|H2||
 |__proxyprint__|REST|8338|73|74|Java|JDK 8|Maven|H2|&check;|
 |__tracking-system__|REST|5947|87|67|Java|JDK 11|Maven|H2|&check;|
+|__quartz-manager__|REST|5068|129|11|Java|JDK 11|Maven||&check;|
 |__blogapi__|REST|4787|89|52|Java|JDK 8|Maven|MySQL|&check;|
 |__user-management__|REST|4274|69|21|Java|JDK 8|Maven|MySQL||
 |__cwa-verification__|REST|3955|47|5|Java|JDK 11|Maven|H2||

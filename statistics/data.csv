@@ -20,6 +20,7 @@ TRUE,languagetool,REST,Java,JDK 8,Maven,1385,174781,,LGPL,2,FALSE,https://github
 TRUE,ocvn,REST,Java,JDK 8,Maven,526,45521,H2;MongoDB,MIT,258,TRUE,https://github.com/devgateway/ocvn
 TRUE,ohsome-api,REST,Java,JDK 17,Maven,87,14166,OSHDB,AGPL-3.0,134,FALSE,https://github.com/GIScience/ohsome-api
 TRUE,proxyprint,REST,Java,JDK 8,Maven,73,8338,H2,Apache,74,TRUE,https://github.com/ProxyPrint/proxyprint-kitchen
+TRUE,quartz-manager,REST,Java,JDK 11,Maven,129,5068,,Apache,11,TRUE,https://github.com/fabioformosa/quartz-manager
 TRUE,rest-ncs,REST,Java,JDK 8,Maven,9,605,,UNDEFINED,6,FALSE,UNDEFINED
 TRUE,rest-news,REST,Kotlin,JDK 8,Maven,11,857,H2,LGPL,7,FALSE,https://github.com/arcuri82/testing_security_development_enterprise_systems
 TRUE,rest-scs,REST,Java,JDK 8,Maven,13,862,,UNDEFINED,11,FALSE,UNDEFINED

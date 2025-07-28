@@ -247,6 +247,9 @@ def build_jdk_11_maven():
     copy(folder + "/cs/rest/http-patch-spring/target/http-patch-spring-sut.jar", DIST)
     copy(folder + "/em/external/rest/http-patch-spring/target/http-patch-spring-evomaster-runner.jar", DIST)
 
+    copy(folder + "/cs/rest-gui/quartz-manager/quartz-manager-parent/quartz-manager-web-showcase/target/quartz-manager-sut.jar", DIST)
+    copy(folder + "/em/external/rest/quartz-manager/target/quartz-manager-evomaster-runner.jar", DIST)
+
     ind1 = os.environ.get('SUT_LOCATION_IND1', '')
     if ind1 == '':
         print("\nWARN: SUT_LOCATION_IND1 env variable is not defined")
