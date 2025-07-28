@@ -24,6 +24,7 @@
 |__gestaohospital__|REST|3506|33|20|Java|JDK 8|Maven|MongoDB||
 |__youtube-mock__|REST|3229|29|1|Java|JDK 8|Maven|||
 |__features-service__|REST|2275|39|18|Java|JDK 8|Maven|H2||
+|__spring-ecommerce__|REST|2223|58|26|Java|JDK 8|Maven|MongoOB, Redis, Elasticsearch|&check;|
 |__bibliothek__|REST|2176|33|8|Java|JDK 17|Gradle|MongoDB||
 |__restcountries__|REST|1977|24|22|Java|JDK 8|Maven|||
 |__reservations-api__|REST|1853|39|7|Java|JDK 11|Gradle|MongoDB|&check;|

@@ -12,6 +12,7 @@ services:
 #    volumes:
       # default env does not work on volumes
 #      - ${JACOCODIR}:/jacoco
+
   db:
     image: postgres:13.13
     tmpfs:
@@ -23,6 +24,7 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_DB: familiebasak
       
+
 
 
 
