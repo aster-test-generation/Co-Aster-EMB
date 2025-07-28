@@ -1,4 +1,4 @@
-  db:
+  {{name}}:
     image: {{DATABASE_IMAGE_NAME}}
     {% if TMP_FS -%}
     tmpfs:
@@ -18,7 +18,7 @@
 {% endif %}
 {% if HEALTH_CHECK %}
     healthcheck:
-      test: [{{HEALTH_CHECK_COMMAND}}]
+      test: {{HEALTH_CHECK_COMMAND}}
       interval: 30s
       timeout: 30s
       retries: 3

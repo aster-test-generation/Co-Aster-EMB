@@ -1,0 +1,17 @@
+auth:
+  - name: user1
+    loginEndpointAuth:
+      payloadRaw: "{\"username\": \"user1\", \"password\": \"12345678\"}"
+  - name: user2
+    loginEndpointAuth:
+      payloadRaw: "{\"username\": \"user2\", \"password\": \"12345678\"}"
+
+authTemplate:
+    loginEndpointAuth:
+        endpoint: /api/auth/login
+        verb: POST
+        contentType: application/json
+        token:
+            extractFromField: /accessToken
+            httpHeaderName: Authorization
+            headerPrefix: "Bearer "

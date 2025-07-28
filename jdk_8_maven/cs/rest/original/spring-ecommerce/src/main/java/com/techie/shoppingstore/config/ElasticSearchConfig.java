@@ -11,18 +11,26 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import org.springframework.beans.factory.annotation.Value;
 
 @Configuration
 @EnableElasticsearchRepositories
 public class ElasticSearchConfig {
+//    MODIFIED
+    @Value("${spring.data.elasticsearch.host}")
+    private String host;
+
+    //    MODIFIED
+    @Value("${spring.data.elasticsearch.port}")
+    private int port;
 
     @Bean
     public Client client() {
         System.setProperty("es.set.netty.runtime.available.processors", "false");
         try {
             return new PreBuiltTransportClient(Settings.EMPTY)
-                    .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300));
-
+                    //    MODIFIED
+                    .addTransportAddress(new TransportAddress(InetAddress.getByName(host), port));
         } catch (UnknownHostException e) {
             throw new SpringStoreException("An error occured when configuring Elastic Search");
         }

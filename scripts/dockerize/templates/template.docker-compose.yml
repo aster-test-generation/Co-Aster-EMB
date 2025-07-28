@@ -12,12 +12,16 @@ services:
 #    volumes:
       # default env does not work on volumes
 #      - ${JACOCODIR}:/jacoco
-    {%- if HEALTH_CHECK %}
+    {%- if DEPENDS_ON | length > 0 %}
     depends_on:
-      db:
-        condition: service_healthy
+    {% for depends in DEPENDS_ON %}
+      {{depends}}:
+          condition: service_healthy
+    {% endfor %}
     {% endif %}
-{{ MONGODB_DATABASE if MONGODB_DATABASE }}
+{% for db_block in DATABASES %}
+{{ db_block }}
+{% endfor %}
 {%- if MOCK_OAUTH %}
   mock-oauth2-server:
     image: ghcr.io/navikt/mock-oauth2-server:2.0.1
