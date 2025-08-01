@@ -14,7 +14,7 @@
 
     <modules>
         <module>market</module>
+        <module>quartz-manager/quartz-manager-parent</module>
     </modules>
-
 
 </project>
