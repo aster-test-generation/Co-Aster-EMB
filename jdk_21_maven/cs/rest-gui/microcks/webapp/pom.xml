@@ -408,6 +408,11 @@
     </profile>
     <profile>
       <id>prod</id>
+<!--      MODIFIED-->
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+<!--      MODIFIED-->
       <build>
         <plugins>
           <plugin>
@@ -510,7 +515,11 @@
               <arguments>
                 <argument>--spring.profiles.active=prod</argument>
               </arguments>
-              <classifier>exec</classifier>
+              <!--          MODIFIED-->
+              <finalName>microcks</finalName>
+              <classifier>sut</classifier>
+              <!--              <classifier>exec</classifier>-->
+              <!--          MODIFIED-->
               <excludes>
                 <!-- Otel agent should be provided at the bootstrap level within the container image -->
                 <exclude>
