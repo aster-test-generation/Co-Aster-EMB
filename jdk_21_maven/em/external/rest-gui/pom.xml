@@ -14,6 +14,7 @@
 
     <modules>
         <module>webgoat</module>
+        <module>microcks</module>
     </modules>
 
 </project>

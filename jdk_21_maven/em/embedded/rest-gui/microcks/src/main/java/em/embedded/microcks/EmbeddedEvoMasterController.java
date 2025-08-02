@@ -86,7 +86,6 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     private static final GenericContainer<?> postmanContainer = new GenericContainer<>(DockerImageName.parse(POSTMAN_IMAGE))
             .withExposedPorts(POSTMAN_PORT)
-//            .withCreateContainerCmdModifier(cmd -> cmd.withName("microcks-postman-runtime"))
             .waitingFor(Wait.forHttp("/health")
                     .forPort(POSTMAN_PORT)
                     .withStartupTimeout(Duration.ofSeconds(30)))
@@ -208,7 +207,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
     @Override
     public SutInfoDto.OutputFormat getPreferredOutputFormat() {
-        return SutInfoDto.OutputFormat.JAVA_JUNIT_4;
+        return SutInfoDto.OutputFormat.JAVA_JUNIT_5;
     }
 
     @Override

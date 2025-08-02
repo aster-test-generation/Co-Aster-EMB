@@ -50,6 +50,13 @@
   </dependencyManagement>
 
   <dependencies>
+<!--    MODIFIED-->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.2.0</version>
+    </dependency>
+<!--    MODIFIED-->
     <dependency>
       <groupId>io.github.microcks</groupId>
       <artifactId>microcks-util</artifactId>
