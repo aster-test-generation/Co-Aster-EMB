@@ -23,4 +23,11 @@
       timeout: 30s
       retries: 3
 {% endif %}
+{% if DATABASE_PORT %}
+    ports:
+      - '{{DATABASE_PORT}}'
+{% endif %}
 
+{% if COMMAND %}
+    command: {{COMMAND}}
+{% endif %}

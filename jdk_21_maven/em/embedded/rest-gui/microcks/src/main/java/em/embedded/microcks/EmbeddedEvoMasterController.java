@@ -175,7 +175,7 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
     @Override
     public List<AuthenticationDto> getInfoForAuthentication() {
         //http://localhost:{port}/realms/microcks/protocol/openid-connect/token
-        String postEndpoint = "http://localhost:" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks/protocol/openid-connect/token";
+        String postEndpoint = "http://" + keycloakContainer.getContainerIpAddress() + ":" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks/protocol/openid-connect/token";
 
         String payloadTemplate = "username=%s&password=microcks123&grant_type=password&client_id=microcks-serviceaccount&client_secret=ab54d329-e435-41ae-a900-ec6b3fe15c54";
 
