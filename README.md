@@ -70,7 +70,7 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 > **IMPORTANT**: More details (e.g., #LOCs and used databases) on these APIs can be found [in this table](statistics/table_emb.md).
 
 
-### REST: Java/Kotlin (35)
+### REST: Java/Kotlin (36)
 
 * **Bibliothek** (MIT), [jdk_17_gradle/cs/rest/bibliothek](jdk_17_gradle/cs/rest/bibliothek), from [https://github.com/PaperMC/bibliothek](https://github.com/PaperMC/bibliothek)
 
@@ -95,6 +95,8 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 * **Languagetool** (LGPL), [jdk_8_maven/cs/rest/original/languagetool](jdk_8_maven/cs/rest/original/languagetool), from [https://github.com/languagetool-org/languagetool](https://github.com/languagetool-org/languagetool)
 
 * **Market** (MIT), [jdk_11_maven/cs/rest-gui/market](jdk_11_maven/cs/rest-gui/market), from [https://github.com/aleksey-lukyanets/market](https://github.com/aleksey-lukyanets/market)
+
+* **Microcks** (Apache), [jdk_21_maven/cs/rest-gui/microcks](jdk_21_maven/cs/rest-gui/microcks), from [https://github.com/microcks/microcks](https://github.com/microcks/microcks)
 
 * **NCS**, [jdk_8_maven/cs/rest/artificial/ncs](jdk_8_maven/cs/rest/artificial/ncs), (not-known license, artificial numerical examples coming from different sources)
 

@@ -1,6 +1,10 @@
 package em.external.microcks;
 
 
+import com.github.dockerjava.api.model.ExposedPort;
+import com.github.dockerjava.api.model.HostConfig;
+import com.github.dockerjava.api.model.PortBinding;
+import com.github.dockerjava.api.model.Ports;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import org.evomaster.client.java.controller.AuthUtils;
@@ -109,11 +113,25 @@ public class ExternalEvoMasterController extends ExternalSutController {
 
         this.mongodb = new GenericContainer<>("mongo:" + MONGODB_VERSION)
                 .withTmpFs(Collections.singletonMap("/data/db", "rw"))
+                .withCreateContainerCmdModifier(cmd -> cmd.withHostConfig(
+                        new HostConfig()
+                                .withPortBindings(new PortBinding(
+                                        Ports.Binding.bindPort(sutPort + 3),
+                                        new ExposedPort(MONGODB_PORT)
+                                ))
+                ))
                 .withExposedPorts(MONGODB_PORT);
 
-        this.keycloakContainer = new GenericContainer(
+        this.keycloakContainer = new GenericContainer<>(
                 DockerImageName.parse("quay.io/keycloak/keycloak:26.0.0")
         )
+                .withCreateContainerCmdModifier(cmd -> cmd.withHostConfig(
+                        new HostConfig()
+                                .withPortBindings(new PortBinding(
+                                        Ports.Binding.bindPort(sutPort + 2),
+                                        new ExposedPort(KEYCLOAK_PORT)
+                                ))
+                ))
                 .withExposedPorts(KEYCLOAK_PORT)
                 .withEnv("KEYCLOAK_ADMIN", ADMIN_USER)
                 .withEnv("KEYCLOAK_ADMIN_PASSWORD", ADMIN_PASSWORD)
@@ -129,6 +147,13 @@ public class ExternalEvoMasterController extends ExternalSutController {
                 .waitingFor(Wait.forListeningPort());
 
         this.postmanContainer = new GenericContainer<>(DockerImageName.parse(POSTMAN_IMAGE))
+                .withCreateContainerCmdModifier(cmd -> cmd.withHostConfig(
+                        new HostConfig()
+                                .withPortBindings(new PortBinding(
+                                        Ports.Binding.bindPort(sutPort + 1),
+                                        new ExposedPort(POSTMAN_PORT)
+                                ))
+                ))
                 .withExposedPorts(POSTMAN_PORT)
                 .waitingFor(Wait.forHttp("/health")
                         .forPort(POSTMAN_PORT)
@@ -142,21 +167,20 @@ public class ExternalEvoMasterController extends ExternalSutController {
     public String[] getInputParameters() {
         return new String[]{"--server.port="+sutPort,
                 "--spring.profiles.active=prod",
-                "--grpc.server.port=0"
+                "--grpc.server.port=0",
+                "--spring.data.mongodb.uri=" + "mongodb://" +  mongodb.getContainerIpAddress() + ":" + mongodb.getMappedPort(MONGODB_PORT) + "/" + MONGODB_DATABASE_NAME,
+                "--spring.security.oauth2.resourceserver.jwt.issuer-uri=http://" + keycloakContainer.getContainerIpAddress() + ":" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks",
+                "--spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://" + keycloakContainer.getContainerIpAddress() + ":" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks/protocol/openid-connect/certs"
         };
     }
 
     @Override
     public String[] getJVMParameters() {
         return new String[]{
-                "-DSPRING_PROFILES_ACTIVE=prod",
-                "-DSPRING_DATA_MONGODB_URI="+"mongodb://" + mongodb.getContainerIpAddress() + ":" + mongodb.getMappedPort(MONGODB_PORT),
-                "-DSPRING_DATA_MONGODB_DATABASE="+MONGODB_DATABASE_NAME,
                 "-DPOSTMAN_RUNNER_URL="+"http://" + postmanContainer.getContainerIpAddress() + ":" + postmanContainer.getMappedPort(POSTMAN_PORT),
                 "-DSERVICES_UPDATE_INTERVAL='0 0 0/2 * * *'",
                 "-DKEYCLOAK_URL=" + "http://" + keycloakContainer.getContainerIpAddress() + ":" + keycloakContainer.getMappedPort(KEYCLOAK_PORT),
                 "-DKEYCLOAK_PUBLIC_URL=" + "http://localhost:" + keycloakContainer.getMappedPort(KEYCLOAK_PORT),
-                "-DJAVA_OPTIONS="+"-Dspring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks -Dspring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://" + keycloakContainer.getContainerIpAddress() + ":" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks/protocol/openid-connect/certs",
                 "-DENABLE_CORS_POLICY=false",
                 "-DCORS_REST_ALLOW_CREDENTIALS=true",
                 "-DTEST_CALLBACK_URL=" + "http://localhost:" + sutPort

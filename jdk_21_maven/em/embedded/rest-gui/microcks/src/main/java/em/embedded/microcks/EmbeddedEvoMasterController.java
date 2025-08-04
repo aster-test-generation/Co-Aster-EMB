@@ -111,21 +111,20 @@ public class EmbeddedEvoMasterController extends EmbeddedSutController {
 
         mongoClient = MongoClients.create("mongodb://" + mongodbContainer.getContainerIpAddress() + ":" + mongodbContainer.getMappedPort(MONGODB_PORT));
 
-        System.setProperty("SPRING_PROFILES_ACTIVE", "prod");
-        System.setProperty("SPRING_DATA_MONGODB_URI", "mongodb://" + mongodbContainer.getContainerIpAddress() + ":" + mongodbContainer.getMappedPort(MONGODB_PORT));
-        System.setProperty("SPRING_DATA_MONGODB_DATABASE", MONGODB_DATABASE_NAME);
         System.setProperty("POSTMAN_RUNNER_URL", "http://" + postmanContainer.getContainerIpAddress() + ":" + postmanContainer.getMappedPort(POSTMAN_PORT));
         System.setProperty("SERVICES_UPDATE_INTERVAL", "0 0 0/2 * * *");
         System.setProperty("KEYCLOAK_URL", "http://" + keycloakContainer.getContainerIpAddress() + ":" + keycloakContainer.getMappedPort(KEYCLOAK_PORT));
         System.setProperty("KEYCLOAK_PUBLIC_URL", "http://localhost:" + keycloakContainer.getMappedPort(KEYCLOAK_PORT));
-        System.setProperty("JAVA_OPTIONS", "-Dspring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks -Dspring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://" + keycloakContainer.getContainerIpAddress() + ":" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks/protocol/openid-connect/certs");
         System.setProperty("ENABLE_CORS_POLICY", "false");
         System.setProperty("CORS_REST_ALLOW_CREDENTIALS", "true");
 
         ctx = SpringApplication.run(MicrocksApplication.class,
                 new String[]{"--server.port=0",
                         "--spring.profiles.active=prod",
-                        "--grpc.server.port=0"
+                        "--grpc.server.port=0",
+                        "--spring.data.mongodb.uri=" + "mongodb://" +  mongodbContainer.getContainerIpAddress() + ":" + mongodbContainer.getMappedPort(MONGODB_PORT) + "/" + MONGODB_DATABASE_NAME,
+                        "--spring.security.oauth2.resourceserver.jwt.issuer-uri=http://" + keycloakContainer.getContainerIpAddress() + ":" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks",
+                        "--spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://" + keycloakContainer.getContainerIpAddress() + ":" + keycloakContainer.getMappedPort(KEYCLOAK_PORT) + "/realms/microcks/protocol/openid-connect/certs"
                 });
 
         System.setProperty("TEST_CALLBACK_URL", "http://localhost:" + getSutPort());

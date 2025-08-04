@@ -33,6 +33,7 @@ TRUE,spring-rest-example,REST,Java,JDK 17,Maven,32,1426,MySQL,MIT,9,FALSE,https:
 TRUE,swagger-petstore,REST,Java,JDK 8,Maven,23,1631,,Apache,19,FALSE,https://github.com/swagger-api/swagger-petstore
 TRUE,genome-nexus,REST,Java,JDK 8,Maven,405,30004,MongoDB,MIT,23,FALSE,https://github.com/genome-nexus/genome-nexus
 TRUE,market,REST,Java,JDK 11,Maven,124,9861,H2,MIT,13,TRUE,https://github.com/aleksey-lukyanets/market
+TRUE,microcks,REST,Java,JDK 21,Maven,471,66186,MongoDB,Apache,88,TRUE,https://github.com/microcks/microcks
 TRUE,petclinic-graphql,GraphQL,Java,JDK 8,Maven,89,5212,PostgreSQL,Apache,15,FALSE,https://github.com/spring-petclinic/spring-petclinic-graphql
 TRUE,patio-api,GraphQL,Java,JDK 11,Gradle,178,18048,PostgreSQL,GPL,20,TRUE,https://github.com/patio-team/patio-api
 TRUE,timbuctoo,GraphQL,Java,JDK 11,Maven,1113,107729,Neo4j,GPL,18,TRUE,https://github.com/HuygensING/timbuctoo
