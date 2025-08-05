@@ -3,7 +3,8 @@ services:
     build:
       dockerfile: ./dockerfiles/gestaohospital.dockerfile
       context: ..
-#    environment:
+    environment:
+       AUTH_PORT: ${AUTH_PORT:-8081}
 #      TOOL: ${TOOL:-undefined}
 #      RUN: ${RUN:-0}
     ports:
@@ -12,14 +13,7 @@ services:
 #    volumes:
       # default env does not work on volumes
 #      - ${JACOCODIR}:/jacoco
-
   db:
     image: mongo:6
     tmpfs:
       - '/data/db'
-    
-
-
-
-
-

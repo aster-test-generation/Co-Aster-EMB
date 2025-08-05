@@ -3,7 +3,8 @@ services:
     build:
       dockerfile: ./dockerfiles/microcks.dockerfile
       context: ..
-#    environment:
+    environment:
+       AUTH_PORT: ${AUTH_PORT:-8081}
 #      TOOL: ${TOOL:-undefined}
 #      RUN: ${RUN:-0}
     ports:
@@ -12,69 +13,34 @@ services:
 #    volumes:
       # default env does not work on volumes
 #      - ${JACOCODIR}:/jacoco
-
   mongodb:
     image: mongo:7.0
     tmpfs:
       - '/data/db'
-    
-
     environment:
       MONGODB_REPLICA_SET_MODE: primary
       ALLOW_EMPTY_PASSWORD: yes
-      
-
-
-
-
-
-
-
   keycloak:
     image: quay.io/keycloak/keycloak:26.0.0
-    
-
     environment:
       KEYCLOAK_ADMIN: 'admin'
       KEYCLOAK_ADMIN_PASSWORD: 'admin'
       KC_HEALTH_ENABLED: 'true'
       KC_METRICS_ENABLED: 'true'
-      
-
-
     volumes:
       - ../scripts/dockerize/data/additional_files/microcks/microcks-realm-sample.json:/opt/keycloak/data/import/microcks-realm.json
-      
-
-
     healthcheck:
       test: ['CMD', 'sh', '-c', "echo -e 'GET /health/live HTTP/1.1\r\nHost: localhost\r\n\r\n' > /dev/tcp/localhost/9000"]
       interval: 30s
       timeout: 30s
       retries: 3
-
-
     ports:
-      - '${HOST_PORT:-8081}:8080'
-
-
-
-    command: ['start-dev', '--hostname=http://localhost:${HOST_PORT:-8081}', '--import-realm', '--health-enabled=true']
-
-
+      - '${AUTH_PORT:-8081}:8080'
+    command: ['start-dev', '--hostname=http://localhost:${AUTH_PORT:-8081}', '--import-realm', '--health-enabled=true']
   postman:
     image: quay.io/microcks/microcks-postman-runtime:0.6.0
-    
-
-
-
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:3000/health']
       interval: 30s
       timeout: 30s
       retries: 3
-
-
-
-
-

@@ -152,8 +152,9 @@ class DockerGenerator:
         result = template.render(params)
 
         with open(os.path.join(self.SCRIPT_LOCATION, f"{self.DOCKER_FILE_FOLDER}/{self.sut_name}.yaml"), "w") as f:
-            f.write(result)
-
+            non_empty_lines = [line for line in result.splitlines() if line.strip()]
+            cleaned_result = '\n'.join(non_empty_lines)
+            f.write(cleaned_result)
         print(f"Created {self.sut_name}.yaml")
 
     # def run_docker(self):
