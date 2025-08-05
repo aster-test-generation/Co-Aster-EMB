@@ -136,12 +136,13 @@ class DockerGenerator:
             database_params = {
                 'name': db['name'] if 'name' in db else 'db',
                 'DATABASE_IMAGE_NAME': db['image_name'],
-                'DATABASE_PORT': db['port'],
+                'DATABASE_PORT': db['port'] if 'port' in db else None,
                 'TMP_FS': db['tmp_fs'],
                 'DATABASE_ENVIRONMENT': str(db['environment']).split(';') if str(db['environment']) != '' else None,
                 'DATABASE_VOLUME': str(db['volume']).split(';') if str(db['volume']) != '' else None,
                 'HEALTH_CHECK': health_check_command != "",
-                'HEALTH_CHECK_COMMAND': health_check_command
+                'HEALTH_CHECK_COMMAND': health_check_command,
+                'COMMAND': db['command'] if 'command' in db else None,
             }
             database_image = database_template.render(database_params)
             db_images.append(database_image)

@@ -292,6 +292,9 @@ def build_jdk_21_maven():
     copy(folder + "/cs/rest-gui/webgoat/target/webgoat-sut.jar", DIST)
     copy(folder + "/em/external/rest-gui/webgoat/target/webgoat-evomaster-runner.jar", DIST)
 
+    copy(folder + "/cs/rest-gui/microcks/webapp/target/microcks-sut.jar", DIST)
+    copy(folder + "/em/external/rest-gui/microcks/target/microcks-evomaster-runner.jar", DIST)
+
 ####################
 def call_gradle(java_home, folder):
     env_vars = os.environ.copy()

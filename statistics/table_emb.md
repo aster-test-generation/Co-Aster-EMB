@@ -6,6 +6,7 @@
 |__graphql-scs__|GraphQL|577|13|11|Kotlin|JDK 8|Maven|||
 |__graphql-ncs__|GraphQL|548|8|6|Kotlin|JDK 8|Maven|||
 |__languagetool__|REST|174781|1385|2|Java|JDK 8|Maven|||
+|__microcks__|REST|66186|471|88|Java|JDK 21|Maven|MongoDB|&check;|
 |__ocvn__|REST|45521|526|258|Java|JDK 8|Maven|H2, MongoDB|&check;|
 |__pay-publicapi__|REST|34576|377|10|Java|JDK 11|Maven|Redis|&check;|
 |__genome-nexus__|REST|30004|405|23|Java|JDK 8|Maven|MongoDB||
