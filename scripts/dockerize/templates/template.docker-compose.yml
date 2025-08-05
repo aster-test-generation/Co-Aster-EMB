@@ -3,7 +3,8 @@ services:
     build:
       dockerfile: ./dockerfiles/{{SUT_NAME}}.dockerfile
       context: ..
-#    environment:
+    environment:
+       AUTH_PORT: ${AUTH_PORT:-8081}
 #      TOOL: ${TOOL:-undefined}
 #      RUN: ${RUN:-0}
     ports:
