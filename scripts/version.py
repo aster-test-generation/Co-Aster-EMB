@@ -6,11 +6,17 @@ import platform
 import os
 from subprocess import run
 
-if len(sys.argv) != 2:
-    print("Usage:\n<nameOfScript>.py <version-number>")
+if len(sys.argv) != 3:
+    print("Usage:\n<nameOfScript>.py wfd|em <version-number>")
     exit(1)
 
-version = sys.argv[1].strip()
+target = sys.argv[1].strip()
+
+if target != "wfd" && target != "em":
+    println("Invalid target: " + target+". Only accepted 'wfd' and 'em' as valid targets")
+    exit(1)
+
+version = sys.argv[2].strip()
 
 versionRegex = re.compile(r"^(\d)+\.(\d)+\.(\d)+(-SNAPSHOT)?$")
 
@@ -33,10 +39,14 @@ if JAVA_HOME_11 == '':
     exit(1)
 
 JAVA_HOME_17 = os.environ.get('JAVA_HOME_17', '')
-if JAVA_HOME_11 == '':
+if JAVA_HOME_17 == '':
     print("\nERROR: JAVA_HOME_17 environment variable is not defined")
     exit(1)
 
+JAVA_HOME_21 = os.environ.get('JAVA_HOME_21', '')
+if JAVA_HOME_21 == '':
+    print("\nERROR: JAVA_HOME_21 environment variable is not defined")
+    exit(1)
 
 
 SHELL = platform.system() == 'Windows'
@@ -87,52 +97,57 @@ def versionSetMaven(folder, jdk_home):
         exit(1)
 
 
-def replaceInJS(folder):
-    regex = re.compile(r'\s*"evomaster-client-js"\s*:.*')
-    replacement = ""
-    if version.endswith("-SNAPSHOT"):
-        replacement = "    \"evomaster-client-js\": \"file:../../evomaster-client-js\",\n"
-    else:
-        replacement = "    \"evomaster-client-js\": \""+version+"\",\n"
-    replace(PROJ_LOCATION+folder+"/package.json", regex, replacement)
-
-    # Note: as we need to update the lock files, then we have to make an install
-    res = run(["npm", "i"], shell=SHELL, cwd=PROJ_LOCATION+folder)
-    res = res.returncode
-
-    if res != 0:
-        print("\nERROR: 'npm i' command failed")
-        exit(1)
-
-def replaceAllJs():
-    replaceInJS("/js_npm/rest/cyclotron")
-    replaceInJS("/js_npm/rest/disease-sh-api")
-    replaceInJS("/js_npm/rest/ncs")
-    replaceInJS("/js_npm/rest/realworld-app")
-    replaceInJS("/js_npm/rest/scs")
-    replaceInJS("/js_npm/rest/spacex-api")
-
-def replaceInCS():
-    regex = re.compile(r'\s*<PackageReference\s+Include="EvoMaster.Controller"\s+Version=".*"\s+/>\s*')
-    replacement = '         <PackageReference Include="EvoMaster.Controller" Version="'+version+'" />\n'
-    replace("dotnet_3/em/common.props", regex, replacement)
+# def replaceInJS(folder):
+#     regex = re.compile(r'\s*"evomaster-client-js"\s*:.*')
+#     replacement = ""
+#     if version.endswith("-SNAPSHOT"):
+#         replacement = "    \"evomaster-client-js\": \"file:../../evomaster-client-js\",\n"
+#     else:
+#         replacement = "    \"evomaster-client-js\": \""+version+"\",\n"
+#     replace(PROJ_LOCATION+folder+"/package.json", regex, replacement)
+#
+#     # Note: as we need to update the lock files, then we have to make an install
+#     res = run(["npm", "i"], shell=SHELL, cwd=PROJ_LOCATION+folder)
+#     res = res.returncode
+#
+#     if res != 0:
+#         print("\nERROR: 'npm i' command failed")
+#         exit(1)
+#
+# def replaceAllJs():
+#     replaceInJS("/js_npm/rest/cyclotron")
+#     replaceInJS("/js_npm/rest/disease-sh-api")
+#     replaceInJS("/js_npm/rest/ncs")
+#     replaceInJS("/js_npm/rest/realworld-app")
+#     replaceInJS("/js_npm/rest/scs")
+#     replaceInJS("/js_npm/rest/spacex-api")
+#
+# def replaceInCS():
+#     regex = re.compile(r'\s*<PackageReference\s+Include="EvoMaster.Controller"\s+Version=".*"\s+/>\s*')
+#     replacement = '         <PackageReference Include="EvoMaster.Controller" Version="'+version+'" />\n'
+#     replace("dotnet_3/em/common.props", regex, replacement)
 
 
 ######################################################################################################
 
-replaceInPom("jdk_8_maven/pom.xml")
-replaceInPom("jdk_11_maven/pom.xml")
-replaceInPom("jdk_17_maven/pom.xml")
+if target == "em":
+    replaceInPom("jdk_8_maven/pom.xml")
+    replaceInPom("jdk_11_maven/pom.xml")
+    replaceInPom("jdk_17_maven/pom.xml")
+    replaceInPom("jdk_21_maven/pom.xml")
 
-replaceInGradle("jdk_17_gradle/build.gradle")
-replaceInGradle("jdk_11_gradle/build.gradle")
+    replaceInGradle("jdk_8_gradle/build.gradle")
+    replaceInGradle("jdk_11_gradle/build.gradle")
+    replaceInGradle("jdk_17_gradle/build.gradle")
 
-replaceInDist()
+    replaceInDist()
 
-versionSetMaven("/jdk_8_maven",JAVA_HOME_8)
-versionSetMaven("/jdk_11_maven",JAVA_HOME_11)
-versionSetMaven("/jdk_17_maven",JAVA_HOME_17)
+if target == "wfd":
+    versionSetMaven("/jdk_8_maven",JAVA_HOME_8)
+    versionSetMaven("/jdk_11_maven",JAVA_HOME_11)
+    versionSetMaven("/jdk_17_maven",JAVA_HOME_17)
+    versionSetMaven("/jdk_21_maven",JAVA_HOME_21)
 
-# We no longer support those in EMB... not enough resouces. although might change in future
+# We no longer support those in EMB... not enough resources. although might change in future
 #replaceAllJs()
 #replaceInCS()
