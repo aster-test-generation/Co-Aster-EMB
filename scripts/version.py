@@ -12,7 +12,7 @@ if len(sys.argv) != 3:
 
 target = sys.argv[1].strip()
 
-if target != "wfd" && target != "em":
+if target != "wfd" and target != "em":
     println("Invalid target: " + target+". Only accepted 'wfd' and 'em' as valid targets")
     exit(1)
 
