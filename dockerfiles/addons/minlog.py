@@ -4,7 +4,9 @@ import csv, os
 LOG_DIR = os.getenv("MITM_LOG_DIR", "/logs")
 os.makedirs(LOG_DIR, exist_ok=True)
 
-LOG_FILE = os.path.join(LOG_DIR, "minlog.csv")
+LOG_FILE_NAME = os.getenv("MITM_LOG_FILE","minlog.csv")
+
+LOG_FILE = os.path.join(LOG_DIR, LOG_FILE_NAME)
 
 if not os.path.exists(LOG_FILE):
     with open(LOG_FILE, "w", newline="", encoding="utf-8") as f:

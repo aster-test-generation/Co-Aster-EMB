@@ -4,6 +4,7 @@ services:
     user: "0:0"
     environment:
       MITM_LOG_DIR: /custom-logs
+      MITM_LOG_FILE: ${MITM_LOG_FILE:-minlog.csv}
     command: >
       mitmdump 
         --mode reverse:http://sut-spring-batch-rest:8080
