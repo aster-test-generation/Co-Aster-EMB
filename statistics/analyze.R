@@ -1,8 +1,8 @@
 
-#EMB,NAME,TYPE,LANGUAGE,RUNTIME,BUILD,FILES,LOCS,DATABASE,LICENSE,ENDPOINTS,URL
-DATA_FILE="./data.csv"
+#EMB,NAME,TYPE,LANGUAGE,RUNTIME,BUILD,FILES,LOCS,DATABASE,LICENSE,ENDPOINTS,AUTHENTICATION,URL
+DATA_FILE <- "./data.csv"
 
-UNDEFINED = "UNDEFINED"
+UNDEFINED <- "UNDEFINED"
 
 handleMultiValues <- function(s){
   return(gsub(";", ", ", s))
@@ -12,9 +12,9 @@ handleMultiValues <- function(s){
 areInTheSubset <- function(x,y){
 
   ### first consider vector with all FALSE
-  result = x!=x
+  result <- x!=x
   for(k in y){
-    result = result | x==k
+    result <- result | x==k
   }
   return(result)
 }
@@ -64,31 +64,36 @@ markdown <- function (){
 }
 
 
-latex <- function(TABLE,SUTS){
+latex <- function(TABLE,SUTS,auth){
 
   # TODO what columns to include further could be passed as boolean selection.
   # will implement when needed
 
   dt <- read.csv(DATA_FILE,header=T)
-  dt = dt[areInTheSubset(dt$NAME,SUTS),]
-  dt = dt[order(dt$NAME),]
+  dt <- dt[areInTheSubset(dt$NAME,SUTS),]
+  dt <- dt[order(dt$NAME),]
 
   unlink(TABLE)
   sink(TABLE, append = TRUE, split = TRUE)
 
-  cat("\\begin{tabular}{l rrr}\\\\ \n")
+  cat("\\begin{tabular}{l rrrr}\\\\ \n")
   cat("\\toprule \n")
-  cat("SUT & \\#SourceFiles & \\#LOCs & \\#Endpoints \\\\ \n")
+  cat("SUT & \\#SourceFiles & \\#LOCs & \\#Endpoints & Auth\\\\ \n")
   cat("\\midrule \n")
 
   for (i in 1:nrow(dt)){
 
-    row = dt[i,]
+    row <- dt[i,]
     cat("\\emph{",row$NAME,"}",sep="")
 
     cat(" & ", row$FILES)
     cat(" & ", row$LOCS)
     cat(" & ", row$ENDPOINTS)
+
+    cat(" & ")
+    if(row$AUTHENTICATION){
+          cat("\\checkmark")
+    }
 
     cat(" \\\\ \n")
   }
@@ -101,6 +106,9 @@ latex <- function(TABLE,SUTS){
   cat(sum(dt$LOCS))
   cat(" & ")
   cat(sum(dt$ENDPOINTS))
+  cat(" & ")
+  cat(sum(dt$AUTHENTICATION))
+
   cat(" \\\\ \n")
 
   cat("\\bottomrule \n")
