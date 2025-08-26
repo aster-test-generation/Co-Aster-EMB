@@ -4,24 +4,28 @@
 
 
 
-[EvoMaster](http://evomaster.org) Benchmark (EMB):
+
+Web Fuzzing Dataset (WFD):
 a set of web/enterprise applications for scientific research in Software Engineering.
 
 We collected several different systems running on the JVM, in different programming languages such as  Java and Kotlin.
 In this documentation, we will refer to these projects as System Under Test (SUT).
 Currently, the SUTs are either _REST_,  _GraphQL_ or _RPC_ APIs.
 
-For each SUT, we implemented _driver_ classes, which can programmatically _start_, _stop_ and _reset_ the state of SUT (e.g., data in SQL databases).
-As well as enable setting up different properties in a _uniform_ way, like choosing TCP port numbers for the HTTP servers.
-If a SUT uses any external services (e.g., a SQL database), these will be automatically started via Docker in these driver classes.
-
+This dataset was previously known as EMB. It was rebranded into WFD since version 4.0.0.
 
 This collection of SUTs was originally assembled for easing experimentation with the fuzzer called [EvoMaster](http://evomaster.org).
 However, finding this type of application is not trivial among open-source projects.
 Furthermore, it is not simple to sort out all the technical details on how to set these applications up and start them in a simple, uniform approach.
 Therefore, this repository provides the important contribution of providing all these necessary scripts for researchers that need this kind of case study.
 
-**NOTE**: version 1.6.1 was last one in which we still updated drivers for JavaScript and C\#. Those SUTs are not built anymore by default, and latest versions of *EvoMaster* might not work on those old drivers. Updating drivers for different programming languages (and re-implement white-box heuristics) is a massive amount of work, which unfortunately has little to no value for the scientific community (based on our experience). Those SUTs are still here in EMB to enable *black-box* experiments (and to be able to replicate old experiments), but unfortunately not for *white-box* testing with latest versions of *EvoMaster*.
+__Black-box Testing__. For each SUT, we provide Docker Compose scripts to start the APIs with all their needed dependencies (e.g., databases). APIs are configured with mitmproxy and JaCoCo to collect information on the fuzzing results.   
+
+__White-box Testing__. For each SUT, we implemented _driver_ classes, which can programmatically _start_, _stop_ and _reset_ the state of SUT (e.g., data in SQL databases).
+As well as enable setting up different properties in a _uniform_ way, like choosing TCP port numbers for the HTTP servers.
+If a SUT uses any external services (e.g., a SQL database), these will be automatically started via Docker in these driver classes.
+
+**NOTE**: version 1.6.1 was last one in which we still updated drivers for JavaScript and C\#. Those SUTs are not built anymore by default, and latest versions of *EvoMaster* might not work on those old drivers. Updating drivers for different programming languages (and re-implement white-box heuristics) is a massive amount of work, which unfortunately has little to no value for the scientific community (based on our experience). Those SUTs are still here in WFD to enable *black-box* experiments (and to be able to replicate old experiments), but unfortunately not for *white-box* testing with latest versions of *EvoMaster*.
 
 
 
@@ -57,7 +61,7 @@ Where possible, we tried to prioritize/sort based on number of _stars_ on GitHub
 
 
 Note that some of these open-source projects might be no longer supported, whereas others are still developed and updated.
-Once a system is added to EMB, we do not modify nor keep it updated with its current version under development.
+Once a system is added to WFD, we do not modify nor keep it updated with its current version under development.
 The reason is that we want to keep an easy to use, constant set of case studies for experimentation that can be reliably used throughout the years.
 
 The SUTs called _NCS_ (Numerical Case Study) and _SCS_ (String Case study) are artificial, developed by us.
@@ -228,13 +232,13 @@ For simplicity, all schemas are also available as JSON/YML files under the folde
 ## Using This Repository
 
 Due to several reasons, the software in this repository is not published as a library (e.g., on Maven and NPM).
-To use EMB, you need to clone this repository:
+To use WFD, you need to clone this repository:
 
 ```
-git clone https://github.com/EMResearch/EMB.git
+git clone https://github.com/WebFuzzing/Dataset.git
 ```
 
-There are 2 main use cases for EMB:
+There are 2 main use cases for WFD:
 
 * Run experiments with _EvoMaster_
 
@@ -329,7 +333,7 @@ The difference is that in External the SUT is started on a separated process, an
 
 ## Old Versions
 
-The release of EMB are linked in version number with the release of EvoMaster, as EvoMaster's libraries are used in the drivers (e.g., to clean databases and configure auth info).
+The old releases of EMB are linked in version number with the release of EvoMaster, as EvoMaster's libraries are used in the drivers (e.g., to clean databases and configure auth info).
 In the Git repository of EMB, we did tag the versions of EMB.
 See the [releases](https://github.com/EMResearch/EMB/releases) page.
 For example, to use version `X`, you can check out the Git commit
