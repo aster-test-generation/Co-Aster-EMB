@@ -14,7 +14,7 @@
 
     <modules>
         <module>familie-ba-sak</module>
-        <module>tiltaksgjennomforing</module>
+        <!-- <module>tiltaksgjennomforing</module> -->
         <module>ohsome-api</module>
         <module>spring-rest-example</module>
 

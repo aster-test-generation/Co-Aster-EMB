@@ -211,7 +211,7 @@ SUTS = [
     Sut("spring-ecommerce", JDK_8),
     Sut("spring-rest-example", JDK_17),
     Sut("swagger-petstore",JDK_8),
-    Sut("tiltaksgjennomforing",JDK_17),
+    # Sut("tiltaksgjennomforing",JDK_17),
     Sut("tracking-system",JDK_11),
     Sut("user-management",JDK_8),
     Sut("webgoat", JDK_21),
@@ -599,7 +599,8 @@ def addJobBody(port, sut, seed, setting, configName):
     params += " --externalServiceIP=" + generate_ip()
     params += " --probOfHarvestingResponsesFromActualExternalServices=0"  # this adds way too much noise to results
     params += " --createConfigPathIfMissing=false"
-    params += " --javaCommand=\""+str(pathlib.PurePath(getJavaExe(sut)).as_posix())+"\""
+    params += " --outputFormat=JAVA_JUNIT_5"
+    # params += " --javaCommand=\""+str(pathlib.PurePath(getJavaExe(sut)).as_posix())+"\""
 
 
     if JACOCO:

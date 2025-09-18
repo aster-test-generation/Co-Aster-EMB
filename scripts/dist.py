@@ -272,8 +272,8 @@ def build_jdk_17_maven():
     copy(folder + "/cs/rest/familie-ba-sak/target/familie-ba-sak-sut.jar", DIST)
     copy(folder + "/em/external/rest/familie-ba-sak/target/familie-ba-sak-evomaster-runner.jar", DIST)
 
-    copy(folder + "/cs/rest/tiltaksgjennomforing/target/tiltaksgjennomforing-sut.jar", DIST)
-    copy(folder + "/em/external/rest/tiltaksgjennomforing/target/tiltaksgjennomforing-evomaster-runner.jar", DIST)
+    # copy(folder + "/cs/rest/tiltaksgjennomforing/target/tiltaksgjennomforing-sut.jar", DIST)
+    # copy(folder + "/em/external/rest/tiltaksgjennomforing/target/tiltaksgjennomforing-evomaster-runner.jar", DIST)
 
     copy(folder + "/cs/rest/ohsome-api/target/ohsome-api-sut.jar", DIST)
     copy(folder + "/em/external/rest/ohsome-api/target/ohsome-api-evomaster-runner.jar", DIST)
@@ -300,7 +300,7 @@ def call_gradle(java_home, folder):
     env_vars = os.environ.copy()
     env_vars["JAVA_HOME"] = java_home
 
-    command = "gradlew"
+    command = "./gradlew"
 
     if platform.system() == "Darwin":
         # make sure gradlew command is executable
