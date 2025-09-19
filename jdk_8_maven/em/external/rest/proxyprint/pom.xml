@@ -19,6 +19,13 @@
             <artifactId>h2</artifactId>
             <version>1.4.191</version> <!-- same as SUT -->
         </dependency>
+        <dependency>
+            <groupId>org.evomaster</groupId>
+            <artifactId>evomaster-client-java-dependencies</artifactId>
+            <version>4.0.0</version>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
