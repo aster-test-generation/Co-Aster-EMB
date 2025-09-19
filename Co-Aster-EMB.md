@@ -60,3 +60,26 @@ mvn test -Dtest=< some package >.**
 # e.g.,
 mvn test -Dtest=em.emtests.split_classes.**
 ```
+
+# How to Add New Tests
+
+## EvoMaster Driver Dependent
+
+If your new tests depend on EvoMaster's driver, the easiest way is to add them as the tests for the driver, e.g., under `<jdk_?_maven>/em/external/rest/<app-name>/test/`.
+
+To make them runnable, you need to make sure the following dependency is in the pom.xml of the driver.
+```
+<dependencies>
+    <dependency>
+        <groupId>org.evomaster</groupId>
+        <artifactId>evomaster-client-java-dependencies</artifactId>
+        <version>4.0.0</version>
+        <type>pom</type>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
+## Normal Tests
+
+If your new tests only depend on the SUT itself, the easiest way is to add them to the test suite of the original application, under `<jdk_?_maven>/cs`.
